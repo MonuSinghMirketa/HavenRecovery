@@ -1,0 +1,10 @@
+Name: {!Lead.Lead_Name__c}
+DOB: {!Lead.DOB__c}
+State: {!Lead.State__c}
+Policy Type: {!Lead.Policy_Type__c}
+Insurance Company: {!Lead.Insurance_Company_Name__c}
+ID: {!Lead.Member_ID_Number__c}
+Phone Number: {!Lead.Phone}
+Notes: {!Lead.Refer_Out_Notes__c}
+Admissions Rep: {!Lead.CTM_Agent_Name__c}
+Created: {!Lead.CreatedDate}

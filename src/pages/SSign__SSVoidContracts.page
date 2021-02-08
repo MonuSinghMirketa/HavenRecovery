@@ -1,0 +1,57 @@
+<apex:page controller="SSign.SSUtil">
+    <apex:form >
+    <apex:outputPanel rendered="{!HTMLENCODE($CurrentPage.parameters.voidContracts) == 'true'}">
+        <apex:outputPanel rendered="{!NOT(cantVoidBecauseNotCreator)}">
+        <apex:pageBlock rendered="{!NOT(contractsToVoidIsEmpty)}">
+            Are you sure you want to void the following contracts? For each contract, an email will be sent to all recipients on that contract, notifying them that the contracts has been voided. 
+            <br />
+            <br />
+            The following void reason will be included in the notification emails: 
+            <br />
+            <apex:inputText value="{!voidReason}" />
+            <br />
+            <br />
+            <apex:pageBlockTable value="{!contractsToVoid}" var="ssed">
+            <apex:column headerValue="Document Name" value="{!ssed.SSign__Document_Name__c}" />
+            <apex:column headerValue="Contract Status" value="{!ssed.SSign__Status__c}" />
+            </apex:pageBlockTable>
+            <br />
+            <apex:commandButton value="Void The Above Contracts" action="{!voidContracts}" />
+            <apex:outputPanel rendered="{!NOT(contractsUnvoidableIsEmpty)}">
+            <br />
+            <br />
+            <br />
+            <br />
+            The following contracts in this envelope will not be voided as they have non-voidable statuses:
+            <br />
+            <br />
+            <apex:pageBlockTable value="{!contractsUnvoidable}" var="ssed">
+                <apex:column headerValue="Document Name" value="{!ssed.SSign__Document_Name__c}" />
+                <apex:column headerValue="Contract Status" value="{!ssed.SSign__Status__c}" />
+            </apex:pageBlockTable>
+            </apex:outputPanel>
+            <br />
+            <br />
+            <apex:commandButton value="Return To Record" action="{!exitVoidPage}" />
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!contractsToVoidIsEmpty}">
+            No contracts in this envelope can be voided as they all have non-voidable statuses:
+            <br />
+            <br />
+            <apex:pageBlockTable value="{!contractsUnvoidable}" var="ssed">
+            <apex:column headerValue="Document Name" value="{!ssed.SSign__Document_Name__c}" />
+            <apex:column headerValue="Contract Status" value="{!ssed.SSign__Status__c}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!cantVoidBecauseNotCreator}">
+        <apex:pageBlock >
+            You cannot void the contracts in this request because you are not the creator of this request.
+            <br />
+            <br />
+            <apex:commandButton value="Return To Record" action="{!exitVoidPage}" />
+        </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,30 @@
+{!Insurance_Verification__c.Link} 
+
+VOB Details
+
+Type of VOB:   {!Insurance_Verification__c.RecordType}
+
+Lead Source:  
+Patient Name: {!Insurance_Verification__c.Name}
+Patient DOB: {!Insurance_Verification__c.Patient_DOB__c}
+Subscriber Name:  {!Insurance_Verification__c.Subscriber_Name__c}
+Relationship to Subscriber:  {!Insurance_Verification__c.Relationship_to_Subscriber__c}
+
+
+Insurance Company {!Insurance_Verification__c.Primary_Insurance_Company__c} 
+Member ID {!Insurance_Verification__c.Member_ID__c} 
+Is policy in-network or out of network?{!Insurance_Verification__c.Is_policy_INN_or_OON__c}
+OON Ded:  {!Insurance_Verification__c.Deductible__c}
+OON Deductible Remaining:  {!Insurance_Verification__c.Deductible_Remaining__c}
+OON OOP:  {!Insurance_Verification__c.OOP__c}
+OON OOP Remaining:  {!Insurance_Verification__c.OOP_Remaining__c} 
+OON Coinsurance {!Insurance_Verification__c.Inpatient_Co_insurance__c}% 
+Rate Type {!Insurance_Verification__c.Reimbursement_Raty_Type__c} 
+INN Ded: {!Insurance_Verification__c.INN_Ded__c}
+INN Ded Remaining: {!Insurance_Verification__c.INN_Ded_Remaining__c}
+INN OOP: {!Insurance_Verification__c.INN_OOP__c}
+INN OOP Remaining: {!Insurance_Verification__c.INN_OOP_Remaining__c}
+INN Coinsurance:   {!Insurance_Verification__c.INN_Inpt__c} 
+Is Freestanding covered? {!Insurance_Verification__c.Is_Freestanding_Covered__c} 
+Is Subacute detox covered? {!Insurance_Verification__c.Is_Subacute_Detox_Covered__c} 
+Notes {!Insurance_Verification__c.Notes__c}

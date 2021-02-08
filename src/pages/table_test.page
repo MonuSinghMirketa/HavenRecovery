@@ -1,0 +1,13 @@
+<apex:page >
+<table align="LEFT" border=".5" cellpadding="1" cellspacing="1" style="width: 675px;">
+    <tbody>
+        <tr style="text-align: center;font-size:14px;">
+        <th STYLE="text-align:center;font-size:14px;"> Treatment Type </th>
+       <th STYLE="text-align:center;font-size:14px;"> Level of Care </th>
+        <th STYLE="text-align:center;font-size:14px;"> Facility </th>
+            
+        </tr>
+    </tbody>
+</table>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

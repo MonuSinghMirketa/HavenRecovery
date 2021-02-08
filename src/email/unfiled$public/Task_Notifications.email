@@ -1,0 +1,5 @@
+Type:{!Task.Subject}
+Note : {!Task.Task_Needed__c}
+Due at: {!Task.Due_Date__c}
+
+{!Task.Link}

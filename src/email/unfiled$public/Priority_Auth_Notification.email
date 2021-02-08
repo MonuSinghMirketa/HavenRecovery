@@ -1,0 +1,4 @@
+Name: {!Opportunity.Name__c}
+Insurance Company: {!Opportunity.Insurance_Company_Name__c}
+Scheduled Admission Date: {!Opportunity.Scheduled_Admission_Date__c}
+Requirement: {!Opportunity.Priority_Auth_Req__c}

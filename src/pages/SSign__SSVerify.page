@@ -1,0 +1,517 @@
+<apex:page standardController="SSign__SSEnvelope_Document__c" extensions="SSign.SSCreateSig" docType="html-5.0" 
+showHeader="false" sidebar="false"
+standardStylesheets="false"
+action="{!runSSVerifyValidations}">
+  <apex:stylesheet value="{!URLFOR($Resource.SSign__SSign_CSS,'assets/styles/salesforce-lightning-design-system.css')}"/>
+  <apex:includeScript value="{!URLFOR($Resource.SSign__SSign_jq,'')}" />
+  <apex:form >
+    <div id="loading-div">
+      <div class="loading-div-content">
+        <img width="80" id="loading-div-spinner" src="{!URLFOR($Resource.SSign_Images,'lightning_spinner.gif')}" class="undraggable" unselectable="on" />
+        <div id="loading-div-message" style="display:none;">{!tm['Loading Document...']}<br /><br /><span id="loading-div-message-percentage">0%</span></div>
+      </div>
+    </div>
+    <style>
+      #loading-div {
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 2000;
+        background-color: white;
+      }
+      .loading-div-content {
+        position: fixed;
+        right: 47%;
+        bottom: 50%;
+      }
+      #loading-div-message {
+        font-size: 32px;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: #797B7D;
+        text-align: center;
+      }
+      #loading-div-message-percentage {
+        font-size: 36px;
+        /* #29AAE2 for S-Sign Blue. #0070D2 for Loading Spinner Blue. */
+        color:#29AAE2;
+      }
+      </style>
+    <!-- ==============================================================================================================-->
+    <!-- START CONSENT POPUP                                                                                           -->
+    <!-- ==============================================================================================================-->
+
+    <style>
+    /* ========================================================================= */
+    /* START CSS: "I Agree" Pop-up                                               */
+    /* ========================================================================= */
+    .consent-popup {
+      z-index: 1000;
+      width:100%;
+      height:100%;
+      display:inline;
+      position:fixed;
+      top:0px;
+      left:0px;
+      background:#6B6B6B;
+      overflow: scroll;
+    }
+
+    .consent-popup-inner {
+      max-width:700px;
+      width:90%;
+      padding:40px;
+      position:absolute;
+      top:50%;
+      left:50%;
+      -webkit-transform:translate(-50%, -50%);
+      transform:translate(-50%, -50%);
+      box-shadow:0px 2px 6px rgba(0,0,0,1);
+      border-radius:3px;
+      background:#fff;
+    }
+
+    .verification-code-div {
+      border: 0px solid #D8DDE6;
+      border-radius: 4px;
+      padding: 1px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .ssign-checkbox-container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      font-family: sans-serif;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .ssign-checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Create a custom checkbox */
+    .ssign-checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .ssign-checkbox-container:hover input ~ .ssign-checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .ssign-checkbox-container input:checked ~ .ssign-checkmark {
+      background-color: #29AAE2;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .ssign-checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .ssign-checkbox-container input:checked ~ .ssign-checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .ssign-checkbox-container .ssign-checkmark:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    /* Space the text inputs out evenly */
+    .ssign-verification-container {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+    } 
+
+    /* old way of six separate was .75em */
+    .ssign-verification-input {
+      font-size: 4.2em;
+      width: 85%;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .s-sign-verification {
+      bottom: 128px;
+      display: block;
+      position: relative;
+      margin-left:auto;
+      margin-right:auto;
+      font-size: 14px;
+      width: 700px;
+      height: 250px;
+      border: 10px solid #e8e8e8;
+      background-color: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 12px;
+    }
+
+    .s-sign-verification--body {
+      margin-top: 45px;
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: 20px;
+      bottom: 150px;
+    }
+
+    .s-sign-verification--body
+    canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+
+    .s-sign-verification--body
+    .description {
+      color: #7A7A7A;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 2em;
+      margin-top: 1em;
+    }
+
+    .s-sign-verification--body
+    .verification-description {
+      color: #7A7A7A;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 2em;
+      margin-top: .25em;
+    }
+
+    .s-sign-verification--footer
+    .btns {
+      width: 100%;
+      position: absolute;
+      bottom:0;
+      text-align: center;
+      margin-top: 5em;
+    }
+
+    .ssign-verification-status {
+      text-align: center;
+      color: #e50b0b;
+    }
+
+    .info-box-message-container {
+      text-align: center;
+      font-size: 20px;
+      padding: 16px;
+      border: 1px solid #D8DDE6;
+      border-radius: 4px;
+      margin-top: 110px;
+    }
+    /* ========================================================================= */
+    /* END CSS: "I Agree" Pop-up                                                 */
+    /* ========================================================================= */
+    </style>
+
+    <!-- ====================================================================== -->
+    <!-- START JS: "I Agree" Pop-up                                             -->
+    <!-- ====================================================================== -->
+    <script type="text/javascript">
+      j$ = jQuery.noConflict();
+      var zeroClick = '{!isZeroClick}' == 'true';
+      j$( window ).on( "load", function() {
+        if (zeroClick) {
+          verifyZeroClick();
+        } else {
+          hideLoadingDiv();
+        }
+      });
+
+      /* ========================================================================= */
+      /* START JS: Loading Div                                                     */
+      /* ========================================================================= */
+      function getLoadingDiv() {
+        return j$('#loading-div');
+      }
+      function getLoadingDivSpinner() {
+        return j$('#loading-div-spinner');
+      }
+      function hideLoadingDiv() {
+        $loadingDiv = getLoadingDiv();
+        $loadingDiv.hide();
+      }
+      function showLoadingDiv() {
+        $loadingDiv = getLoadingDiv();
+        $loadingDiv.css('background-color', 'white');
+        $loadingDiv.show();
+        getLoadingDivSpinner().show();
+      }
+      /* ========================================================================= */
+      /* END JS: Loading Div                                                       */
+      /* ========================================================================= */
+    </script>
+    <!-- ====================================================================== -->
+    <!-- END JS: "I Agree" Pop-up                                               -->
+    <!-- ====================================================================== -->
+
+
+    <!-- ====================================================================== -->
+    <!-- START HTML: "I Agree" Pop-up                                           -->
+    <!-- ====================================================================== -->
+
+    <!-- error message panel which looks the same as the consent pop-up -->
+    <apex:outputPanel id="error_messages">
+      <apex:outputPanel rendered="{!ssVerifyHasErrors}">
+        <script>
+          hideLoadingDiv();
+        </script>
+        <div class="consent-popup">
+          <div class="consent-popup-inner" style="font-family: sans-serif;">
+            <apex:pageMessages />
+          </div>
+        </div>
+      </apex:outputPanel>
+    </apex:outputPanel>
+
+    <apex:outputPanel id="controller-variables">
+      <script>
+        function getSignerEmail() {
+          return '{!csd.signerEmail}';
+        }
+      </script>
+    </apex:outputPanel>
+
+    <apex:outputPanel id="info-box-popup-panel">
+      <apex:outputPanel rendered="{!AND(NOT(ssVerifyHasErrors),CONTAINS(ei.SSign__Status__c, 'Voided'))}">
+        <div id="info-box-popup">
+          <div class="consent-popup info-box-clickable">
+            <div class="consent-popup-inner info-box-clickable" style="font-family: sans-serif; height:400px;">
+              <div class="info-box-message-container">
+                {!tm['This E-Signature request has been invalidated and is no longer able to be signed.']} {!tm['Reason: Too many failed verification code attempts.']}
+              </div>
+            </div>
+          </div>
+        </div>
+      </apex:outputPanel>
+    </apex:outputPanel>
+
+    <apex:outputPanel id="verify-popup">
+      <apex:outputPanel rendered="{!AND(NOT(ssVerifyHasErrors),NOT(CONTAINS(ei.SSign__Status__c, 'Voided')))}">
+        <div class="consent-popup" data-consent-popup="consent-popup-1">
+          <div class="consent-popup-inner">
+            <div id="custom-logo-consent-wrapper" style="margin: 0 auto; width: 300px;text-align: center;">
+              <apex:outputPanel rendered="{!NOT(customLogo == null)}">
+                <img id="custom-logo-consent" height="80" src="{!customLogo}" class="undraggable" unselectable="on" />
+                <a style="color: #000000; text-decoration: none;" href="https://www.sdocs.com/s-sign/" target="_blank">
+                  <div class="ssign_lightning_sys" width="400" align="center">
+                    Powered by S-Sign for Salesforce
+                  </div>
+                </a>
+                <script>
+                  var logoWidth = document.getElementById('custom-logo-consent').offsetWidth;
+                  if (logoWidth > 300) {
+                    document.getElementById('custom-logo-consent-wrapper').setAttribute('style', 'margin: 0 auto; width: ' + logoWidth + 'px;text-align: center;');
+                  }
+                </script>
+              </apex:outputPanel>
+              <apex:outputPanel rendered="{!NOT(customLogo != null)}">
+                <a href="https://www.sdocs.com/s-sign/" target="_blank"><img width="80" src="{!URLFOR($Resource.SSign_Images,'s-sign_logo.png')}" class="undraggable" unselectable="on"  /></a>
+              </apex:outputPanel>
+            </div>
+            <br />
+            <br />
+            <!-- START CONSENT DIALOG -->
+            <apex:outputPanel rendered="{!NOT(showNextSignerInputPopup)}">
+              <div id="consent-dialog">
+                <apex:actionFunction name="verifyCode" action="{!verifyCode}" reRender="controller-variables"/>
+                <apex:actionFunction name="incrementFailures" action="{!incrementFailures}" oncomplete="reRenderControllerVariables();" />
+                <div class="ssign_lightning_sys">
+                  {!tm['This is an E-Signature request from [[REQUESTER_NAME]] ([[REQUESTER_EMAIL]]).']}
+                  <apex:outputPanel rendered="{!useMultiSignWizard}">
+                    <br />
+                    <br />
+                    {!tm['There are [[NUM_DOCUMENTS]] documents in this request. This is document [[DOCUMENT_NUMBER]] of [[NUM_DOCUMENTS]].']}
+                  </apex:outputPanel>
+                  <apex:outputPanel rendered="{!NOT(signerEmailToBeProvided) && NOT(signInPersonEmailDisabled) && NOT(csd.signerEmail == '' || csd.signerEmail == null) && NOT(csd.useSelectEmailPicklist)}">
+                    <br />
+                    <br />
+                    {!tm['This E-Signature request is intended for the owner of the following email address: [[SIGNER_EMAIL]]']}
+                    <br />
+                    <br />
+                  </apex:outputPanel>
+                  <apex:outputPanel rendered="{!emailVerificationDisabled && NOT(signInPersonEmailDisabled)}">
+                    <apex:outputPanel rendered="{!signerEmailToBeProvided}"> <!-- Legacy support for manually-input email -->
+                      <br />
+                      <br />
+                      {!pleaseEnterEmailMsg}
+                      <apex:inputText value="{!csd.signerEmail}" style="border: 1px solid #bdc3c7;" id="current-signers-email" />
+                      <br />
+                    </apex:outputPanel>
+                    {!tm['By continuing, you are confirming that you are the owner of the this email address.']}
+                    <br />
+                  </apex:outputPanel>
+                </div>
+                <apex:outputPanel rendered="{!NOT(emailVerificationDisabled)}" id="consent-main-panel">
+                  <br />
+                  <div id="consent-main-div" class="ssign_lightning_sys" style="border: 1px solid #D8DDE6; border-radius: 4px; padding: 8px;">
+                    <apex:outputPanel id="consent-text-panel">
+                      <apex:outputPanel rendered="{!NOT(sentVerificationEmail)}">
+                        <br />
+                        <apex:outputPanel rendered="{!NOT(csd.signerEmail == '' || csd.signerEmail == null)}">
+                          {!pleaseClickSendVerificationEmailBtnMsg}
+                          <apex:outputPanel rendered="{!csd.useSelectEmailPicklist}">
+                            <apex:selectList value="{!csd.signerEmail}" size="1" multiselect="false">
+                              <apex:selectOptions value="{!csd.signerEmailChoices}" />
+                              <apex:actionSupport event="onchange" action="{!doNothing}" reRender="controller-variables" />
+                            </apex:selectList>
+                          </apex:outputPanel>
+                          <br />
+                          <br />
+                          {!tm['By continuing, you are confirming that you are the owner of the this email address.']}
+                        </apex:outputPanel>
+                        <br />
+                        <div style="text-align: center;">
+                          <apex:outputPanel rendered="{!csd.signerEmail == '' || csd.signerEmail == null}">
+                            {!tm['Please enter your email in the box below to verify your identity.']}
+                            <br />
+                            <apex:inputText value="{!csd.signerEmail}"
+                            style="border: 1px solid #D8DDE6;">
+                              <apex:actionSupport event="onchange" action="{!doNothing}" reRender="controller-variables"/>
+                            </apex:inputText>
+                            <br />
+                            <br />
+                            {!tm['By continuing, you are confirming that you are the owner of the this email address.']}
+                            <br />
+                          </apex:outputPanel>
+                          <br />
+                          <input id="send-email" type="button" value="{!tm['Send Email']}" onclick="sendVerificationEmailApex();" 
+                          class="slds-col slds-m-bottom--small slds-button slds-button--neutral"/>
+                          <apex:actionFunction name="sendVerificationEmailApex" action="{!sendVerificationEmail}" reRender="consent-main-panel"/>
+                          <br />
+                        </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!sentVerificationEmail}">
+                          <apex:outputPanel rendered="{!verificationEmailErrorMsg == null}">
+                            {!tm['A temporary 6-digit verification code will be sent to this email. Enter the code below to verify your identity.']}
+                            <br />
+                            <br />
+                            {!IF_YOU_DIDNT_VERIFICATION_TEXT}
+                          </apex:outputPanel>
+                          <apex:outputText escape="false" value="{!verificationEmailErrorMsg}" rendered="{!verificationEmailErrorMsg != null}" />
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                  </div>
+                  <br />
+                  <div class="ssign_lighting_sys verification-code-div">
+                    <apex:outputText value="{!verificationCodeStatus}" styleClass="ssign-verification-status"/>
+                    <div class="ssign-verification-container">
+                      <apex:outputPanel id="verifyInputs" style="margin: 0 auto; width: 100%; text-align: center;" styleClass="ssign-verification-container">
+                        <apex:inputText id="verify-code" styleClass="ssign-verification-input" value="{!attemptedCode}" html-autocomplete="off"
+                        style="border: 1px solid #D8DDE6;" />
+                      </apex:outputPanel>
+                    </div>
+                  </div>
+                  <br />
+                </apex:outputPanel>
+                <br />
+                <div style="border-bottom: 2px solid #D8DDE6; width: 100%; border-radius: 4px;" /> 
+                <br />
+                <div class="ssign_lightning_sys">
+                  <apex:outputPanel rendered="{!NOT(csd.isOnlySigner)}">
+                    {!tm['You are signer [[SIGNER_NUMBER]] of [[NUM_SIGNERS]].']}
+                    {!assignedRoleMessage}
+                    <br />
+                    <br />
+                  </apex:outputPanel>
+                  <apex:outputPanel rendered="{!NOT(signatureInputsPresent)}">
+                    <div id="signer-name-no-signatures-container">
+                      {!tm['Please provide your name before proceeding:']}
+                      <br />
+                      <apex:inputText id="signer-name-no-signatures" value="{!csd.signerName}" />
+                    </div>
+                    <br />
+                    <br />
+                  </apex:outputPanel>
+                  {!tm['By continuing, you are consenting to do business electronically.']}
+                </div>
+                <br />
+                <br />
+                <div id="verify-and-agree-btn" class="ssign_lightning_sys">
+                  <label class="ssign-checkbox-container" style="width: 100%;">
+                    {!tm['I consent to doing business electronically.']}
+                    <apex:inputCheckbox id="consent-popup-agree-checkbox" value="{!consentToDoBusinessElectronically}" onclick="reRenderControllerVariables();" />
+                    <span class="ssign-checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </apex:outputPanel>
+            <!-- END CONSENT DIALOG -->
+            <!-- START POST-SUBMIT DATA DIALOG -->
+            <apex:outputPanel rendered="{!showNextSignerInputPopup}">
+              <div id="post-submit-data-dialog">
+                <div class="ssign_lightning_sys">
+                  {!PROVIDE_NEXT_SIGNERS_EMAIL_TEXT}
+                  <br />
+                  <br />
+                  <apex:inputText value="{!csd.nextSignersEmail}" id="next-signers-email" onkeyup="postSubmitDataToggleSubmitBtn();" />
+                  <br />
+                  <br />
+                  {!tm['After you sign and submit this document, this party will be sent an email asking them to sign this document as well.']}
+                  <br />
+                </div>
+              </div>
+            </apex:outputPanel>
+            <div id="verify-and-agree-btn" class="ssign_lightning_sys">
+              <apex:outputText value="{!verificationStatus}" styleClass="ssign-verification-status"/>
+              <br />
+              <apex:commandButton id="consent-popup-continue-btn" action="{!handleContinueBtn}" value="{!tm['Continue']}"
+                styleClass="slds-col slds-m-bottom--small slds-button slds-button--neutral" oncomplete="reRenderControllerVariables();"/>
+            </div>
+            <!-- END POST-SUBMIT DATA DIALOG -->
+          </div>
+        </div>
+      </apex:outputPanel>
+    </apex:outputPanel>
+
+    <apex:actionFunction action="{!doNothing}" name="reRenderControllerVariables" reRender="verify-popup,controller-variables,error_messages,info-box-popup-panel" oncomplete="" />
+    <apex:actionFunction action="{!refreshTranslationMap}" name="refreshTranslationMap" oncomplete="reRenderControllerVariables();" />
+    <apex:actionFunction action="{!verifyZeroClick}" name="verifyZeroClick" />
+    <apex:actionFunction action="{!loadSSCreateSig}" name="loadSSCreateSig" />
+    <!-- ====================================================================== -->
+    <!-- END HTML: "I Agree" Pop-up                                             -->
+    <!-- ====================================================================== -->
+
+    <!-- ==============================================================================================================-->
+    <!-- END CONSENT POPUP                                                                                             -->
+    <!-- ==============================================================================================================-->
+  </apex:form>
+</apex:page>

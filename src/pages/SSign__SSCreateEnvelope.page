@@ -1,0 +1,197 @@
+<apex:page controller="SSign.SSUtil" action="{!initCreateEnvelope}" docType="html-5.0" lightningStylesheets="true">
+
+
+
+
+<apex:outputPanel rendered="{!NOT(ISBLANK(otherActiveContractsType))}">
+<apex:form >
+  <apex:outputPanel rendered="{!otherActiveContractsType == 'THIS'}">
+    This record already has an active e-signature request using the template you have selected.
+    <br />
+    <br />
+    If you need to generate a new e-signature request for this record using that template,
+    <br />
+    you must first void the current contract that uses that template.
+  </apex:outputPanel>
+  <apex:outputPanel rendered="{!otherActiveContractsType == 'ANY'}">
+    This record already has an active e-signature request. 
+    <br />
+    <br />
+    If you need to generate a new e-signature request for this record,
+    <br />
+    you must first void the current request. 
+    <br />
+    <br />
+    To void a request, click the "Void Contracts" link in the S-Sign Envelopes related list.
+  </apex:outputPanel>
+  <br />
+  <br />
+  <apex:commandButton action="{!returnToRecord}" value="Return To Record" />
+</apex:form>
+</apex:outputPanel>
+
+
+
+
+
+
+
+
+<!--apex:outputPanel rendered="{!NOT(setDateAtRuntime)}">
+  <apex:form>
+    <apex:actionFunction action="{!initCreateEnvelope}" name="initCreateEnvelope" />
+    <apex:includeScript value="{!URLFOR($Resource.SSign__SSign_jq,'')}" />
+    <script type="text/javascript">
+      j$ = jQuery.noConflict();
+      j$().ready(function() {
+        initCreateEnvelope();
+      });
+    </script>
+  </apex:form>
+</apex:outputPanel-->
+<apex:outputPanel id="runtime" rendered="{!setDateAtRuntime}">
+  <apex:form >
+    <apex:pageBlock title="S-Sign E-Signature Expiration Settings" >
+      <apex:outputPanel >
+      <p><b>Set the expiration date for the following S-Sign requests.</b></p>
+      <br />
+      </apex:outputPanel>
+      <apex:pageBlockTable var="doc" value="{!docsToSet}" columns="2">
+        <apex:column value="{!doc.ssed.SSign__Document_Name__c}"/>
+        <apex:column title="Expiration Date" >
+          <apex:facet name="header">Expiration Date</apex:facet>
+          <apex:input value="{!doc.expirationDate}" type="date" required="true"/>
+        </apex:column>
+      </apex:pageBlockTable>
+      <apex:pageBlockButtons location="bottom" style="text-align: right">
+        <apex:commandButton value="Continue" action="{!setAllExpirationDates}"/>
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+  </apex:form>
+</apex:outputPanel>
+
+<apex:outputPanel id="editProfiles" rendered="{!editProfiles}">
+  <apex:includeScript value="{!URLFOR($Resource.SSign__SSign_jq,'')}" />
+  <script type="text/javascript">
+  j$ = jQuery.noConflict();
+  function standardizeEmails(spsnCurrent, signerOneOnly) {
+    for (var spsn = 0; spsn < parseInt('{!signerProfilesEditPageListSize}'); spsn++) {
+      var spnMax = parseInt('{!maxSignerProfileListSize}');
+      if (signerOneOnly) spnMax = 1;
+      for (var spn = 1; spn <= spnMax; spn++) {
+        var currentEmail = j$('*[class$="sps-' + spsnCurrent + '-sp-' + spn + '-email"]').val();
+        j$('*[class="sps-' + spsn + '-sp-' + spn + '-email"]').each(function() {
+          if (!this.disabled) {
+            if (currentEmail !== undefined && currentEmail !== "") this.value = currentEmail;
+          }
+        });
+      }
+    }
+  }
+  </script>
+  <apex:form >
+    <apex:actionFunction name="rerenderNextStepBtn" action="{!doNothing}" reRender="nextStepBtn" />
+    <apex:pageBlock >
+      <apex:commandButton id="nextStepBtn" value="Next Step" action="{!redirectToSDEmailAfterEdit}" disabled="{!NOT(allSignerProfilesEmailsValid)}" />
+      <br /><br />
+      <apex:outputPanel rendered="{!signerProfilesEditPageListSize > 1}">
+        Before continuing, please fill in all email addresses, and ensure that the Signer 1 email address is the same across all of the documents.
+      </apex:outputPanel>
+      <apex:pageBlockTable value="{!signerProfilesEditPageList}" var="signerProfiles">
+        <apex:column >
+          <br />
+          <br />
+          <apex:pageBlockTable value="{!signerProfiles.signerProfileList}" var="signerProfile">
+            <apex:column headerValue="{!IF( (signerProfiles.numProfiles == 1 || activeOnly), 'Edit email address for ' + signerProfiles.documentName + ':', 'Edit email addresses for ' + signerProfiles.documentName + ':' )}">
+              <!-- If activeOnly == true, the activeOnly rendered condition will cause only the currently active Signer Profile (i.e. the person whose turn it currently is to sign)
+              to be displayed in the pageblocktable. -->
+              <apex:outputPanel rendered="{!signerProfile.email == null || NOT(activeOnly) || (activeOnly && signerProfile.profileName == signerProfiles.activeSigner)}" layout="none">
+              Signer {!signerProfile.routingPositionStandardizedOneIndexed}
+                <!-- If ProfileName is not "Signer X", display "Signer X (ProfileName)" -->
+                <apex:outputText value=" ({!signerProfile.profileName}) " rendered="{!NOT(BEGINS(signerProfile.profileName, 'Signer '))}"/>
+                email address:
+                &nbsp;&nbsp;
+                <apex:inputText value="{!signerProfile.email}" disabled="{!CONTAINS(signerProfile.email, 'Provided by')}" onkeyup="rerenderNextStepBtn();" styleClass="sps-{!signerProfiles.standardizedProfilesNumber}-sp-{!signerProfile.routingPosition}-email" />
+              </apex:outputPanel>
+            </apex:column>
+          </apex:pageBlockTable>
+          <apex:outputPanel rendered="{!$User.UIThemeDisplayed == 'Theme4d'}">
+            <style>
+              .btnsTable-cell-1 {
+                display: inline-block;
+                width: 150px;
+              }
+              .btnsTable-cell-2 {
+                display: inline-block;
+                font-size: 10px;
+              }
+            </style>
+          </apex:outputPanel>
+          <apex:outputPanel rendered="{!$User.UIThemeDisplayed != 'Theme4d'}">
+            <style>
+              .btnsTable-cell-1 {
+                display: inline-block;
+                width: 100px;
+              }
+              .btnsTable-cell-2 {
+                display: inline-block;
+                font-size: 10px;
+              }
+            </style>
+          </apex:outputPanel>
+          <div style="border-bottom: 1px solid #DDDBDA;margin-bottom:4px;width:100%;" />
+          <apex:outputPanel rendered="{!signerProfilesEditPageListSize > 1}">
+            <div class="btnsTable-cell-1">
+              <apex:commandButton value="Reuse All" style="font-size:10px;height:32px;width:108px;"
+              onclick="standardizeEmails('{!signerProfiles.standardizedProfilesNumber}', false);" reRender="nextStepBtn"
+              rendered="{!$User.UIThemeDisplayed == 'Theme4d'}" />
+              <apex:commandButton value="Reuse All" style="font-size:10px;"
+              onclick="standardizeEmails('{!signerProfiles.standardizedProfilesNumber}', false);" reRender="nextStepBtn"
+              rendered="{!$User.UIThemeDisplayed != 'Theme4d'}" />
+            </div>
+            <div class="btnsTable-cell-2">
+              <em>Click to use these email addresses for every document in the request</em>
+            </div>
+            <br />
+            <div class="btnsTable-cell-1">
+              <apex:commandButton value="Reuse Signer 1" style="font-size:10px;height:32px;width:108px;"
+              onclick="standardizeEmails('{!signerProfiles.standardizedProfilesNumber}', true);" reRender="nextStepBtn"
+              rendered="{!$User.UIThemeDisplayed == 'Theme4d'}" />
+              <apex:commandButton value="Reuse Signer 1" style="font-size:10px;"
+              onclick="standardizeEmails('{!signerProfiles.standardizedProfilesNumber}', true);" reRender="nextStepBtn"
+              rendered="{!$User.UIThemeDisplayed != 'Theme4d'}" />
+            </div>
+            <div class="btnsTable-cell-2">
+              <em>Click to use this document's Signer 1 email address for every Signer 1 email address in the reques)</em>
+            </div>
+          </apex:outputPanel>
+        </apex:column>
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>
+</apex:outputPanel>
+
+<apex:outputPanel id="setOrder" rendered="{!setOrder}">
+  <apex:form >
+    <apex:pageMessages id="message" />
+    <apex:pageBlock >
+      <apex:commandButton action="{!saveOrderAndRedirectToNextPage}" value="Next Step"/> 
+      <br />
+      <br />
+      <apex:outputPanel >
+        Please set the order that these documents should be signed.
+      </apex:outputPanel>
+      <apex:pageBlockTable value="{!ssedListForOrdering}" var="orderSSED">
+        <apex:column headerValue="Signing Order" width="5%">
+          <apex:inputField value="{!orderSSED.ssed.SSign__Signing_Order__c}" type="number" required="true" style="width:36px;"/>
+        </apex:column>
+        <apex:column value="{!orderSSED.displayName}" headerValue="Document Name"/>
+        <apex:column headerValue="Envelope Doc Number">
+          <a href="{!URLFOR('/' + orderSSED.ssed.Id)}" target="_blank">{!orderSSED.ssed.Name}</a>
+        </apex:column>
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>
+</apex:outputPanel>
+
+</apex:page>

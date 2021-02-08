@@ -1,0 +1,132 @@
+<apex:page controller="SSign.SSConfig" action="{!init}">
+  <apex:form >
+    <apex:outputPanel >
+      <apex:pageMessages id="message" />
+      <apex:pageBlock title="S-Sign Licensing">
+        <apex:commandLink value="Click here to be redirected to the S-Sign License Page" oncomplete="window.location.replace('{!URLFOR(redirectLink)}');"/>
+      </apex:pageBlock>
+      <apex:actionFunction action="{!setPermission}" name="setPermission" reRender="message,siteInfoPageBlock" />
+      <apex:pageBlock title="S-Sign Site Config" id="siteInfoPageBlock">
+        <apex:pageBlockButtons rendered="{!NOT(permissionFound && siteInfoSet)}">
+          <apex:commandButton value="Set Site Info & Assign Permissions" action="{!setSiteInfo}" oncomplete="setPermission();" />
+        </apex:pageBlockButtons>
+        <apex:outputPanel rendered="{!NOT(permissionFound && siteInfoSet)}">
+          <apex:pageBlockSection >
+            <apex:inputText value="{!siteGuestName}" label="S-Sign Site Label" />
+          </apex:pageBlockSection>
+          <apex:pageBlockSection >
+            <apex:inputTextarea value="{!siteURL}" label="S-Sign Site URL" />
+          </apex:pageBlockSection>
+          <apex:pageBlockSection >
+            Click "Set Site Info &amp; Assign Permissions" and S-Sign will: <br />
+            1) record your site label and site URL<br /> 
+            2) assign the S-Sign Site Guest User a permssion set that allows site guest users<br />
+            to read and edit S-Sign Envelope and S-Sign Envelope Document records.
+          </apex:pageBlockSection>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!permissionFound && siteInfoSet}">
+          Permission set successfully assigned to Site Guest User.
+          <br />Site label successfully recorded.
+          <br />Site URL successfully recorded.
+          <br />
+        </apex:outputPanel>
+      </apex:pageBlock>
+      <apex:pageBlock title="S-Sign Advanced Configurations">
+        <apex:pageBlockButtons >
+          <apex:commandButton value="Save Configurations" action="{!savePublicSettings}" reRender="message"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection >
+          <apex:inputCheckbox value="{!publicSettings.SSign__Save_Confirmation_Emails_As_Activities__c}" label="Save confirmation and routing emails in base record's Activity History" />
+          <br />
+          <apex:inputCheckbox value="{!publicSettings.SSign__Show_Audit_Trail_During_Signing_Process__c}" label="Show audit trail during signing process" />
+          <br />
+          <apex:inputText value="{!publicSettings.SSign__Notification_Email_From_Address__c}" label="Org-wide email address to use as FROM address in notification emails" />
+          <br />
+          <apex:inputCheckbox value="{!publicSettings.SSign__Dont_Insert_Audit_Doc_CDL__c}" label="When creating Audit Document, insert Attachment on base record instead of ContentDocumentLink" />
+          <br />
+          <apex:inputCheckbox value="{!publicSettings.SSign__Disable_Text_To_Signature__c}" label="When signing a S-Sign Request, prevent the signer from using the Text-To-Signature feature" />
+          <br />
+          <apex:inputCheckbox value="{!publicSettings.SSign__Enable_Insert_Contact_Trigger__c}" label="Enable Insert Contact Trigger: enables trigger that creates a contact for each signer email that does not have a contact linked to it" rendered="{!showContactTrigger}"/>
+          <apex:outputPanel rendered="{!showContactTrigger}">
+            <br />
+          </apex:outputPanel>
+          <apex:inputText value="{!publicSettings.SSign__Custom_Logo_URL__c}" label="URL of custom logo to be shown to user through the signing process" />
+          <br />
+          <apex:inputText value="{!publicSettings.SSign__Reply_To_Email__c}" label="Email address to be used as the Reply-To address for all S-Sign Emails" />
+          <br />
+        </apex:pageBlockSection>
+      </apex:pageBlock>
+      <apex:pageBlock title="S-Sign Advanced Settings" rendered="{!showAdvancedSSignSettings}">
+        <apex:pageBlockButtons >
+          <apex:commandButton value="Save Settings" action="{!saveSettings}" oncomplete="alert('Saved Advanced Settings');" />
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection >
+          <apex:inputText value="{!pdfAEndpoint}" label="AWS Endpoint For PDF/A Conversion" />
+          <br />
+          <apex:inputText value="{!clientCertificateName}" label="Client Certificate Name for API Callouts" />
+          <br />
+          <apex:inputCheckbox value="{!allowForPreConfiguredTagUsage}" label="Allow For Pre Configured Tag Usage" />
+          <br />
+          <apex:inputCheckbox value="{!allowForTopazFeatureUsage}" label="Allow For Topaz Feature Usage" />
+        </apex:pageBlockSection>
+      </apex:pageBlock>
+    </apex:outputPanel>
+    <apex:outputPanel id="expireNotifications">
+      <apex:outputPanel rendered="{!NOT(jobFoundMap[SCHD_JOB_LBL_NOTIFICATIONS])}">
+        <apex:pageBlock title="S-Sign Request Email Notifications">
+          <p> Click the button below to enable email notifications on S-Sign requests with expiration or reminder settings. </p>
+          <br />
+          <apex:commandButton value="Enable Notifications" action="{!startExpirationJob}" />
+        </apex:pageBlock>
+      </apex:outputPanel>
+      <apex:outputPanel rendered="{!jobFoundMap[SCHD_JOB_LBL_NOTIFICATIONS]}">
+        <apex:pageBlock title="S-Sign Request Email Notifications">
+          <p> Click the button below to disable email notifications on S-Sign requests with expiration or reminder settings. </p>
+          <br />
+          <apex:commandButton value="Disable Notifications" action="{!stopExpirationJob}" />
+        </apex:pageBlock>
+      </apex:outputPanel>
+    </apex:outputPanel>
+
+    <apex:outputPanel id="bounceManagement" rendered="{!showBounceManagement}">
+      <apex:outputPanel rendered="{!NOT(jobFoundMap[SCHD_JOB_LBL_BOUNCE_MANAGEMENT])}">
+        <apex:pageBlock title="S-Sign Request Bounce Management">
+          <p> Click the button below to enable email bounce management on S-Sign requests. </p>
+          <br />
+          <apex:commandButton value="Enable Bounce Management" action="{!startBounceManagementJob}" />
+        </apex:pageBlock>
+      </apex:outputPanel>
+      <apex:outputPanel rendered="{!jobFoundMap[SCHD_JOB_LBL_BOUNCE_MANAGEMENT]}">
+        <apex:pageBlock title="S-Sign Request Bounce Management">
+          <p> Click the button below to disable email bounce management on S-Sign requests. </p>
+          <br />
+          <apex:commandButton value="Disable Bounce Management" action="{!stopBounceManagementJob}" />
+        </apex:pageBlock>
+      </apex:outputPanel>
+    </apex:outputPanel>
+
+    <apex:outputPanel >
+    <apex:outputpanel id="supportOverride" rendered="{!HTMLENCODE($CurrentPage.parameters.settingsOverride) == 'true'}" layout="none">
+      <apex:pageBlock title="S-Sign Settings Override">
+        <apex:inputText value="{!overrideStringEncrypted}" />
+        <apex:commandButton value="Update Override Settings" action="{!updateOverride}" oncomplete="alert('Updated override settings');" />
+      </apex:pageBlock>
+    </apex:outputpanel>
+    </apex:outputPanel>
+
+    <apex:outputPanel >
+      <apex:pageBlock title="Assign S-Docs License To Site Guest User" id="assignSDocsLicenseBlock">
+        <apex:outputPanel rendered="{!NOT(clickedAssignSDocsLicense)}">
+          The S-Sign Site Guest User requires an S-Docs license in order to generate documents
+          <br />using custom S-Sign email notification templates. You can assign a license here.
+          <br />
+          <br />
+          <apex:commandButton value="Assign License" action="{!assignSDocsLicense}" reRender="assignSDocsLicenseBlock" />
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!clickedAssignSDocsLicense}">
+          {!clickedAssignSDocsLicenseMsg}
+        </apex:outputPanel>
+      </apex:pageBlock>
+    </apex:outputPanel>
+  </apex:form>
+</apex:page>

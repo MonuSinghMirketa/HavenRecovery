@@ -1,0 +1,83 @@
+<apex:page controller="VerifyTx.AuthorizeConfirmationClass" action="{!dataManipulation}" showHeader="false" sidebar="false" standardStylesheets="false" >
+    <apex:variable value="{!successMessage}" var="success"/>
+    <apex:variable value="{!errorMessage}" var="error"/>
+    <apex:variable value="{!flag}" var="flag"/>
+    <apex:pageMessages ></apex:pageMessages>
+    <style>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    </style>
+    <script>
+    jQuery(document).ready(function($) {  
+        
+        // site preloader -- also uncomment the div in the header and the css style for #preloader
+        $(window).load(function(){
+            $('#preloader').fadeOut('slow',function(){$(this).remove();});
+        });
+        
+    });
+    </script>
+    <script>
+    window.setTimeout(function(){
+        // Move to a new location or you can do something else
+        window.location.href = '{!uri}';
+        
+    }, 5000);
+    </script>
+    <style>
+        .infoSuccess {
+        background-color: #ddffdd;
+        border-left: 6px solid #4CAF50;
+        margin-bottom: 15px;
+        padding: 4px 12px;
+        font-size: 23px;
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+        left: 0; 
+        top: 0; 
+        }
+        
+        .infoError {
+        background-color: #ffdddd;
+        border-left: 6px solid #f44336;
+        margin-bottom: 15px;
+        padding: 4px 12px;
+        font-size: 23px;
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+        left: 0; 
+        top: 0; 
+        }
+        .js div#preloader {
+        position: fixed; 
+        left: 0; 
+        top: 0; 
+        z-index: 999;
+        width: 100%;
+        height: 100%; 
+        overflow: visible;
+        background: #f2f2f2 url({!URLFOR($Resource.SpinnerGIF)}) no-repeat center center; }
+    </style>
+    
+    <apex:outputText rendered="{!IF(flag==true,true,false)}">
+        <div class="infoSuccess" >
+            <p><strong>NOTE!</strong> Authorization has been successfully completed.Please Map the required fields in the "Mappings" tab before making a verification request. By Default Mappings are set for VOB Object</p>
+        </div>
+    </apex:outputText>
+    <apex:outputText rendered="{!IF(flag==false,true,false)}">
+        <div class="infoError" >
+            <p><strong>NOTE!</strong> "{!error}". Authorization cannot be completed.Please check it and try again,you are being redirected to "Home Page" </p>
+        </div>
+    </apex:outputText>
+    
+    <div class="js">
+        <body>
+            <div id="preloader"></div>
+            
+        </body>
+        
+    </div>
+    
+    
+</apex:page>

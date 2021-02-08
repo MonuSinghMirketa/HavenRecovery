@@ -1,0 +1,14 @@
+<table>
+<tr>
+Assessments completed and approved for the following patient: 
+</tr>
+<tr>
+{!Lead.FirstName} {!Lead.LastName} 
+</tr>
+<tr>
+DOB: {!Lead.DOB__c}
+</tr>
+<tr>
+Assessment Link: {!Lead.EMR_Assesment__c}
+</tr>
+</table>

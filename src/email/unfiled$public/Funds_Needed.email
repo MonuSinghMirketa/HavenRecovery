@@ -1,0 +1,28 @@
+<table>
+<tr>
+Need Funds for the following patient:
+</tr>
+<tr>
+{!Lead.FirstName} {!Lead.LastName}
+</tr>
+<tr>
+DOB: {!Lead.DOB__c}
+</tr>
+<tr>
+Ded (OON): {!Lead.Deductible_Out_Net__c}
+Met(OON): {!Lead.Deductible_OON_Met__c}
+</tr>
+<tr>
+OOP (OON): {!Lead.Out_Of_Pocket_Max_Out_of_Network__c}
+OOP Met (OON): {!Lead.Out_Of_Pocket_Met__c}
+</tr>
+<tr>
+Ded (In Net): {!Lead.Deductible_In_Net__c}
+Met (In Net): {!Lead.Deductible_Met_In_Net__c}
+</tr>
+<tr>
+OOP (In Net): {!Lead.Out_Of_Pocket_Max_In_Network__c}
+Met (In Net): {!Lead.OOP_Met_In_Net__c}
+</tr>
+<tr>
+</table>

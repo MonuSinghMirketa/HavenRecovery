@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>VOB request</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>VOB Request</name>
+    <style>none</style>
+    <subject>Please verify the following for: {!Lead.FirstName} {!Lead.LastName}</subject>
+    <textOnly>{!Lead.Link}
+
+Facility of Interest: {!Lead.Facility_Interest__c}
+Created by: {!Lead.CreatedBy}
+Lead Source:  {!Lead.LeadSource}
+
+
+First Name: {!Lead.FirstName} 
+Last Name: {!Lead.LastName}
+DOB: {!Lead.DOB__c}
+
+Insurance Company: {!Lead.Insurance_Company_Name__c}
+Insurance Phone:  {!Lead.Insurance_Phone__c}
+Member ID: {!Lead.Member_ID_Number__c}
+Group Number: {!Lead.Group_Number__c}
+
+
+Subscriber Name: {!Lead.Subscriber_Name__c}
+Subscriber DOB: {!Lead.Subscriber_DOB__c}
+Subscriber Relationship: {!Lead.Subscriber_Relationship__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

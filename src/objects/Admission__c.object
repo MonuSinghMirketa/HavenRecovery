@@ -1,0 +1,2402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Admission_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Admission_Rep_that_Collected_Funds__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Admission Rep that Collected Funds</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Admissions</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Admissions_Rep_that_Closed_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Admissions Rep that Closed Lead</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Admissions1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Admit_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Admit Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Admit_Month__c</fullName>
+        <description>Admision Month is a Date field with the first day of the month of the admission for Lightning Reporting.</description>
+        <externalId>false</externalId>
+        <formula>DATE(YEAR(Admit_Date__c),MONTH(Admit_Date__c),1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Admit Month</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>All_Tx_claims_paid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>All Tx claims paid</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Amount_of_days_paid__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount of days paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Auth_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Auth Notes</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BB_Chart_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>BB Chart Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Waiting</fullName>
+                    <default>false</default>
+                    <label>Waiting</label>
+                </value>
+                <value>
+                    <fullName>Current</fullName>
+                    <default>false</default>
+                    <label>Current</label>
+                </value>
+                <value>
+                    <fullName>Archive</fullName>
+                    <default>false</default>
+                    <label>Archive</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Behavioral_Health_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>If (VOB__r.If_carve_out_BH_Member_ID__c =&quot;&quot;,  Member_ID__c , VOB__r.If_carve_out_BH_Member_ID__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Behavioral Health ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CTM_Agent_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>CTM Agent Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CTM_Call_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>CTM Call ID</label>
+        <length>108</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CTM_Campaign__c</fullName>
+        <externalId>false</externalId>
+        <label>CTM Campaign</label>
+        <length>108</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CTM_Dialed_Number_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>CTM Dialed Number/Description</label>
+        <length>108</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CTM_Recording_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>CTM Recording URL</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>CTM_Source__c</fullName>
+        <externalId>false</externalId>
+        <label>CTM Source</label>
+        <length>108</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CTM_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>CTM Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chart_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Chart ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Client Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Admissions</relationshipLabel>
+        <relationshipName>Admissions</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client_Phone__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Count_of_Incident_Reports__c</fullName>
+        <externalId>false</externalId>
+        <label>Count of Incident Reports</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DOA_to_OB_Facility__c</fullName>
+        <externalId>false</externalId>
+        <label>DOA to OB Facility</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Deductible_Met__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Deductible_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON Deductible Met</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Deductible__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Deductible__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON Deductible</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Detox_Days_Auth_d__c</fullName>
+        <externalId>false</externalId>
+        <label>Detox Days Auth&apos;d</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discharge_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Discharge Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Discharge_Facility__c</fullName>
+        <externalId>false</externalId>
+        <label>Discharge Facility</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Discharge_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Discharge Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Completed Treatment</fullName>
+                    <default>false</default>
+                    <label>Completed Treatment</label>
+                </value>
+                <value>
+                    <fullName>Completed episode of care (substance free for at least 30 days)</fullName>
+                    <default>false</default>
+                    <label>Completed episode of care (substance free for at least 30 days)</label>
+                </value>
+                <value>
+                    <fullName>Left Involuntarily before completing treatment</fullName>
+                    <default>false</default>
+                    <label>Left Involuntarily before completing treatment</label>
+                </value>
+                <value>
+                    <fullName>Referred outside of agency - episode of care completed</fullName>
+                    <default>false</default>
+                    <label>Referred outside of agency - episode of care completed</label>
+                </value>
+                <value>
+                    <fullName>Referred outside of agency - episode of care not completed</fullName>
+                    <default>false</default>
+                    <label>Referred outside of agency - episode of care not completed</label>
+                </value>
+                <value>
+                    <fullName>Administrative discharge (initiated by the agency)</fullName>
+                    <default>false</default>
+                    <label>Administrative discharge (initiated by the agency)</label>
+                </value>
+                <value>
+                    <fullName>Non-compliant with agency&apos;s rules</fullName>
+                    <default>false</default>
+                    <label>Non-compliant with agency&apos;s rules</label>
+                </value>
+                <value>
+                    <fullName>Incarcerated</fullName>
+                    <default>false</default>
+                    <label>Incarcerated</label>
+                </value>
+                <value>
+                    <fullName>Agency closed with no referral</fullName>
+                    <default>false</default>
+                    <label>Agency closed with no referral</label>
+                </value>
+                <value>
+                    <fullName>Left voluntarily before completing treatment (against medical, clinical or staff advice)</fullName>
+                    <default>false</default>
+                    <label>Left voluntarily before completing treatment (against medical, clinical or staff advice)</label>
+                </value>
+                <value>
+                    <fullName>OTO patient was fighting</fullName>
+                    <default>false</default>
+                    <label>OTO patient was fighting</label>
+                </value>
+                <value>
+                    <fullName>OTO patient caused police contact</fullName>
+                    <default>false</default>
+                    <label>OTO patient caused police contact</label>
+                </value>
+                <value>
+                    <fullName>OTO patient was marketing</fullName>
+                    <default>false</default>
+                    <label>OTO patient was marketing</label>
+                </value>
+                <value>
+                    <fullName>OTO patient brought in drugs</fullName>
+                    <default>false</default>
+                    <label>OTO patient brought in drugs</label>
+                </value>
+                <value>
+                    <fullName>OTO patient was combative with staff</fullName>
+                    <default>false</default>
+                    <label>OTO patient was combative with staff</label>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                    <label>Deceased</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Discharge_to_Facility__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Discharge to Facility</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Admissions (Discharge to Facility)</relationshipLabel>
+        <relationshipName>Admissions2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Do_Not_Readmit_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Do Not Readmit Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Do_Not_Readmit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Do Not Readmit</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Est_Charges__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Detox_Days_Auth_d__c * Est_Detox_Rate__c )+( Res_Days_Auth_d__c* Est_Res_Rate__c )+( Est_PHP_Rate__c * PHP_Days_Auth_d__c)+(IOP_Days_Auth_d__c * Est_IOP_Rate__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Est Charges</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Est_Detox_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Est Detox Rate</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Est_IOP_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Est IOP Rate</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Est_PHP_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Est PHP Rate</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Est_Res_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Est Res Rate</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Facility__c</fullName>
+        <externalId>false</externalId>
+        <label>Facility</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Haven Detox</fullName>
+                    <default>false</default>
+                    <label>Haven Detox</label>
+                </value>
+                <value>
+                    <fullName>TRT</fullName>
+                    <default>false</default>
+                    <label>TRT</label>
+                </value>
+                <value>
+                    <fullName>CCR</fullName>
+                    <default>false</default>
+                    <label>CCR</label>
+                </value>
+                <value>
+                    <fullName>ICFR</fullName>
+                    <default>false</default>
+                    <label>ICFR</label>
+                </value>
+                <value>
+                    <fullName>Lake Ave</fullName>
+                    <default>false</default>
+                    <label>Lake Ave</label>
+                </value>
+                <value>
+                    <fullName>Embrace</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Embrace</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Facility_if_Transfer_To__c</fullName>
+        <externalId>false</externalId>
+        <label>Facility if Transfer To</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GCLID__c</fullName>
+        <externalId>false</externalId>
+        <label>GCLID</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Client_Name__r.Client_Gender__c, &quot;male&quot;), &quot;Male&quot;, IF (ISPICKVAL(Client_Name__r.Client_Gender__c, &quot;female&quot;), &quot;Female&quot;, &quot;Not Available&quot; ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Gender</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hidden_INN_EIV__c</fullName>
+        <externalId>false</externalId>
+        <label>Hidden INN EIV</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Hidden_Insurance_Co__c</fullName>
+        <externalId>false</externalId>
+        <label>Hidden Insurance Co</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hidden_Insurance_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Hidden Insurance ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hidden_OON_EIV__c</fullName>
+        <externalId>false</externalId>
+        <label>Hidden OON EIV</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_Calculator_OOP__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (Is_deductible_included_in_OOP__c =&quot;yes&quot;,if( INN_OOP_Remaining__c =0,INN_OOP_Remaining__c,INN_OOP_Remaining__c),INN_OOP_Remaining__c+ INN_Ded_Remaining__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN Calculator OOP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_DED__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.INN_Ded__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN DED</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_Ded_Met__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.INN_Ded_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN Ded Met</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_Ded_Remaining__c</fullName>
+        <externalId>false</externalId>
+        <formula>INN_DED__c - INN_Ded_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN Ded Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_EIV__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( INN_OOP__c =0,( Est_Charges__c- INN_Ded_Remaining__c )* INN_Inpt_Coinsurance__c,if((Est_Charges__c-INN_Ded_Remaining__c )*(1- INN_Inpt_Coinsurance__c)&gt; INN_Calculator_OOP__c , Est_Charges__c -INN_Calculator_OOP__c-INN_Ded_Remaining__c,( Est_Charges__c-INN_Ded_Remaining__c)* INN_Inpt_Coinsurance__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Post Discharge INN EIV</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_Inpt_Coinsurance__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.INN_Inpt__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN Inpt Coinsurance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>INN_OOP_Met__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.INN_OOP_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN OOP Met</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_OOP_Remaining__c</fullName>
+        <externalId>false</externalId>
+        <formula>INN_OOP__c - INN_OOP_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN OOP Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_OOP__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.INN_OOP__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN OOP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_OR_OON__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT ( VOB__r.Is_policy_INN_or_OON__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN OR OON</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>INN_Outpatient_Coinsurance__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.INN_Outpatient_Coinsurance__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN Outpatient Coinsurance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>INN_Preadmit_EIV__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.INN_EIV__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>INN Preadmit EIV</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>INN_or_OON_Benefits_Utilized__c</fullName>
+        <externalId>false</externalId>
+        <label>INN or OON Benefits Utilized</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In-Network</fullName>
+                    <default>false</default>
+                    <label>In-Network</label>
+                </value>
+                <value>
+                    <fullName>Out-of-Network</fullName>
+                    <default>false</default>
+                    <label>Out-of-Network</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IOP_Days_Auth_d__c</fullName>
+        <externalId>false</externalId>
+        <label>IOP Days Auth&apos;d</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inpatient_Co_insurance__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Inpatient_Co_insurance__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON Inpatient Co-insurance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Insurance_Notes__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Notes__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Insurance Notes</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Insurance__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Primary_Insurance_Company__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Insurance</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Internal_Transfer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Internal Transfer</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_deductible_included_in_OOP__c</fullName>
+        <externalId>false</externalId>
+        <formula>text (VOB__r.Is_deductible_included_in_OOP__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is deductible included in OOP</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Keywords__c</fullName>
+        <externalId>false</externalId>
+        <label>Keywords</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>LOC</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Detox</fullName>
+                    <default>false</default>
+                    <label>Detox</label>
+                </value>
+                <value>
+                    <fullName>Residential</fullName>
+                    <default>false</default>
+                    <label>Residential</label>
+                </value>
+                <value>
+                    <fullName>PHP</fullName>
+                    <default>false</default>
+                    <label>PHP</label>
+                </value>
+                <value>
+                    <fullName>IOP</fullName>
+                    <default>false</default>
+                    <label>IOP</label>
+                </value>
+                <value>
+                    <fullName>OPT</fullName>
+                    <default>false</default>
+                    <label>OPT</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LOS__c</fullName>
+        <externalId>false</externalId>
+        <formula>Discharge_Date__c - Admit_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>LOS</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Length_of_Stay__c</fullName>
+        <externalId>false</externalId>
+        <formula>Discharge_Date__c  -  Admit_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Length of Stay</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MR_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>MR Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Member_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Member_ID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Member ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Multiplan__c</fullName>
+        <externalId>false</externalId>
+        <formula>text( VOB__r.Multiplan__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Multiplan</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OON_Deductible_Remaining__c</fullName>
+        <externalId>false</externalId>
+        <formula>Deductible__c - Deductible_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON Deductible Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OON_EIV__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( OOP__c =0,( Est_Charges__c - OON_Deductible_Remaining__c )* Inpatient_Co_insurance__c ,if((Est_Charges__c-OON_Deductible_Remaining__c )*(1-Inpatient_Co_insurance__c)&gt; (OON_OOP_Calculator__c ),Est_Charges__c-OON_OOP_Calculator__c,(Est_Charges__c-OON_Deductible_Remaining__c)*Inpatient_Co_insurance__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Post Discharge OON EIV</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OON_OOP_Calculator__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Is_deductible_included_in_OOP__c =&quot;yes&quot;,if( OON_OOP_Remaining__c =0,OON_OOP_Remaining__c,OON_OOP_Remaining__c),OON_OOP_Remaining__c+ OON_Deductible_Remaining__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON OOP Calculator</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OON_OOP_Remaining__c</fullName>
+        <externalId>false</externalId>
+        <formula>OOP__c - OOP_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON OOP Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OOP_Met__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.OOP_Met__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON OOP Met</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OOP__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.OOP__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON OOP</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Opp_CTM_CallID__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK( Opportunity__c ),  Client_Phone__c ,
+IF (NOT(ISBLANK( Opportunity__r.Caller_ID_Caller_Phone__c )), Opportunity__r.Caller_ID_Caller_Phone__c,
+ Client_Phone__c ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opp CTM CallID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opp_CTM_Campaign__c</fullName>
+        <description>Pulls the CTM Source from the Admission for legacy records, and Opportunity for newer ones.</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK( Opportunity__c ), CTM_Campaign__c,
+IF (NOT(ISBLANK(Opportunity__r.CTM_Campaign__c)), Opportunity__r.CTM_Campaign__c,
+CTM_Campaign__c))</formula>
+        <label>Opp CTM Campaign</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opp_CTM_Source__c</fullName>
+        <description>Pull from the Opportunity CTM Source first, if not set, use the Admission CTM Source.</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK( Opportunity__c ), CTM_Source__c, 
+  IF (NOT(ISBLANK(Opportunity__r.CTM_Source__c)), Opportunity__r.CTM_Source__c,
+     CTM_Source__c))</formula>
+        <inlineHelpText>Support for Legacy and Modern Admissions.</inlineHelpText>
+        <label>Opp CTM Source</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opp_Insurance_Company__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK(Opportunity__c),   Hidden_Insurance_Co__c   ,
+ Opportunity__r.Insurance_Company_Name__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opp Insurance Company</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opp_Lead_Source__c</fullName>
+        <description>Bring parent Lead Source into Admission for Reporting</description>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK( Opportunity__c ),
+ TEXT(Patient_Source__c) ,
+IF ( ISBLANK(TEXT(Opportunity__r.LeadSource)), TEXT(Patient_Source__c) ,
+TEXT(Opportunity__r.LeadSource)))</formula>
+        <label>Opp Lead Source</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Admissions</relationshipLabel>
+        <relationshipName>Admissions</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Original_Lead_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Date_of_Intake__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Original Lead Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Outpatient_Coinsurance__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Outpatient_Coinsurance__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>OON Outpatient Coinsurance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PHP_Days_Auth_d__c</fullName>
+        <externalId>false</externalId>
+        <label>PHP Days Auth&apos;d</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Paid_Through_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Paid Through Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Paid_Upon_Admission__c</fullName>
+        <externalId>false</externalId>
+        <label>Paid Upon Admission</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Patient_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Patient_Phone__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Patient Most Recent Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Patient_Source__c</fullName>
+        <externalId>false</externalId>
+        <label>Patient Source</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alex Torres</fullName>
+                    <default>false</default>
+                    <label>Alex Torres</label>
+                </value>
+                <value>
+                    <fullName>Alicia Reddy</fullName>
+                    <default>false</default>
+                    <label>Alicia Reddy</label>
+                </value>
+                <value>
+                    <fullName>Austin Thomas</fullName>
+                    <default>false</default>
+                    <label>Austin Thomas</label>
+                </value>
+                <value>
+                    <fullName>Billy Briggs</fullName>
+                    <default>false</default>
+                    <label>Billy Briggs</label>
+                </value>
+                <value>
+                    <fullName>Brian Cellary</fullName>
+                    <default>false</default>
+                    <label>Brian Cellary</label>
+                </value>
+                <value>
+                    <fullName>Call Center</fullName>
+                    <default>false</default>
+                    <label>Call Center</label>
+                </value>
+                <value>
+                    <fullName>CCR Employee</fullName>
+                    <default>false</default>
+                    <label>CCR Employee</label>
+                </value>
+                <value>
+                    <fullName>CCR Main</fullName>
+                    <default>false</default>
+                    <label>CCR Main</label>
+                </value>
+                <value>
+                    <fullName>Chanda Lynn</fullName>
+                    <default>false</default>
+                    <label>Chanda Lynn</label>
+                </value>
+                <value>
+                    <fullName>Chris Cosgrove</fullName>
+                    <default>false</default>
+                    <label>Chris Cosgrove</label>
+                </value>
+                <value>
+                    <fullName>Chuck Dehnel</fullName>
+                    <default>false</default>
+                    <label>Chuck Dehnel</label>
+                </value>
+                <value>
+                    <fullName>Colin Troy</fullName>
+                    <default>false</default>
+                    <label>Colin Troy</label>
+                </value>
+                <value>
+                    <fullName>Danielle Heule</fullName>
+                    <default>false</default>
+                    <label>Danielle Heule</label>
+                </value>
+                <value>
+                    <fullName>David Kimelblatt</fullName>
+                    <default>false</default>
+                    <label>David Kimelblatt</label>
+                </value>
+                <value>
+                    <fullName>Ed Ainsely</fullName>
+                    <default>false</default>
+                    <label>Ed Ainsely</label>
+                </value>
+                <value>
+                    <fullName>Erik Pavao</fullName>
+                    <default>false</default>
+                    <label>Erik Pavao</label>
+                </value>
+                <value>
+                    <fullName>Father John</fullName>
+                    <default>false</default>
+                    <label>Father John</label>
+                </value>
+                <value>
+                    <fullName>Gary Robinson</fullName>
+                    <default>false</default>
+                    <label>Gary Robinson</label>
+                </value>
+                <value>
+                    <fullName>Google</fullName>
+                    <default>false</default>
+                    <label>Google</label>
+                </value>
+                <value>
+                    <fullName>GoogleAd Words</fullName>
+                    <default>false</default>
+                    <label>GoogleAd Words</label>
+                </value>
+                <value>
+                    <fullName>Haven Employee</fullName>
+                    <default>false</default>
+                    <label>Haven Employee</label>
+                </value>
+                <value>
+                    <fullName>Haven Main</fullName>
+                    <default>false</default>
+                    <label>Haven Main</label>
+                </value>
+                <value>
+                    <fullName>ICFR Employee</fullName>
+                    <default>false</default>
+                    <label>ICFR Employee</label>
+                </value>
+                <value>
+                    <fullName>ICFR Main</fullName>
+                    <default>false</default>
+                    <label>ICFR Main</label>
+                </value>
+                <value>
+                    <fullName>Jamie Berkoben</fullName>
+                    <default>false</default>
+                    <label>Jamie Berkoben</label>
+                </value>
+                <value>
+                    <fullName>Jenna Duckworth</fullName>
+                    <default>false</default>
+                    <label>Jenna Duckworth</label>
+                </value>
+                <value>
+                    <fullName>Josh Craig</fullName>
+                    <default>false</default>
+                    <label>Josh Craig</label>
+                </value>
+                <value>
+                    <fullName>Kevin King</fullName>
+                    <default>false</default>
+                    <label>Kevin King</label>
+                </value>
+                <value>
+                    <fullName>Kirill</fullName>
+                    <default>false</default>
+                    <label>Kirill</label>
+                </value>
+                <value>
+                    <fullName>Kyle McHugh</fullName>
+                    <default>false</default>
+                    <label>Kyle McHugh</label>
+                </value>
+                <value>
+                    <fullName>Laura Kazimer</fullName>
+                    <default>false</default>
+                    <label>Laura Kazimer</label>
+                </value>
+                <value>
+                    <fullName>Lori McCord</fullName>
+                    <default>false</default>
+                    <label>Lori McCord</label>
+                </value>
+                <value>
+                    <fullName>Lucy</fullName>
+                    <default>false</default>
+                    <label>Lucy</label>
+                </value>
+                <value>
+                    <fullName>Matt Cincogrono</fullName>
+                    <default>false</default>
+                    <label>Matt Cincogrono</label>
+                </value>
+                <value>
+                    <fullName>Matt Clements</fullName>
+                    <default>false</default>
+                    <label>Matt Clements</label>
+                </value>
+                <value>
+                    <fullName>Matthew Dunphy</fullName>
+                    <default>false</default>
+                    <label>Matthew Dunphy</label>
+                </value>
+                <value>
+                    <fullName>Mike O&apos;Sullivan</fullName>
+                    <default>false</default>
+                    <label>Mike O&apos;Sullivan</label>
+                </value>
+                <value>
+                    <fullName>Nick Gore</fullName>
+                    <default>false</default>
+                    <label>Nick Gore</label>
+                </value>
+                <value>
+                    <fullName>QA CCR</fullName>
+                    <default>false</default>
+                    <label>QA CCR</label>
+                </value>
+                <value>
+                    <fullName>QA Haven</fullName>
+                    <default>false</default>
+                    <label>QA Haven</label>
+                </value>
+                <value>
+                    <fullName>QA ICFR</fullName>
+                    <default>false</default>
+                    <label>QA ICFR</label>
+                </value>
+                <value>
+                    <fullName>QA Main</fullName>
+                    <default>false</default>
+                    <label>QA Main</label>
+                </value>
+                <value>
+                    <fullName>QA TRT</fullName>
+                    <default>false</default>
+                    <label>QA TRT</label>
+                </value>
+                <value>
+                    <fullName>Ralph Johnson</fullName>
+                    <default>false</default>
+                    <label>Ralph Johnson</label>
+                </value>
+                <value>
+                    <fullName>Rebecca Figg</fullName>
+                    <default>false</default>
+                    <label>Rebecca Figg</label>
+                </value>
+                <value>
+                    <fullName>Richard Hennessy</fullName>
+                    <default>false</default>
+                    <label>Richard Hennessy</label>
+                </value>
+                <value>
+                    <fullName>Richie Webber</fullName>
+                    <default>false</default>
+                    <label>Richie Webber</label>
+                </value>
+                <value>
+                    <fullName>Robert Mamedov</fullName>
+                    <default>false</default>
+                    <label>Robert Mamedov</label>
+                </value>
+                <value>
+                    <fullName>Rory Munyan</fullName>
+                    <default>false</default>
+                    <label>Rory Munyan</label>
+                </value>
+                <value>
+                    <fullName>Santino Coviello</fullName>
+                    <default>false</default>
+                    <label>Santino Coviello</label>
+                </value>
+                <value>
+                    <fullName>Saul Kane</fullName>
+                    <default>false</default>
+                    <label>Saul Kane</label>
+                </value>
+                <value>
+                    <fullName>Self Referral</fullName>
+                    <default>false</default>
+                    <label>Self Referral</label>
+                </value>
+                <value>
+                    <fullName>Seminole Tribe</fullName>
+                    <default>false</default>
+                    <label>Seminole Tribe</label>
+                </value>
+                <value>
+                    <fullName>Soberlink</fullName>
+                    <default>false</default>
+                    <label>Soberlink</label>
+                </value>
+                <value>
+                    <fullName>Social Media</fullName>
+                    <default>false</default>
+                    <label>Social Media</label>
+                </value>
+                <value>
+                    <fullName>Spenser Rose</fullName>
+                    <default>false</default>
+                    <label>Spenser Rose</label>
+                </value>
+                <value>
+                    <fullName>Stephanie King</fullName>
+                    <default>false</default>
+                    <label>Stephanie King</label>
+                </value>
+                <value>
+                    <fullName>Tamara Kirby</fullName>
+                    <default>false</default>
+                    <label>Tamara Kirby</label>
+                </value>
+                <value>
+                    <fullName>Thomas Fisher</fullName>
+                    <default>false</default>
+                    <label>Thomas Fisher</label>
+                </value>
+                <value>
+                    <fullName>Thomas Streeter</fullName>
+                    <default>false</default>
+                    <label>Thomas Streeter</label>
+                </value>
+                <value>
+                    <fullName>Timothy Steinmetz</fullName>
+                    <default>false</default>
+                    <label>Timothy Steinmetz</label>
+                </value>
+                <value>
+                    <fullName>Tracie Dutch</fullName>
+                    <default>false</default>
+                    <label>Tracie Dutch</label>
+                </value>
+                <value>
+                    <fullName>TRT Employee</fullName>
+                    <default>false</default>
+                    <label>TRT Employee</label>
+                </value>
+                <value>
+                    <fullName>TRT Main</fullName>
+                    <default>false</default>
+                    <label>TRT Main</label>
+                </value>
+                <value>
+                    <fullName>Tucker Hiegel</fullName>
+                    <default>false</default>
+                    <label>Tucker Hiegel</label>
+                </value>
+                <value>
+                    <fullName>Tyler Forsberg</fullName>
+                    <default>false</default>
+                    <label>Tyler Forsberg</label>
+                </value>
+                <value>
+                    <fullName>William Stoddard</fullName>
+                    <default>false</default>
+                    <label>William Stoddard</label>
+                </value>
+                <value>
+                    <fullName>Adolfo Castellano</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Adolfo Castellano</label>
+                </value>
+                <value>
+                    <fullName>Brian Ladyman</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Brian Ladyman</label>
+                </value>
+                <value>
+                    <fullName>Calen Cox</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Calen Cox</label>
+                </value>
+                <value>
+                    <fullName>Charles Banner</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Charles Banner</label>
+                </value>
+                <value>
+                    <fullName>Christy Rafferty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Christy Rafferty</label>
+                </value>
+                <value>
+                    <fullName>Daniel Delemo</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Daniel Delemo</label>
+                </value>
+                <value>
+                    <fullName>Dean Jewel</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Dean Jewel</label>
+                </value>
+                <value>
+                    <fullName>Emily Rosen</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Emily Rosen</label>
+                </value>
+                <value>
+                    <fullName>Eric Meehan</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Eric Meehan</label>
+                </value>
+                <value>
+                    <fullName>Eric Pavao</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Eric Pavao</label>
+                </value>
+                <value>
+                    <fullName>Father John Stabeno</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Father John Stabeno</label>
+                </value>
+                <value>
+                    <fullName>George Garlin</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>George Garlin</label>
+                </value>
+                <value>
+                    <fullName>James Wittick</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>James Wittick</label>
+                </value>
+                <value>
+                    <fullName>Jamie Audain</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Jamie Audain</label>
+                </value>
+                <value>
+                    <fullName>Jay Callas</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Jay Callas</label>
+                </value>
+                <value>
+                    <fullName>Joshua Masterson</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Joshua Masterson</label>
+                </value>
+                <value>
+                    <fullName>Justin Dunbar</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Justin Dunbar</label>
+                </value>
+                <value>
+                    <fullName>Karrie Campos</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Karrie Campos</label>
+                </value>
+                <value>
+                    <fullName>Katie Gibson</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Katie Gibson</label>
+                </value>
+                <value>
+                    <fullName>Kaylaa McGinnis</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Kaylaa McGinnis</label>
+                </value>
+                <value>
+                    <fullName>Kim Canty</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Kim Canty</label>
+                </value>
+                <value>
+                    <fullName>Kyle Higgins</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Kyle Higgins</label>
+                </value>
+                <value>
+                    <fullName>Kyle Mehl</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Kyle Mehl</label>
+                </value>
+                <value>
+                    <fullName>Lindy Yack</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Lindy Yack</label>
+                </value>
+                <value>
+                    <fullName>Lindy Yackanech</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Lindy Yackanech</label>
+                </value>
+                <value>
+                    <fullName>Matt O&apos;Malley</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Matt O&apos;Malley</label>
+                </value>
+                <value>
+                    <fullName>Matthew Leggerio</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Matthew Leggerio</label>
+                </value>
+                <value>
+                    <fullName>Michael Leggiero</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Michael Leggiero</label>
+                </value>
+                <value>
+                    <fullName>Mike Hulick</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Mike Hulick</label>
+                </value>
+                <value>
+                    <fullName>Mitch Brown</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Mitch Brown</label>
+                </value>
+                <value>
+                    <fullName>Nicholas Labar</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Nicholas Labar</label>
+                </value>
+                <value>
+                    <fullName>Nick Balzer</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Nick Balzer</label>
+                </value>
+                <value>
+                    <fullName>Nick Labar</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Nick Labar</label>
+                </value>
+                <value>
+                    <fullName>Nick Newcity</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Nick Newcity</label>
+                </value>
+                <value>
+                    <fullName>Rachel Hughes</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Rachel Hughes</label>
+                </value>
+                <value>
+                    <fullName>Rachel Simpson</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Rachel Simpson</label>
+                </value>
+                <value>
+                    <fullName>Raymond Tessier</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Raymond Tessier</label>
+                </value>
+                <value>
+                    <fullName>Ron Shippert</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Ron Shippert</label>
+                </value>
+                <value>
+                    <fullName>Satori Waters</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Satori Waters</label>
+                </value>
+                <value>
+                    <fullName>Scott George</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Scott George</label>
+                </value>
+                <value>
+                    <fullName>Sean Bustamante</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Sean Bustamante</label>
+                </value>
+                <value>
+                    <fullName>Shaun Wallace</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Shaun Wallace</label>
+                </value>
+                <value>
+                    <fullName>Stephanie Shostok</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Stephanie Shostok</label>
+                </value>
+                <value>
+                    <fullName>Steven Waddell</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Steven Waddell</label>
+                </value>
+                <value>
+                    <fullName>Thomas Hernandez</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Thomas Hernandez</label>
+                </value>
+                <value>
+                    <fullName>Tim Kavanaugh</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Tim Kavanaugh</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Source__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Source</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Health Insurance</fullName>
+                    <default>false</default>
+                    <label>Health Insurance</label>
+                </value>
+                <value>
+                    <fullName>Private Pay</fullName>
+                    <default>false</default>
+                    <label>Private Pay</label>
+                </value>
+                <value>
+                    <fullName>Scholarship</fullName>
+                    <default>false</default>
+                    <label>Scholarship</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Post_Discharge_EIV__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(text(INN_or_OON_Benefits_Utilized__c)=&quot;In-network&quot;, Hidden_INN_EIV__c , Hidden_OON_EIV__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Post Discharge EIV</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Power_of_1__c</fullName>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Power of 1</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Preadmission_Assessment_Link__c</fullName>
+        <externalId>false</externalId>
+        <label>Preadmission Assessment Link</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Preadmit_EIV__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.EIV__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Preadmit EIV</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Pt_DOB__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client_Name__r.Patient_DOB__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Pt DOB</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Pt_DOB_new__c</fullName>
+        <externalId>false</externalId>
+        <label>Pt DOB</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REFERRED_DISCHARGE__c</fullName>
+        <externalId>false</externalId>
+        <formula>Referred_By__c = Discharge_to_Facility__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>REFERRED-DISCHARGE</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Readmit__c</fullName>
+        <externalId>false</externalId>
+        <label>Readmit</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Referred_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Referred By</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Admissions (Referred By)</relationshipLabel>
+        <relationshipName>Admissions1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Referred_To__c</fullName>
+        <externalId>false</externalId>
+        <label>Referred To</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Referred_to_Marketer__c</fullName>
+        <externalId>false</externalId>
+        <label>Referred to Marketer</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Reimbursement_Rate_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Reimbursement_Raty_Type__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Reimbursement Rate Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Res_Days_Auth_d__c</fullName>
+        <externalId>false</externalId>
+        <label>Res Days Auth&apos;d</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Revenue_Collected_to_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Revenue Collected to Date</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Status_of_OB_Referral__c</fullName>
+        <externalId>false</externalId>
+        <label>Status of OB Referral</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subscriber_Employer__c</fullName>
+        <externalId>false</externalId>
+        <formula>VOB__r.Subscriber_Employer__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Subscriber Employer</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transfer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>When checked this will not count as an admit on certain reports.</inlineHelpText>
+        <label>Transfer</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>UnUsed_Auth_Days_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>UnUsed Auth Days LOC</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Detox</fullName>
+                    <default>false</default>
+                    <label>Detox</label>
+                </value>
+                <value>
+                    <fullName>Res</fullName>
+                    <default>false</default>
+                    <label>Res</label>
+                </value>
+                <value>
+                    <fullName>PHP</fullName>
+                    <default>false</default>
+                    <label>PHP</label>
+                </value>
+                <value>
+                    <fullName>IOP</fullName>
+                    <default>false</default>
+                    <label>IOP</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Unused_Auth_Days__c</fullName>
+        <externalId>false</externalId>
+        <label>Unused Auth Days</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VOB__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>VOB</label>
+        <referenceTo>Insurance_Verification__c</referenceTo>
+        <relationshipLabel>Admissions</relationshipLabel>
+        <relationshipName>Admissions</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>VerifyTX_Insurer_del__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (or( contains( Insurance__c , &quot;BC&quot;), contains ( Insurance__c , &quot;BCBS&quot;) , contains ( Insurance__c, &quot;bcbs&quot;) , contains ( Insurance__c , &quot;Blue&quot;),contains ( Insurance__c , &quot;blue&quot;),contains ( Insurance__c , &quot;Anthem&quot;),contains ( Insurance__c , &quot;ANTHEM&quot;),contains ( Insurance__c , &quot;bc&quot;) , (Insurance__c = &quot;Empire&quot;) , (Insurance__c = &quot;EMPIRE&quot;) ,contains ( Insurance__c , &quot;Independence&quot;) ,contains (Insurance__c, &quot;INDEPENDENCE&quot;) ,contains ( Insurance__c , &quot;Carefirst&quot;),contains( Insurance__c , &quot;Horizon&quot;),contains( Insurance__c , &quot;HORIZON&quot;),contains( Insurance__c , &quot;Keystone&quot;),contains( Insurance__c , &quot;KEYSTONE&quot;), contains( Insurance__c , &quot;Highmark&quot;),contains (Insurance__c , &quot;Premera&quot;), contains( Insurance__c , &quot;CAREFIRST&quot;), contains( Insurance__c , &quot;HIGHMARK&quot;), contains ( Insurance__c , &quot;PREMERA&quot;), contains (Insurance__c, &quot;IBC&quot;),contains( Insurance__c , &quot;REGENCE&quot;), contains( Insurance__c , &quot;Regence&quot;), contains ( Insurance__c , &quot;WELLMARK&quot;), contains ( Insurance__c , &quot;Wellmark&quot;), contains ( Insurance__c , &quot;BS of California&quot;)), &quot;BLUE CROSS BLUE SHIED&quot;, IF (or (contains(Insurance__c , &quot;UHC&quot;), contains (Insurance__c , &quot;UBH&quot;), contains (Insurance__c , &quot;United Health Care&quot;), contains (Insurance__c, &quot;united health care&quot;), contains (Insurance__c,&quot;United Healthcare&quot;), contains (Insurance__c, &quot;UHC/Optum&quot;), contains(Insurance__c , &quot;uhc&quot;)),&quot;UnitedHealthCare&quot;, IF (or (contains (Insurance__c ,&quot;UPMC&quot;), contains (Insurance__c ,&quot;upmc&quot;)), &quot;UPMC HEALTH PLAN (TRISTATE)&quot;, IF (or (contains(Insurance__c ,&quot;GEHA&quot;), CONTAINS (Insurance__c, &quot;geha&quot;)), &quot;GOVERNENT EMPLOYEES HEALTH ASSOCIATION (GEHA)&quot;,IF (or (contains(Insurance__c ,&quot;Tricare&quot;), contains (Insurance__c,&quot;Tri-care&quot;), contains (Insurance__c, &quot;TriCare&quot;),contains (Insurance__c, &quot;TRICARE&quot;)), &quot;TRICARE EAST&quot;, IF (or (contains(Insurance__c ,&quot;Medica/UHC&quot;), (Insurance__c= &quot;medica&quot;)), &quot;MEDICA&quot;, IF (or (contains(Insurance__c ,&quot;Core Source&quot;), contains (Insurance__c, &quot;CORE SOURCE&quot;)), &quot;CORESOURCE (MD PA &amp; IL)&quot;, If (contains (Insurance__c,&quot;GHI&quot;), &quot;GHI&quot;, if (or (contains(Insurance__c, &quot;/Beacon&quot;), contains (Insurance__c, &quot;Empire Plan&quot;)), &quot;Beacon Health Options&quot;, Insurance__c )))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>VerifyTX Insurer</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Admission</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Facility__c</columns>
+        <columns>Admit_Date__c</columns>
+        <columns>Discharge_Date__c</columns>
+        <columns>Referred_By__c</columns>
+        <columns>CTM_Source__c</columns>
+        <columns>Patient_Source__c</columns>
+        <columns>Payment_Source__c</columns>
+        <columns>Insurance__c</columns>
+        <columns>Member_ID__c</columns>
+        <columns>VOB__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CCR_Admits</fullName>
+        <columns>NAME</columns>
+        <columns>Admit_Date__c</columns>
+        <columns>Facility__c</columns>
+        <columns>Insurance__c</columns>
+        <columns>Member_ID__c</columns>
+        <columns>Patient_Source__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Facility__c</field>
+            <operation>equals</operation>
+            <value>CCR</value>
+        </filters>
+        <label>CCR Admits</label>
+    </listViews>
+    <listViews>
+        <fullName>ICFR_Admits</fullName>
+        <columns>NAME</columns>
+        <columns>Admit_Date__c</columns>
+        <columns>Facility__c</columns>
+        <columns>Insurance__c</columns>
+        <columns>Member_ID__c</columns>
+        <columns>Patient_Source__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Facility__c</field>
+            <operation>equals</operation>
+            <value>ICFR</value>
+        </filters>
+        <label>ICFR Admits</label>
+    </listViews>
+    <listViews>
+        <fullName>TRT_Admits</fullName>
+        <columns>NAME</columns>
+        <columns>Admit_Date__c</columns>
+        <columns>Facility__c</columns>
+        <columns>Insurance__c</columns>
+        <columns>Member_ID__c</columns>
+        <columns>Patient_Source__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Facility__c</field>
+            <operation>equals</operation>
+            <value>,TRT,Embrace</value>
+        </filters>
+        <label>TRT Admits</label>
+    </listViews>
+    <nameField>
+        <label>Admission Name</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Admissions</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Facility__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Admit_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Insurance__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Member_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Patient_Source__c</customTabListAdditionalFields>
+        <listViewButtons>Mass_Delete_Admission</listViewButtons>
+        <lookupDialogsAdditionalFields>Admit_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Facility__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Insurance__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Member_ID__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Patient_Source__c</lookupDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Facility__c</searchFilterFields>
+        <searchFilterFields>Insurance__c</searchFilterFields>
+        <searchFilterFields>Member_ID__c</searchFilterFields>
+        <searchFilterFields>Patient_Source__c</searchFilterFields>
+        <searchResultsAdditionalFields>Admit_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Facility__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Patient_Source__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Hidden_Insurance_Co__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Hidden_Insurance_ID__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Mass_Delete_Admission</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Delete Admission</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/38.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/38.0/apex.js&quot;)} 
+   var records = {!GETRECORDIDS($ObjectType.Admission__c)}; 
+   var strIDs=&apos;&apos;; 
+    if (records[0] == null) { 
+        alert(&apos;Please select a record&apos;); 
+    } 
+    else { 
+        for (var n=0; n&lt;records.length; n++) { 
+            if(strIDs == &apos;&apos;) 
+                strIDs = records[n]; 
+            else 
+                strIDs = strIDs + &quot;,&quot; + records[n] ; 
+         } 
+         window.location.href = &apos;/apex/MassManager__MassDelete?deleteIds=&apos;+strIDs + &apos;&amp;selectedObject=Admission__c&amp;retURL=&apos;+ window.location.href; 
+   }</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_to_Slack</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Send to Slack</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <url>/apex/slackv2__sendToSlack?recordId={!CASESAFEID (Admission__c.Id)}&amp;objectApiName=Admission__c</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Slack_Alerts</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Slack Alerts</masterLabel>
+        <openType>noSidebar</openType>
+        <protected>false</protected>
+        <url>/apex/slackv2__slackAlerts?recordId={!CASESAFEID (Admission__c.Id)}&amp;objectApiName=Admission__c</url>
+    </webLinks>
+</CustomObject>

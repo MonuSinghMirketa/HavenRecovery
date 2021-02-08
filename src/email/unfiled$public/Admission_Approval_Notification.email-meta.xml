@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sends notification of admission approval</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Admission Approval Notification</name>
+    <style>none</style>
+    <subject>{!Opportunity.Compliant_Name__c} has been marked Approved for Admission</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

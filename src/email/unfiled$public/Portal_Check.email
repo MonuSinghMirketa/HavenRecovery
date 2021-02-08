@@ -1,0 +1,11 @@
+<table>
+<tr>
+Portal verification for the following patient:
+</tr>
+<tr>
+{!Lead.FirstName} {!Lead.LastName}
+</tr>
+<tr>
+DOB: {!Lead.DOB__c}
+</tr>
+</table>

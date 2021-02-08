@@ -1,0 +1,10 @@
+Name: {!Opportunity.Name__c}
+DOB: {!Opportunity.DOB__c}
+State: {!Opportunity.Patient_State_new__c}
+Policy Type: {!Opportunity.Policy_Type_ref__c}
+Insurance Company: {!Opportunity.Insurance_Company_Name__c}
+ID: {!Opportunity.Member_ID_Number__c}
+Phone Number: {!Opportunity.Patient_Phone__c}
+Notes: {!Opportunity.Refer_Out_Notes__c}
+Admissions Rep: {!Opportunity.CTM_Agent_Name__c}
+Created: {!Opportunity.CreatedDate}

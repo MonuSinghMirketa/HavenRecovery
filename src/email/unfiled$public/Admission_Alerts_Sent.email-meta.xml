@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Admissions Alerts sent to all parties</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Admission Alerts Sent</name>
+    <style>none</style>
+    <subject>ADMISSION ALERT FOR {!Lead.FirstName} {!Lead.LastName}</subject>
+    <textOnly>Admission Alert for the following patient: 
+{!Lead.FirstName} {!Lead.LastName} 
+DOB: {!Lead.DOB__c}
+ETA: {!Lead.ETA__c} Travel Info: {!Lead.Transport_Info__c} Phone: {!Lead.Phone} LOC: {!Lead.Level_of_Care__c} Referred by: {!Lead.LeadSource} Referring Facility: {!Lead.Referer__c} Payment: {!Lead.Insurance_Company_Name__c} Subscriber: {!Lead.Subscriber_Name__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

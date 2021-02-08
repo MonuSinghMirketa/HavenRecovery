@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Cleared to Admit</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Admit Cleared</name>
+    <style>none</style>
+    <subject>Ready for Admission</subject>
+    <textOnly>The following patient is cleared for admission and intake.
+{!Lead.FirstName} {!Lead.LastName}
+DOB: {!Lead.DOB__c}
+Transport Info: {!Lead.Transport_Info__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

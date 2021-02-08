@@ -1,0 +1,9 @@
+<b>CT Name: {!Opportunity.Name} <br/>
+Referral Source / CTM Source: {!Opportunity.Admission_Alert_Ref_or_CTM_Source__c} <br/>
+Admission Date: {!Opportunity.Admission_Alert_Date__c} <br/>
+LOC: {!Opportunity.Admission_Alert_LOC__c} <br/>
+Phone: {!Opportunity.Patient_Phone__c} <br/>
+Payment: {!Opportunity.Admission_Alert_Payment__c} <br/>
+{!IF(NOT(ISBLANK(Opportunity.AdAlertSecondaryIns__c)), 'Secondary Insurance:' +Opportunity.AdAlertSecondaryIns__c,' ')} 
+{!IF(NOT(ISBLANK(Opportunity.Subscriber_First_Name__c, Opportunity.Subscriber_Last_Name__c)), ' Subscriber: ' +Opportunity.Subscriber_First_Name__c +Opportunity.Subscriber_Last_Name__c,' ')} 
+ETA: {!Opportunity.Transport_Info__c} </b>

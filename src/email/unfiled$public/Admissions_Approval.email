@@ -1,0 +1,10 @@
+Please approve or deny the following potential admit.
+
+First Name: {!Lead.FirstName}
+Last Name: {!Lead.LastName}
+Insurance: {!Lead.Insurance_Company_Name__c}
+Referring Facility: {!Lead.Referer__c}
+Referred By: {!Lead.LeadSource}
+Deductible: {!Lead.Deductible_Out_Net__c}
+Met: {!Lead.Deductible_OON_Met__c}
+Facility: {!Lead.Facility_Interest__c}

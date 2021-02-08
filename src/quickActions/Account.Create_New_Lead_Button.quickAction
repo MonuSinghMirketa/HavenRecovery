@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldOverrides>
+        <field>City</field>
+        <formula>Account.PersonContact.MailingCity</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>DOB__c</field>
+        <formula>Account.Patient_DOB__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>FirstName</field>
+        <formula>Account.FirstName</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Gender__c</field>
+        <formula>IF(ISPICKVAL(Account.Client_Gender__c, &quot;male&quot;), &quot;male&quot;, IF(ISPICKVAL(Account.Client_Gender__c, &quot;female&quot;), &quot;female&quot;, &quot;&quot;) )</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Group_Number__c</field>
+        <formula>Account.Group_Number__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Insurance_Company_Name__c</field>
+        <formula>Account.Insurance_Company__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Insurance_Phone__c</field>
+        <formula>Account.Insurance_Phone__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LastName</field>
+        <formula>Account.LastName</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Member_ID_Number__c</field>
+        <formula>Account.Member_ID__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Original_Referred_by__c</field>
+        <formula>Account.Referred_By__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Patient_SSN__c</field>
+        <formula>Account.Patient_SSN__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Payment_Method__c</field>
+        <formula>IF
+
+( ISPICKVAL(Account.Payment_Method__c, &quot;Health Insurance&quot;) ,
+
+&quot;Health Insurance&quot;,
+
+IF
+
+(ISPICKVAL(Account.Payment_Method__c, &quot;Private Pay&quot;), &quot;Private Pay&quot;,
+
+IF
+
+(ISPICKVAL(Account.Payment_Method__c, &quot;Scholarship&quot;), &quot;Scholarship&quot;,
+
+&quot;&quot;)))</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Phone</field>
+        <formula>Account.Phone</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>PostalCode</field>
+        <formula>Account.PersonContact.MailingPostalCode</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>State</field>
+        <formula>Account.PersonContact.MailingState</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Street</field>
+        <formula>Account.PersonContact.MailingStreet</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Subscriber_DOB__c</field>
+        <formula>Account.PersonContact.Subscriber_DOB__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Subscriber_Employer__c</field>
+        <formula>Account.Subscriber_Employer__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Subscriber_Name__c</field>
+        <formula>Account.Subscriber_Name__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Subscriber_Relationship__c</field>
+        <formula>Account.Relationship_to_Subscriber__c</formula>
+    </fieldOverrides>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Name</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>DOB__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Phone</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Address</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Referred_By__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LeadSource</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Payment_Method__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Insurance_Company_Name__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>URGENT_VOB_REQUEST__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>VOB_Requested__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Status</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <standardLabel>CreateNewRecordType</standardLabel>
+    <targetObject>Lead</targetObject>
+    <targetParentField>Original_Referred_by__c</targetParentField>
+    <type>Create</type>
+</QuickAction>

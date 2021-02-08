@@ -1,0 +1,15 @@
+<table>
+<tr>
+The following patient is cleared for admission and intake.
+</tr>
+
+<tr> 
+{!Lead.FirstName} {!Lead.LastName}
+</tr>
+<tr>
+DOB: {!Lead.DOB__c}
+</tr>
+<tr>
+Transport Info: {!Lead.Transport_Info__c}
+</tr>
+</table>

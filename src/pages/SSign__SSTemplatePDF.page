@@ -1,0 +1,7 @@
+<apex:page controller="SSign.SSTemplateController" showHeader="false" standardStylesheets="false"
+renderas="pdf" ApplyhtmlTag="false" cache="true">
+<head>
+<c:SSTemplateCSSComponent />
+</head>
+<c:SSXMLComponent />
+</apex:page>

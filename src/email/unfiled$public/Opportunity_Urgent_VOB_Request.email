@@ -1,0 +1,20 @@
+URGENT!!
+{!Opportunity.Link}
+
+Facility of Interest: {!Opportunity.Facility_Interest__c}
+Created by: {!Opportunity.CreatedBy}
+Opportunity Owner: {!Opportunity.OwnerFullName}
+
+
+Name: {!Opportunity.Account}
+Date Of Birth: {!Opportunity.Date_of_Birth__c}
+
+Insurance Company: {!Opportunity.Insurance_Company_Name__c}
+Insurance Phone:{!Opportunity.00N1U00000UeuCG}
+Member ID: {!Opportunity.Member_ID_Number__c}
+Group Number: {!Opportunity.00N1U00000UeuC1}
+
+
+Subscriber Name: {!Opportunity.00N1U00000UeuJH}
+Subscriber DOB: {!Opportunity.00N1U00000UeuIi}
+Subscriber Relationship: {!Opportunity.00N1U00000UeuJR}

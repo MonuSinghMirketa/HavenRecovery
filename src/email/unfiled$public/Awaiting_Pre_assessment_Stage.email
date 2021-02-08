@@ -1,0 +1,1 @@
+<a href="{!Opportunity.Link}" >{!Opportunity.Name} </a> has been added to the "Awaiting Pre-assessment" queue on Salesforce and should be done as soon as possible

@@ -1,0 +1,35 @@
+<table>
+<tr>
+Admission Alert for the following patient: 
+</tr>
+<tr>
+{!Lead.FirstName}  {!Lead.LastName} 
+</tr>
+<tr>
+DOB: {!Lead.DOB__c}
+</tr>
+<tr>
+ETA: {!Lead.ETA__c}
+</tr>
+<tr>
+Travel Info: {!Lead.Transport_Info__c}
+</tr>
+<tr>
+Phone: {!Lead.Phone}
+</tr>
+<tr>
+LOC: {!Lead.Level_of_Care__c}
+</tr>
+<tr>
+Referred by: {!Lead.LeadSource}
+</tr>
+<tr>
+Referring Facility: {!Lead.Referer__c}
+</tr>
+<tr>
+Payment: {!Lead.Insurance_Company_Name__c} 
+</tr>
+<tr>
+Subscriber: {!Lead.Subscriber_Name__c}
+</tr>
+</table>

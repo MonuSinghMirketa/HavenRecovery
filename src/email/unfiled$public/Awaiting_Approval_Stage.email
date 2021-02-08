@@ -1,0 +1,1 @@
+<a href="{!Opportunity.Link}" >{!Opportunity.Name__c}</a> has been added to the "Awaiting Approval" queue on Salesforce and should be done as soon as possible.

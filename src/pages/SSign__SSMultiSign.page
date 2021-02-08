@@ -1,0 +1,81 @@
+<apex:page controller="SSign.SSMultiSignController"
+lightningStylesheets="true"
+showHeader="{!NOT(remoteSign)}"
+action="{!init}"> <!--tabStyle="SDOC__SDTemplate__c"-->
+  <apex:form >
+    <img id="ssign-toolbar-logo"
+    src="{!URLFOR($Resource.SSign_Images,'s-sign_logo.png')}"
+    style="padding: 16px; width: 80px;" />
+    <apex:pageBlock id="mainPageBlock">
+      <apex:actionFunction name="rerenderEnvDocTable" 
+      action="{!refreshSSEDList}" rerender="env_doc_table" />
+      <apex:actionFunction name="rerenderEmailFunctions" 
+      action="{!doNothing}" rerender="email_functions" />
+      <apex:outputPanel rendered="{!NOT(signerEmailParamProvided) && NOT(emailedVerificationCode) && NOT(printDocument)}">
+        <apex:outputPanel rendered="{!NOT(emailVerificationDisabled)}">
+          {!tm['Please provide your email address and click \"Email Verification Code\".']} <br />
+          {!tm['You will be emailed a 6-digit verification code, which you will need to enter into this page before signing the following documents.']}
+          <br />
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!emailVerificationDisabled}">
+          {!tm['Please provide your email address before proceeding.']} <br />
+          {!tm['Your signed document confirmation emails will be sent to this address.']}
+          <br />
+        </apex:outputPanel>
+        <strong>{!tm['Signer Email']}:</strong> &nbsp;&nbsp;
+        <apex:inputText value="{!signerEmail}"
+        onkeyup="rerenderEnvDocTable();rerenderEmailFunctions();" />
+        <apex:outputPanel id="email_functions" rendered="{!NOT(verified) && NOT(emailVerificationDisabled)}">
+          <apex:commandButton action="{!sendVerificationEmail}" value="{!emailVerificationButtonText}" 
+          reRender="mainPageBlock" disabled="{!NOT(signerEmailProvided) || emailedVerificationCode}"
+          status="sendStatus" />
+          <apex:actionStatus id="sendStatus">
+            <apex:facet name="start">
+              <img src="{!URLFOR($Resource.SDOC__SDoc,'spinner.gif')}" />
+            </apex:facet>
+          </apex:actionStatus>
+          {!verifyCodeMsg}
+        </apex:outputPanel>
+      </apex:outputPanel>
+
+      <apex:outputPanel rendered="{!NOT(verified) && NOT(emailVerificationDisabled) && emailedVerificationCode && NOT(printDocument)}">
+        {!tm['Verification code sent to']} {!signerEmail}. {!tm['Please enter the verification code below to continue.']}
+        <br />
+        <apex:inputText value="{!attemptedCode}" />
+        <apex:commandButton value="Verify Code" action="{!verifyCode}" reRender="mainPageBlock" status="verifyStatus" />
+        <apex:actionStatus id="verifyStatus">
+          <apex:facet name="start">
+            <img src="{!URLFOR($Resource.SDOC__SDoc,'spinner.gif')}" />
+          </apex:facet>
+        </apex:actionStatus>
+        {!verifyCodeMsg}
+      </apex:outputPanel>
+
+      <apex:actionPoller action="{!refreshSSEDList}" interval="5"
+      reRender="env_doc_table" />
+      <apex:pageBlockTable value="{!ssedwList}" var="ssedw" id="env_doc_table">
+        <apex:column headerValue="{!tm['Sign Document']}"
+        style="width:1em;" rendered="{!NOT(printDocument)}">
+            <apex:commandButton value="{!ssedw.signBtnText}"
+            onclick="window.open('{!ssedw.signRequestURL}' , '_blank')"
+            disabled="{!ssedw.signBtnText != ssedw.BTN_TXT_CLICK_TO_SIGN || (NOT(verified) && NOT(emailVerificationDisabled)) || NOT(signerEmailProvided)}"
+            style="padding:.5em;"
+            reRender="env_doc_table" />
+            <!--apex:commandButton value="{!ssedw.signBtnText}"
+            onclick="window.open('{!ssedw.ssed.Sign_Request_URL__c}&signerEmail={!signerEmail}' , '_blank')"
+            disabled="{!NOT(signerEmailProvided) || ssedw.signBtnText != ssedw.BTN_TXT_CLICK_TO_SIGN}"
+            style="padding:.5em;"
+            reRender="env_doc_table" /-->
+        </apex:column>
+        <apex:column headerValue="{!tm['Print Document']}" 
+        style="width:1em;" rendered="{!printDocument}">
+          <apex:commandButton value="{!tm['Print Document']}"
+          onclick="window.open('{!ssedw.printDocumentURL}');" style="padding:.5em;" />
+        </apex:column>
+        <apex:column headerValue="{!tm['Document Name']}"
+        value="{!ssedw.ssed.SSign__Document_Name__c}"
+        style="width:40em;" />
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

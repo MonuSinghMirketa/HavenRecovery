@@ -1,0 +1,19 @@
+The following patient can not be admitted.  Please refer out.
+Thank you
+
+FIRST NAME: {!Lead.FirstName} LAST NAME: {!Lead.LastName}
+PHONE: {!Lead.Phone}
+STATE: {!Lead.State}
+SOURCE: {!Lead.CTM_Source__c}
+INSURANCE COMPANY: {!Lead.Insurance_Company_Name__c}
+INSURANCE PHONE: {!Lead.Insurance_Phone__c}
+MEMBER ID: {!Lead.Member_ID_Number__c}
+GROUP #: {!Lead.Group_Number__c}
+OON DED: {!Lead.Deductible_Out_Net__c}
+MET: {!Lead.Deductible_OON_Met__c}
+IN NET DED: {!Lead.Deductible_In_Net__c}
+MET: {!Lead.Deductible_Met_In_Net__c}
+OOP OON: {!Lead.Out_Of_Pocket_Max_Out_of_Network__c}
+MET: {!Lead.Out_Of_Pocket_Met__c}
+OOP IN NET: {!Lead.Out_Of_Pocket_Max_In_Network__c}
+MET: {!Lead.OOP_Met_In_Net__c}

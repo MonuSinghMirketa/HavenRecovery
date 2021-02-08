@@ -1,0 +1,1 @@
+An admission alert has been sent for {!Opportunity.Name}. Their Pre-Assessment is more than 2 days old. Please update PA if possible prior to admission.

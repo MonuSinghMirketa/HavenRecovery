@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Insufficient info.  Requires a VOB</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Needs VOB</name>
+    <style>none</style>
+    <subject>Need VOB for {!Lead.FirstName} {!Lead.LastName}</subject>
+    <textOnly>Portal verification for the following patient: 
+{!Lead.FirstName} {!Lead.LastName} 
+DOB: {!Lead.DOB__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

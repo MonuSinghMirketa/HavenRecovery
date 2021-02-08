@@ -1,0 +1,97 @@
+<apex:page standardController="Insurance_Verification__c" renderAs="pdf">
+
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 675px;">
+    <tbody>
+        <tr>
+            <td style="text-align: center; background-color: rgb(221, 221, 221);"><span style="font-size:14px;"> <strong>PATIENT DEMOGRAPHICS</strong></span></td>
+        </tr>
+    </tbody>
+</table>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 675px;">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Patient Name:<strong> {!Insurance_Verification__c.name}</strong> </span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Patient DOB: <strong><apex:outputText value="{0, date, MM/dd/yyyy}">
+    <apex:param value="{!Insurance_Verification__c.Patient_DOB__c}" /> 
+</apex:outputText></strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Patient Gender<strong>  {!Insurance_Verification__c.Patient__r.Gender__c}</strong></span></td>
+        </tr>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Patient SSN:<strong> {!Insurance_Verification__c.Patient__r.Patient_SSN__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Relationship to Primary Insured <strong>  {!Insurance_Verification__c.Relationship_to_Subscriber__c}}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Patient Address:<strong>  {!Insurance_Verification__c.Patient_Address_Street__c}, {!Insurance_Verification__c.Patient_Address_City__c}, {!Insurance_Verification__c.Patient_Address_State__c} {!Insurance_Verification__c.Patient_Zip__c}</strong></span></td>
+        </tr>
+    </tbody>
+</table>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 675px;">
+    <tbody>
+        <tr>
+            <td style="text-align: center; background-color: rgb(221, 221, 221);"><span style="font-size:14px;"><b>INSURANCE PRIMARY SUBSCRIBER INFORMATION</b></span></td>
+        </tr>
+    </tbody>
+</table>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 675px;">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Subscriber Name<strong>  {!Insurance_Verification__c.Subscriber_Name__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Subscriber DOB <strong> <apex:outputText value="{0, date, MM/dd/yyyy}">
+    <apex:param value="{!Insurance_Verification__c.Subscriber_DOB__c}" /> 
+</apex:outputText></strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Subscriber Gender<strong>  {!Insurance_Verification__c.subscriber_gender__c}</strong></span></td>
+        </tr>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Subscriber Address:<strong>  {!Insurance_Verification__c.subscriber_address__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Subscriber Phone <strong>  {!Insurance_Verification__c.subscriber_phone__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Subscriber Email <strong>  {!Insurance_Verification__c.subscriber_e_mail__c}</strong></span></td>
+        </tr>
+    </tbody>
+</table>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 675px;">
+    <tbody>
+        <tr>
+            <td style="text-align: center; background-color: rgb(221, 221, 221);"><span style="font-size:14px;"><strong>INSURANCE INFORMATION</strong></span></td>
+        </tr>
+    </tbody>
+</table>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 675px;">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Insurance Company <strong>  {!Insurance_Verification__c.primary_insurance_company__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Insurance Phone<strong>  {!Insurance_Verification__c.primary_insurance_phone__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"> </td>
+        </tr>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Member ID:<strong>  {!Insurance_Verification__c.member_id__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Group Number<strong>  {!Insurance_Verification__c.policy_group_number__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"> </td>
+        </tr>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Behavioral ID (if carved out):<strong>  {!Insurance_Verification__c.if_carve_out_insurance_name_and_number__c}<br />
+            {!Insurance_Verification__c.if_carve_out_bh_member_id__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Effective Date<strong>  <apex:outputText value="{0, date, MM/dd/yyyy}">
+    <apex:param value="{!Insurance_Verification__c.Policy_effective_Date__c}" /> 
+</apex:outputText></strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Term Date <strong>  <apex:outputText value="{0, date, MM/dd/yyyy}">
+    <apex:param value="{!Insurance_Verification__c.Term_Date_if_any__c}" /> 
+</apex:outputText></strong></span></td>
+        </tr>
+        <tr>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Calender/Plan Year <strong>  {!Insurance_Verification__c.Calender_or_Plan_Year__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"><span style="font-size:14px;">Subscriber Employer <strong>  {!Insurance_Verification__c.Subscriber_Employer__c}</strong></span></td>
+            <td style="background-color: rgb(204, 255, 255);"> </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+</apex:page>

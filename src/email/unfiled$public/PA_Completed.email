@@ -1,0 +1,3 @@
+Pre-Assessment for {!Opportunity.Name__c} is complete. 
+
+https://na85.lightning.force.com/{!Opportunity.Id}

@@ -1,0 +1,19 @@
+<p>Hi Team , </p>
+
+Secondary VOB for the <a href="{!Opportunity.Link}" >{!Opportunity.Name} </a> is added to the queue on Salesforce and should be done as soon as possible
+
+<p> <br> Please see the details below: <br/> </p>  
+
+<p> Facility of Interest: {!Opportunity.Facility_Interest__c} </p>
+<p> Lead Source: {!Opportunity.LeadSource} </p>
+<p> Created by: {!Opportunity.CreatedBy} </p>
+<p> First Name: {!Opportunity.Patient_First_Name__c} </p>
+<p> Last Name: {!Opportunity.Patient_Last_Name__c} </p>
+<p> DOB: {!Opportunity.DOB__c} </p> 
+<p> Insurance Company: {!Opportunity.Secondary_Insurance_Company__c} </p>
+<p> Insurance Phone: {!Opportunity.Secondary_Insurance_Phone_Number__c} </p>
+<p> Member ID: {!Opportunity.Secondary_Ins_Member_ID__c} </p>
+<p> Group Number: {!Opportunity.Secondary_Ins_Group_No__c} </p>
+<p> Subscriber Name: {!Opportunity.Secondary_Ins_Subscriber_First_Name__c} {!Opportunity.Secondary_Ins_Sub_Last_Name__c} </p>
+<p> Subscriber DOB: {!Opportunity.Secondary_Ins_Sub_DOB__c} </p>
+<p> Subscriber Relationship: {!Opportunity.Secondary_Ins_Subscriber_Relationship__c} </p>

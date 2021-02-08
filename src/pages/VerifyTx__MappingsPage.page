@@ -1,0 +1,293 @@
+<apex:page docType="html-5.0" controller="VerifyTx.MappingsController" setup="true" showChat="true" showHeader="true" sidebar="false" >
+    <apex:slds />
+    <apex:pageMessages ></apex:pageMessages>
+    <style>
+        .centeralign {
+        width: 50%;
+        padding: 10px;
+        text-align: -webkit-center;
+        vertical-align: middle;
+        }
+    </style>
+    <html>
+        <head>
+            <div class="slds-page-header">
+                <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate">
+                        <p class="slds-text-title_caps slds-line-height_reset"></p>
+                        <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" >{!statusField}</h1>
+                    </div>
+                </div>
+                
+            </div>  
+            <div style="padding-top: 18px; padding-bottom: 18px;">
+                <apex:form id="formnovalidate" styleClass="slds-form-element">
+                    
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td  style="width: 40%;padding: 10px;vertical-align: middle;">
+                                    <div class="slds-page-header">                                          
+                                        <div class="slds-media__body">
+                                            <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Mapping data Fields">Mapping Data Fields</h1>
+                                            <h4 class="slds-text-body_small slds-line-height_reset" title="Mapping data Fields">Map the Fields Name (API Name) with the Associated Field</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width: 60%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel value="Object : "/>
+                                    
+                                    <apex:selectList styleClass="slds-input" style="width: 50%;" value="{!selectedObject}" multiselect="false" size="1">
+                                        <apex:selectOptions value="{!options}"/>
+                                        <apex:actionSupport event="onchange" action="{!getFieldNameData}" reRender="first_name,last_name,birth_Date,genderId,payer_Name_Id,client_status_Id,Member_Id_Id,facility_Name,Subscriber_Relationship,Lookup_id_Id,verification_Status_Id,VerifyOnce_Id" /> 
+                                    </apex:selectList>
+                                </td>
+                            </tr>
+                            <tr > 
+                                
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Patient First Name</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="first_name">
+                                       
+                                        <apex:selectList value="{!firstName}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                       
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Patient Last Name</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="last_name">
+                                    <apex:selectList value="{!lastName}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Patient Birth Date</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="birth_Date">
+                                    <apex:selectList value="{!birthDate}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Patient Gender</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="genderId">
+                                    <apex:selectList value="{!gender}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Payer Name</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="payer_Name_Id">
+                                    <apex:selectList value="{!payer_Name}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Client Status</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="client_status_Id">
+                                    <apex:selectList value="{!client_status}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Member Id</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="Member_Id_Id">
+                                    <apex:selectList value="{!Member_Id}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                           
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Facility</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="facility_Name">
+                                    <apex:selectList value="{!facilityName}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Subscriber Relationship</label>
+                                </td>
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="Subscriber_Relationship">
+                                    <apex:selectList value="{!subscriberRelationship}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Lookup Id</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    
+                                    <apex:outputLabel id="Lookup_id_Id">
+                                        <apex:selectList value="{!Lookup_id}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfieldResult}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                    <h4 class="slds-text-body_small slds-line-height_reset" title="Mapping data Fields">*Create a Lookup relationship between "Result" Object (Child Object) and the Object on which you want to save the VOB's (Parent Object) and Map the Field Name(API Name) here </h4>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Verification Status</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="verification_Status_Id">
+                                        <apex:selectList value="{!verification_Status}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td style="width: 20%;padding: 10px;vertical-align: middle;">
+                                    <label style="margin-left: 20%;">Verify Once</label>
+                                </td>
+                                <td style="width: 80%;padding: 10px;vertical-align: middle;">
+                                    <apex:outputLabel id="VerifyOnce_Id">
+                                        <apex:selectList value="{!VerifyOnce}"  styleClass="slds-input" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!optionsfield}"/> 
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    
+                    
+                    <br/>
+                    <br/>
+                    
+                    <h4 style="text-align: -webkit-center;" class="slds-text-body_small slds-line-height_reset" title="Mapping data Fields"><b>*Note::By default the mappings are mapped to VOB Object from the package,Map only if you want Verify Insurance button on object other than VOB </b></h4>
+                    <div style="padding-top: 20px;text-align: center;">
+                        <apex:commandButton action="{!quickSave}"  styleClass="slds-button slds-button_success" value="Submit"/>
+                        <apex:commandButton immediate="true"  html-formnovalidate="formnovalidate" action="{!cancel}" styleClass="slds-button slds-button_destructive" value="Cancel"/>
+                    </div>
+                </apex:form>
+                
+            </div>
+        </head>
+    </html>
+</apex:page>
+<!--
+<apex:page docType="html-5.0" controller="VerifyTx.MappingsController" setup="true" showChat="true" showHeader="true" sidebar="false" >
+    <apex:slds />
+    <apex:pageMessages ></apex:pageMessages>
+    <html>
+        <head>
+           <div class="slds-page-header">
+  <div class="slds-grid">
+    <div class="slds-col slds-has-flexi-truncate">
+      <p class="slds-text-title_caps slds-line-height_reset"></p>
+      <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate" >{!statusField}</h1>
+    </div>
+  </div>
+  
+</div>  
+            <div style="width: 54%;    padding-left: 100px;    padding-top: 18px; padding-bottom: 18px;">
+                <apex:form id="formnovalidate" styleClass="slds-form-element">
+                    <div class="slds-page-header">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <div class="slds-media__body">
+                                    <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Mapping data Fields">Mapping Data Fields</h1>
+                                    <h4 class="slds-text-body_small slds-line-height_reset" title="Mapping data Fields">Map the Fields Name (API Name) with the Associated Field</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <label for="first_name">Patient First Name</label>
+                    <apex:input value="{!firstName}"  id="first_name" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="last_name">Patient Last Name</label>
+                    <apex:input value="{!lastName}" id="last_name" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="email">Patient Birth Date</label>
+                    <apex:input value="{!birthDate}" id="Birth_Date" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="mobile">Patient Gender</label>
+                    <apex:input value="{!gender}" id="Gender" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="company">Payer Name</label>
+                    <apex:input value="{!payer_Name}" id="Payer_Name" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="city">Client Status</label>
+                    <apex:input value="{!client_status}" id="Client_Status" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="state">Member Id</label>
+                    <apex:input value="{!Member_Id}" id="Member_Id" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="first_name">Facility</label>
+                    <apex:input value="{!facilityName}" id="Facility" required="true" styleClass="slds-input"/><br/>
+                    
+                    <label for="first_name">Subscriber Relationship</label>
+                    <apex:input value="{!subscriberRelationship}" id="Subscriber_Relationship" required="true" styleClass="slds-input"/><br/>
+                    
+                   
+                    <label for="first_name">Lookup Id</label>
+                    <apex:input value="{!Lookup_id}" id="Lookup_Id" required="true" styleClass="slds-input"/><br/>
+                    <h4 class="slds-text-body_small slds-line-height_reset" title="Mapping data Fields">*Create a Lookup relationship between "Result" Object (Many side) and the Object on which you want to save the VOB's (One side) and Map the Field Name(API Name) here </h4>
+                    <br/>
+                    <label for="first_name">Verification Status</label>
+                    <apex:input value="{!verification_Status}" id="Verification_Status" required="true" styleClass="slds-input"/><br/>
+                   
+                    <label for="first_name">Verify Once</label>
+                    <apex:input value="{!VerifyOnce}" id="VerifyOnce" required="true" styleClass="slds-input"/><br/>
+                    <br/>
+                    
+                    <h4 class="slds-text-body_small slds-line-height_reset" title="Mapping data Fields"><b>*Note::By default the mappings are mapped to VOB Object from the package,Map only if you want Verify Insurance button on object other than VOB </b></h4>
+                    <div style="padding-top: 18px;padding-left: 200px;">
+                        <apex:commandButton action="{!quickSave}"  styleClass="slds-button slds-button_success" value="Submit"/>
+                        <apex:commandButton immediate="true"  html-formnovalidate="formnovalidate" action="{!cancel}" styleClass="slds-button slds-button_destructive" value="Cancel"/>
+                    </div>
+                </apex:form>
+                
+            </div>
+        </head>
+    </html>
+</apex:page>
+-->

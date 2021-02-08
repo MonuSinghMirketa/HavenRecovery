@@ -1,0 +1,31 @@
+<apex:page standardController="SSign__SSEnvelope_Document__c" extensions="SSign.SSCreateSig,SSign.SSUtil"
+showHeader="false" sidebar="false" 
+standardStylesheets="false"
+contentType="{!contentType}" action="{!checkParametersForAudit}">
+<apex:outputPanel rendered="{!getSSignTranslationMap}" layout="none">
+  {!ssignTranslationMap}
+</apex:outputPanel>
+<apex:outputPanel rendered="{!NOT(getSSignTranslationMap)}" layout="none">
+  <style>
+  #pdf-iframe-container {
+    z-index: -10; 
+    left:0; 
+    top:0; 
+    position: absolute;
+  }
+
+  #pdf-iframe {
+    background-color:#ffffff;
+    z-index: -10;
+    left:0;
+    top:0;
+    position: absolute; 
+  }
+  </style>
+
+  <!-- removed 2018-07-24 -->
+  <!--div id="pdf-iframe-container" class="slds-grid slds-grid--frame">
+    <iframe id="pdf-iframe" src="data:{!contentType};base64,{!pdf}" scrolling="true" width="100%" height="100%"></iframe>
+  </div-->
+</apex:outputPanel>
+</apex:page>

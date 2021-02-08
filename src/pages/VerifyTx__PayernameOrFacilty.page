@@ -1,0 +1,58 @@
+<apex:page controller="VerifyTx.Verification_PayernameOrFacility" sidebar="false">
+    <apex:pageMessages ></apex:pageMessages>
+    <style>
+        .info {
+        background-color: #e7f3fe;
+        border-left: 6px solid #2196F3;
+        margin-bottom: 0px;
+        padding: 4px 12px;
+        font-size: 18px;
+        }
+        .infoError {
+        background-color: #ffdddd;
+        border-left: 6px solid #f44336;
+        margin-bottom: 15px;
+        padding: 4px 12px;
+        font-size: 16px;
+       
+        }
+    </style>
+    <title>Payer Name Or Facility</title>
+    <apex:form >
+    <div class="info">
+        <p><strong>STATUS!</strong> 
+            <apex:outPutPanel id="pg">
+                <apex:outputText rendered="{!batchStatusBool}">
+                    <apex:actionStatus id="act" startText="Checking..." />
+                    {!batchStatus}
+                    <apex:actionPoller interval="5" action="{!checkBatchStatus}" enabled="{!pollerBool}" reRender="pg,pgd" status="act"/>
+                </apex:outputText>
+            </apex:outPutPanel> 
+            
+            <apex:outPutPanel id="pgoffacility">
+                <apex:outputText rendered="{!batchStatusBooloffacility}">
+                    <apex:actionStatus id="actstat" startText="Checking..." />
+                    {!batchStatusoffacility}
+                    <apex:actionPoller interval="5" action="{!checkBatchStatusoffacility}" enabled="{!pollerBooloffacility}" reRender="pgoffacility,pgd" status="actstat"/>
+                </apex:outputText>
+            </apex:outPutPanel>
+            
+        </p>
+    </div>
+        </apex:form>
+    <div class="infoError">
+        <p><strong>NOTE!</strong> <b>Please Authorize Before Requesting For PayerName Or PayerFacility</b></p>
+    </div>
+    
+    <apex:form style="padding-top: 120px;padding-bottom: 120px;">
+        
+        <div style="margin-left:35%;margin-top:5%;margin-bottom:5%;">
+            <apex:outPutPanel id="pgd">
+                <apex:commandButton disabled="{!pollerBool}" value="Refresh Payer Name" action="{!payerNameID}" style="padding-left: 20px;padding-right: 20px;font-weight: bolder;padding-top: 10px;padding-bottom: 10px;font-size: 15px;background-color: #5a451f;color: darkorange;}"/>  
+                
+                <apex:commandButton disabled="{!pollerBooloffacility}" value="Refresh Facility" action="{!Facility}" style="padding-left: 20px;padding-right: 20px;font-weight: bolder;padding-top: 10px;padding-bottom: 10px;font-size: 15px;background-color: #5a451f;color: darkorange;margin-left:5%;"/>        
+            </apex:outPutPanel>    
+        </div>
+    </apex:form> 
+    
+</apex:page>

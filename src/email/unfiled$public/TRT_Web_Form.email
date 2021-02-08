@@ -1,0 +1,5 @@
+A contact us form has been submitted on the TRT Website:
+
+{!Lead.Name}
+{!Lead.Phone}
+{!Lead.Link}

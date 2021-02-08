@@ -1,0 +1,29 @@
+{!Opportunity.Link}
+
+<p style = "font-family:arial, helvetica, sans-serif;font-size:12">
+Facility of Interest: {!Opportunity.Facility_Interest__c}
+<BR>
+Opportunity Owner: {!Opportunity.OwnerFullName}
+<BR>
+Created by: {!Opportunity.CreatedBy}
+<BR>
+First Name: {!Opportunity.Patient_First_Name__c}
+<BR>
+Last Name: {!Opportunity.Patient_Last_Name__c}
+<BR>
+DOB: {!Opportunity.Date_of_Birth__c}
+<BR>
+Secondary Insurance Company:  {!Opportunity.00N1U00000UeuHk}
+<BR>
+Secondary Insurance Phone: {!Opportunity.00N1U00000UeuHu}
+<BR>
+Member ID:  {!Opportunity.00N1U00000UeuGI}
+<BR>
+Group Number:  {!Opportunity.00N1U00000UeuC1}
+<BR>
+Subscriber Name:  {!Opportunity.00N1U00000UeuHV} {!Opportunity.00N1U00000UeuHG}
+<BR>
+Subscriber DOB: {!Opportunity.00N1U00000UeuGN}
+<BR>
+Subscriber Relationship:   {!Opportunity.00N1U00000UeuHf}
+<BR>

@@ -1,0 +1,753 @@
+<apex:page controller="SSign.SSTemplateEditor" action="{!init}" showHeader="false" docType="html-5.0" lightningStylesheets="true">
+
+<apex:outputPanel rendered="{!cloneSSTemplate}">
+    Cloning template...
+    <apex:form >
+        <apex:actionFunction action="{!createSSTemplateClone}" name="createSSTemplateClone" reRender="masterPanelTemplateEditor" />
+        <script>
+            addSSignEvent(window, 'load', function(){ createSSTemplateClone(); });
+            function addSSignEvent(element, event, fn) {
+                if (element.addEventListener) element.addEventListener(event, fn, false);
+                else if (element.attachEvent) element.attachEvent('on' + event, fn);
+            }
+        </script>
+    </apex:form>
+</apex:outputPanel>
+
+<apex:outputPanel rendered="{!usingLightning}">
+  <style>
+    tr {
+      display: table-row !important;
+    }
+    th, td {
+      display: table-cell !important;
+    }
+    .tabcontent {
+      display: none;
+    }
+  </style>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!NOT(usingLightning)}">
+  <style>
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+    }
+  </style>
+</apex:outputPanel>
+
+<style type="text/css">
+
+  /* Style the tab */
+  div.customTab {
+      overflow: hidden;
+      background-color: #F0F0F0;
+  }
+  
+  /* Style the buttons inside the tab */
+  div.tablinks {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 4px 6px;
+    transition: 0.3s;
+    font-weight: bold;
+    border-bottom: 1px solid #D4DADC;
+    border-right: 1px solid #D4DADC;
+  }
+  
+  /* Change background color of buttons on hover */
+  div.tablinks:hover {
+      background-color: #ccc;
+  }
+  
+  /* Create an active/current tablink class */
+  div.tablinks.active {
+    background-color: #ffffff;
+    border-bottom: 1px solid white;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  .input-field-label, .signer-profile-label, .template-settings-label {
+    width: 50% !important;
+    text-align: left !important;
+    font-size: 12px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: normal !important;
+  }
+  
+  body .bPageBlock .pbBody .ssign_blue .pbSubheader{
+    background-color:#29AAE2 !important;
+    margin-top: 15px;
+  }
+  body .bPageBlock .pbBody .ssign_blue .pbSubheader h3{
+    color:#FFF !important;
+  }
+</style>
+
+<apex:includeScript value="{!URLFOR($Resource.SSign__SSign_jq,'')}" />
+<apex:includeScript value="{!URLFOR($Resource.SSign__jQueryUI, '/jquery-ui/jquery-ui.js')}" />
+<apex:stylesheet value="{!URLFOR($Resource.SSign__jQueryUI, '/jquery-ui/jquery-ui-datepicker.css')}" />
+<script type="text/javascript">
+  j$ = jQuery.noConflict();
+
+  /* ---- START TABS ---- */
+  function initializeTabs() {
+    openTab(null, 'ssign-field-tab-new');
+    j$('.initial-tabs').addClass('active');
+  }
+  function openTab(evt, tabId) {
+    var i, tabcontent, tablinks;
+    j$('.customTab').css('display', 'block');
+    hideTabContents();
+    j$('.tablinks').removeClass('active');
+    j$('#' + tabId).css('display', 'block');
+    if (evt !== null) evt.currentTarget.className += " active";
+  }
+  function hideTabContents() {
+    j$('.tabcontent').css('display', 'none');
+  }
+  /* ---- END TABS ---- */
+</script>
+
+<apex:form >
+  <div id="loading-div">
+    <div class="loading-div-content">
+      <img width="80" id="loading-div-spinner" src="{!URLFOR($Resource.SSign_Images,'lightning_spinner.gif')}" class="undraggable" unselectable="on" />
+    </div>
+  </div>
+  <style>
+    #loading-div {
+      top: 0;
+      left: 0;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 2000;
+      background-color: white;
+    }
+    .loading-div-content {
+      position: fixed;
+      right: 47%;
+      bottom: 50%;
+    }
+    #loading-div-message {
+      font-size: 32px;
+      font-weight: bold;
+      font-family: sans-serif;
+      color: #797B7D;
+      text-align: center;
+    }
+    #loading-div-message-percentage {
+      font-size: 36px;
+      /* #29AAE2 for S-Sign Blue. #0070D2 for Loading Spinner Blue. */
+      color:#29AAE2;
+    }
+  </style>
+  <script>
+    function getLoadingDiv() {
+      return j$('#loading-div');
+    }
+    function getLoadingDivSpinner() {
+      return j$('#loading-div-spinner');
+    }
+    function hideLoadingDiv() {
+      $loadingDiv = getLoadingDiv();
+      $loadingDiv.hide();
+    }
+    function showLoadingDiv() {
+      $loadingDiv = getLoadingDiv();
+      $loadingDiv.css('background-color', 'white');
+      $loadingDiv.css('opacity', '0.7');
+      $loadingDiv.show();
+      getLoadingDivSpinner().show();
+    }
+  </script>
+</apex:form>
+
+<div class="customTab">
+  <div class="tablinks initial-tabs" onclick="openTab(event, 'ssign-field-tab-new')">S-Sign Fields</div>
+  <div class="tablinks" onclick="openTab(event, 'ssign-profile-tab-new')">Signer Profiles</div>
+  <div class="tablinks" onclick="openTab(event, 'ssign-template-tab-new')">S-Sign Template Settings</div>
+</div>
+
+<!-- ____________________________________________ -->
+<!-- START S-SIGN INPUT FIELDS TAB                -->
+<!-- ____________________________________________ -->
+
+<div id="ssign-field-tab-new" class="tabcontent">
+  <apex:form >
+    <apex:outputPanel id="ssign_input_fields_panel">
+      <apex:pageBlock id="ssign_input_fields_pageblock" mode="maindetail">
+        <apex:pageBlockSection title="Test" showHeader="true" rendered="false">
+            <apex:pageBlockSectionItem >
+                <apex:outputText value="Label" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:repeat value="{!inputFieldsKeySet}" var="fieldID">
+          <apex:outputPanel id="ssign_input_field" styleClass="ssign_blue">
+            <apex:pageBlockSection title="S-Sign Field {!fieldID}" columns="1">
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label">
+                <apex:outputLabel value="Input Field ID"/>
+                <apex:outputText value="{!inputFieldsMap[fieldID].inputFieldID}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label">
+                <apex:outputLabel value="Type"/>
+                <apex:selectList value="{!inputFieldsMap[fieldID].inputFieldType}" size="1">
+                  <apex:selectOption itemValue="signature" itemLabel="Signature"/>
+                  <apex:selectOption itemValue="text" itemLabel="Text"/>
+                  <apex:selectOption itemValue="checkbox" itemLabel="Checkbox"/>
+                  <apex:selectOption itemValue="initials" itemLabel="Intials"/>
+                  <apex:selectOption itemValue="date" itemLabel="Date"/>
+                  <apex:selectOption itemValue="text-based-picklist" itemLabel="Picklist (From Text)"/>
+                  <apex:selectOption itemValue="field-based-picklist" itemLabel="Picklist (From Field)"/>
+                  <apex:actionSupport event="onchange" reRender="ssign_input_field" />
+                </apex:selectList>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label">
+                <apex:outputLabel value="Profile"/>
+                <apex:selectList value="{!inputFieldsMap[fieldID].profile}" size="1">
+                  <apex:selectOptions value="{!signerProfileOptions}"/>
+                </apex:selectList>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'checkbox'}">
+                <apex:outputLabel value="Required"/>
+                <apex:inputCheckbox value="{!inputFieldsMap[fieldID].required}" disabled="{!inputFieldsMap[fieldID].inputFieldGroup != null && inputFieldsMap[fieldID].inputFieldGroup  != 'null' && inputFieldsMap[fieldID].inputFieldGroup != '' && inputFieldsMap[fieldID].inputFieldGroup != 'None'}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text' || inputFieldsMap[fieldID].inputFieldType == 'date'}">
+                <apex:outputLabel value="Required"/>
+                <apex:inputCheckbox value="{!inputFieldsMap[fieldID].required}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text-based-picklist'}">
+                <apex:outputLabel value="List options (new line delimited)"/>
+                <apex:inputTextarea value="{!inputFieldsMap[fieldID].textBasedPicklist}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text-based-picklist'}">
+                <apex:outputLabel value="Multiple list selections allowed:"/>
+                <apex:inputCheckbox value="{!inputFieldsMap[fieldID].isMultiPicklist}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'field-based-picklist'}">
+                <apex:outputLabel value="Salesforce base record picklist field"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].fieldBasedPicklist}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text-based-picklist' || inputFieldsMap[fieldID].inputFieldType == 'field-based-picklist'}">
+                <apex:outputLabel value="Multi-picklist delimiter (if applicable)"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].multiPicklistDelimiter}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text-based-picklist' || inputFieldsMap[fieldID].inputFieldType == 'field-based-picklist'}">
+                <apex:outputLabel value="Size of Multi-picklist (# of options shown)"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].numMultiPicklistOptionsShown}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label">
+                <apex:outputLabel value="Write signer input to the following field in Salesforce"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].writeTo}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!CONTAINS(inputFieldsMap[fieldID].inputFieldType,'-based-picklist') || inputFieldsMap[fieldID].inputFieldType == 'text'}">
+                <apex:outputLabel value="Default value"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].defaultValue}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'checkbox'}">
+                <apex:outputLabel value="Default value"/>
+                <apex:inputCheckbox value="{!inputFieldsMap[fieldID].defaultValue}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'date'}">
+                <apex:outputLabel value="Default value"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].defaultValue}" id="defaultValueDate" onclick="openDatePicker(this);"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'checkbox'}">
+                <apex:outputLabel value="Input Field Group"/>
+                <apex:selectList value="{!inputFieldsMap[fieldID].inputFieldGroup}" size="1">
+                  <apex:selectOptions value="{!inputFieldGroupOptions}"/>
+                  <apex:actionSupport event="onchange" reRender="ssign_input_field" />
+                </apex:selectList>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text'}">
+                <apex:outputLabel value="Height of text input"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].textHeight}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text'}">
+                <apex:outputLabel value="Width of text input"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].textWidth}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'date'}">
+                <apex:outputLabel value="Fill when signer submits document"/>
+                <apex:inputCheckbox value="{!inputFieldsMap[fieldID].disabled}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'date'}">
+                <apex:outputLabel value="Date Format"/>
+                <apex:selectList value="{!inputFieldsMap[fieldID].dateFormat}" size="1">
+                  <apex:selectOption itemLabel="mm/dd/yyyy" itemValue="mm/dd/yyyy"/>
+                  <apex:selectOption itemLabel="dd/mm/yyyy" itemValue="dd/mm/yyyy"/>
+                  <apex:selectOption itemLabel="yyyy/mm/dd" itemValue="yyyy/mm/dd"/>
+                  <apex:selectOption itemLabel="mm-dd-yyyy" itemValue="mm-dd-yyyy"/>
+                  <apex:selectOption itemLabel="dd-mm-yyyy" itemValue="dd-mm-yyyy"/>
+                  <apex:selectOption itemLabel="yyyy-mm-dd" itemValue="yyyy-mm-dd"/>
+                  <apex:selectOption itemLabel="mm.dd.yyyy" itemValue="mm.dd.yyyy"/>
+                  <apex:selectOption itemLabel="dd.mm.yyyy" itemValue="dd.mm.yyyy"/>
+                  <apex:selectOption itemLabel="yyyy.mm.dd" itemValue="yyyy.mm.dd"/>
+                </apex:selectList>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!inputFieldsMap[fieldID].inputFieldType == 'text' || inputFieldsMap[fieldID].inputFieldType == 'checkbox'}">
+                <apex:outputLabel value="Additional Style"/>
+                <apex:inputText value="{!inputFieldsMap[fieldID].additionalStyle}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!NOT(pdfUploadBool)}">
+                <apex:outputLabel value="Paste this field into your template"/>
+                <apex:outputPanel >
+                  <apex:inputText id="ssignInputFieldTextToPaste" html-readonly="true" value="{!inputFieldsMap[fieldID].ssignInputFieldText}" />
+                  <apex:commandButton value="Copy To Clipboard" onclick="copyToClipboard(this,'ssignInputFieldTextToPaste'); return false;" reRender=""/>
+                </apex:outputPanel>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="input-field-label" rendered="{!NOT(pdfUploadBool)}">
+                <apex:commandButton onclick="showLoadingDiv();" action="{!doNothing}" value="Delete Field" oncomplete="removeInputField();">
+                  <apex:param name="inputFieldIDToRemove" value="{!inputFieldsMap[fieldID].inputFieldID}" assignTo="{!inputFieldIDToRemove}" />
+                </apex:commandButton>
+              </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+          </apex:outputPanel>
+        </apex:repeat>
+      </apex:pageBlock>
+      <apex:outputPanel rendered="{!pdfUploadBool}">
+        <apex:outputText style="fontWeight:bold">
+          <b style="color:#29AAE2">Note:</b> To create a new S-Sign Field, set the Type of a field to "S-Sign Field" in the Field Settings.
+        </apex:outputText>
+      </apex:outputPanel>
+      <apex:outputPanel rendered="{!NOT(pdfUploadBool)}">
+        <apex:commandButton onclick="showLoadingDiv();" action="{!doNothing}" value="Create Another S-Sign Field" oncomplete="addNewInputField();"/>
+      </apex:outputPanel>
+    </apex:outputPanel>
+    <apex:actionFunction action="{!doNothing}" name="removeInputFieldByID" oncomplete="removeInputField();">
+      <apex:param value="" name="inputFieldIDToRemove" assignTo="{!inputFieldIDToRemove}" />
+    </apex:actionFunction>
+    <apex:actionFunction action="{!doNothing}" name="addInputFieldByID" oncomplete="addPDFUploadSSignField();">
+      <apex:param value="" name="inputFieldIDToAdd" assignTo="{!inputFieldIDToAdd}"/>
+    </apex:actionFunction>
+    <apex:actionFunction action="{!addNewInputField}" name="addNewInputField" reRender="ssign_input_fields_panel" oncomplete="hideLoadingDiv();" />
+    <apex:actionFunction action="{!addNewInputFieldForPDFUpload}" name="addPDFUploadSSignField" reRender="ssign_input_fields_panel" oncomplete="hideLoadingDiv();" />
+    <apex:actionFunction action="{!removeInputField}" name="removeInputField" reRender="ssign_input_fields_panel" oncomplete="hideLoadingDiv();" />
+    <apex:actionFunction action="{!doNothing}" name="reRenderInputFieldPanels" reRender="ssign_input_field" oncomplete="" />
+    <apex:actionFunction action="{!doNothing}" name="reRenderInputFieldsForSave" reRender="ssign_input_fields_panel" oncomplete="reRenderSignerProfilesForSave();" />
+  </apex:form>
+</div>
+
+<!-- ____________________________________________ -->
+<!-- END S-SIGN INPUT FIELDS TAB                  -->
+<!-- ____________________________________________ -->
+
+<!-- ____________________________________________ -->
+<!-- START SIGNER PROFILES TAB                    -->
+<!-- ____________________________________________ -->
+
+<div id="ssign-profile-tab-new" class="tabcontent">
+  <apex:form >
+    <apex:outputPanel id="ssign_signer_profiles_panel">
+      <apex:pageBlock id="ssign_signer_profiles_pageblock" mode="maindetail">
+        <apex:repeat value="{!signerProfilesList}" var="signerProfile">
+          <apex:outputPanel id="ssign_signer_profile" styleClass="ssign_blue">
+            <apex:pageBlockSection title="Signer Profile {!signerProfile.profileID}" columns="1">
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Signer Profile ID"/>
+                <apex:outputText value="{!signerProfile.profileID}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Profile Name"/>
+                <apex:inputText value="{!signerProfile.profileName}">
+                  <apex:actionSupport event="onchange" reRender="" oncomplete="reRenderInputFieldPanels();"/>
+                </apex:inputText>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Email Address"/>
+                <apex:inputText value="{!signerProfile.email}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Signing Name"/>
+                <apex:inputText value="{!signerProfile.signerName}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Signing Order"/>
+                <apex:inputText value="{!signerProfile.routingPosition}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label" rendered="{!sst.SSign__Disable_Audit_Page_By_Profile__c}">
+                <apex:outputLabel value="Prevent From Viewing Audit"/>
+                <apex:inputCheckbox value="{!signerProfile.denyAudit}" />
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label" rendered="{!NOT(sst.SSign__Disable_Audit_Page_By_Profile__c)}">
+                <apex:outputLabel value="Prevent From Viewing Audit"/>
+                <apex:inputCheckbox disabled="true"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Prevent From Receiving Document In Confirmation Email"/>
+                <apex:inputCheckbox value="{!signerProfile.denyConfirmation}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Email address is provided by previous signer if"/>
+                <apex:inputTextarea value="{!signerProfile.prevSignerProvidesThisSignersEmail}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:outputLabel value="Signer Profile is omitted if"/>
+                <apex:inputTextarea value="{!signerProfile.omitSignerProfile}"/>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem labelStyleClass="signer-profile-label">
+                <apex:commandButton onclick="showLoadingDiv();" action="{!doNothing}" value="Delete Profile" oncomplete="removeSignerProfileFromList();">
+                  <apex:param name="signerProfileIDToRemove" value="{!signerProfile.profileID}" assignTo="{!signerProfileIDToRemove}" />
+                </apex:commandButton>
+              </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+          </apex:outputPanel>
+        </apex:repeat>
+      </apex:pageBlock>
+    </apex:outputPanel>
+    <apex:commandButton onclick="showLoadingDiv();" action="{!doNothing}" value="Create Another Signer Profile" oncomplete="createNewSignerProfile();"/>
+    <apex:actionFunction action="{!addNewSignerProfile}" name="createNewSignerProfile" reRender="ssign_signer_profiles_panel" oncomplete="hideLoadingDiv();reRenderInputFieldPanels();" />
+    <apex:actionFunction action="{!removeSignerProfile}" name="removeSignerProfileFromList" reRender="ssign_signer_profiles_panel" oncomplete="hideLoadingDiv();reRenderInputFieldPanels();" />
+    <apex:actionFunction action="{!doNothing}" name="reRenderSignerProfilePanels" reRender="ssign_signer_profiles_panel" oncomplete="" />
+    <apex:actionFunction action="{!doNothing}" name="reRenderSignerProfilesForSave" reRender="ssign_signer_profiles_panel" oncomplete="reRenderSSTSettingsForSave();" />
+  </apex:form>
+</div>
+
+<!-- ____________________________________________ -->
+<!-- END SIGNER PROFILES TAB                      -->
+<!-- ____________________________________________ -->
+
+<!-- ____________________________________________ -->
+<!-- START S-SIGN TEMPLATE SETTINGS TAB           -->
+<!-- ____________________________________________ -->
+
+<div id="ssign-template-tab-new" class="tabcontent" >
+  <apex:form id="form-id">
+    <apex:outputPanel id="ssign_template_settings_panel">
+      <apex:pageBlock mode="maindetail">
+        <apex:outputPanel id="ssign_template_settings" styleClass="ssign_blue">
+          <apex:outputPanel layout="block">
+            <apex:outputText >
+              More information regarding these settings can be found in our documentation at
+              <apex:outputLink value="https://www.sdocs.com/resources/documentation/s-sign-template-settings/" target="_blank">
+                this link
+              </apex:outputLink>.
+            </apex:outputText>
+          </apex:outputPanel>
+          <apex:pageBlockSection title="S-Sign Template Settings" id="sst-settings" columns="1">
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Disable email verification code requirement" />
+              <apex:inputCheckbox styleClass="disableEmailVerificationCheckbox" disabled="{!sst.SSign__Encrypt_Documents_At_Rest__c}" value="{!sst.SSign__Disable_Email_Verification__c}" onclick="return dEVCheckboxClicked(this);"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Encrypt documents at rest" />
+              <apex:inputCheckbox styleClass="encryptAtRest" value="{!sst.SSign__Encrypt_Documents_At_Rest__c}" onclick="encryptAtRestClicked();"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Prevent certain signer profiles from receiving the audit record" />
+              <apex:inputCheckbox styleClass="disableAuditPageCheckbox" value="{!sst.SSign__Disable_Audit_Page_By_Profile__c}">
+                <apex:actionSupport event="onchange" oncomplete="reRenderSignerProfilePanels();" reRender=""/>
+              </apex:inputCheckbox>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!sst.SSign__Disable_Audit_Page__c}">
+              <apex:outputLabel value="Prevent all signers from receiving the audit record" />
+              <apex:inputCheckbox value="{!sst.SSign__Disable_Audit_Page__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Allow the user to print the document and sign it physically" />
+              <apex:inputCheckbox value="{!sst.SSign__Allow_Printing_Document__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Allow signer to save progress" />
+              <apex:inputField value="{!sst.SSign__Enable_Save__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel id="mobile-image-quality-label">
+                Default document signing order <c:HelpIcon helpText="When generating with other templates, this is the order the document will be sent to the signer"/>
+              </apex:outputLabel>
+              <apex:inputField value="{!sst.SSign__Default_Signing_Order__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel id="mobile-image-quality-label">
+                Confirm signing order during generation <c:HelpIcon helpText="Require the user to confirm the signing order when generating a S-Sign request with this template"/>
+              </apex:outputLabel>
+              <apex:inputField value="{!sst.SSign__Confirm_Signing_Order_During_Generation__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Signature image scale (size: {!signatureImageWidth} x {!signatureImageHeight})"/>
+              <apex:inputText value="{!sst.SSign__Signature_Image_Scale__c}">
+                <apex:actionSupport event="onchange" reRender="sst-settings" oncomplete="" />
+              </apex:inputText>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel id="mobile-image-quality-label">
+                Mobile PDF page resolution <c:HelpIcon helpText="Desktop resolution is 2.5, Mobile default is 1.0. Increasing resolution may cause higher load times on Mobile."/>
+              </apex:outputLabel>
+              <apex:inputText value="{!sst.SSign__Mobile_PDF_Scale__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Time zone to be used in audit" id="timezone" />
+              <apex:selectList value="{!sst.SSign__Timezone__c}" multiselect="false" size="1" style="width:80%">
+                <apex:selectOptions value="{!timezoneList}"/>
+              </apex:selectList>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!allowZeroClick}">
+              <apex:outputLabel value="Make this template a Zero Click Signature Process" id="zero-click" />
+              <apex:inputCheckbox value="{!sst.SSign__Zero_Click__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Always Show Profile Edit Page" />
+              <apex:inputCheckbox value="{!sst.SSign__Always_Show_Profile_Edit_Page__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!allowZeroClick}">
+              <apex:outputLabel value="Contract can be voided only by its creator" id="zero-click" />
+              <apex:inputCheckbox value="{!sst.SSign__Only_Creator_Of_Contract_Can_Void__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Don't allow creation of contract if other active contracts exist on base record" />
+              <apex:inputField value="{!sst.SSign__Dont_Create_If_Active_Contracts_On_Rec__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Clear attachments upon completion (except for signed doc w/ audit trail)" />
+              <apex:inputField value="{!sst.SSign__Clear_Attachments_Upon_Completion__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="SSign Document(s) Saved to the Base Record" />
+              <apex:inputField value="{!sst.SSign__Documents_Saved_to_Base_Record__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Signed Document Name" />
+              <apex:inputField value="{!sst.SSign__Signed_Document_Name__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Signed Document with Audit Trail Name" />
+              <apex:inputField value="{!sst.SSign__Audit_Document_Name__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!allowForPreConfiguredTagUsage}">
+              <apex:outputLabel value="Use Only Pre-Configured SSign Tags" id="pre-configured-only-label" />
+              <apex:inputCheckbox value="{!sst.SSign__Use_Only_Pre_Configured_SSign_Tags__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!allowForTopazFeatureUsage}">
+              <apex:outputLabel value="Use Topaz For Signing Process" id="topaz-usage-label" />
+              <apex:inputCheckbox value="{!sst.SSign__Use_Topaz_For_Signing_Process__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Redirect Signer to Page" />
+              <apex:inputField value="{!sst.SSign__Redirect_URL__c}" />
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+
+          <apex:pageBlockSection title="S-Sign Notification Settings" id="notification-settings" columns="1">
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Email Template - All Signers Complete" />
+              <apex:inputText value="{!sst.SSign__Email_Template_All_Signers_Complete__c}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Email Template - Signer Declined" />
+              <apex:inputText value="{!sst.SSign__Email_Template_Signer_Declined__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Email Template - Partial Confirmation" />
+              <apex:inputText value="{!sst.SSign__Email_Template_Partial_Confirmation__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!showRemindersAndExpirationSettings}">
+              <apex:outputLabel value="Number of days until request expires" />
+              <apex:inputField value="{!sst.SSign__Days_To_Expire__c}" type="number" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!showRemindersAndExpirationSettings}">
+              <apex:outputLabel value="Number of days until first reminder is sent to signer" />
+              <apex:inputField value="{!sst.SSign__Days_To_Remind__c}" type="number" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!showRemindersAndExpirationSettings}">
+              <apex:outputLabel value="Number of days between regular reminders after first" />
+              <apex:inputField value="{!sst.SSign__Regular_Reminder__c}" type="number" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!showRemindersAndExpirationSettings}">
+              <apex:outputLabel value="Number of total reminders to send per signer" />
+              <apex:inputField value="{!sst.SSign__Total_Reminders_To_Send__c}" type="number" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Disable email verification code for the following domains" />
+              <apex:inputText value="{!sst.SSign__Disable_Email_Verification_For_Domains__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Don't send confirmation email to sender" />
+              <apex:inputCheckbox value="{!sst.SSign__Dont_Send_Confirmation_Email_To_Sender__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Send confirmation as one email" />
+              <apex:inputCheckbox value="{!sst.SSign__Send_Confirmation_As_One_Email__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Send confirmation email to default FROM address" />
+              <apex:inputCheckbox value="{!sst.SSign__Send_Confirmation_To_From__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Copy subject and attachments from first request email onto subsequent request emails" />
+              <apex:inputCheckbox value="{!sst.SSign__Copy_First_Email_Attachments__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Parties To Notify Upon Void, Expire, Or Decline"/>
+              <apex:selectList value="{!ptnuv}" multiselect="true" >
+                <apex:selectOption itemValue="All Parties" itemLabel="All Parties" />
+                <apex:selectOption itemValue="No Parties" itemLabel="No Parties" />
+                <apex:selectOption itemValue="Requester" itemLabel="Requester" />
+                <apex:selectOption itemValue="Person Who Voided Contract" itemLabel="Person Who Voided Contract" />
+                <apex:selectOption itemValue="Signers Who Have Already Signed" itemLabel="Signers Who Have Already Signed" />
+                <apex:selectOption itemValue="Active Signer" itemLabel="Active Signer" />
+                <apex:selectOption itemValue="Signers After Active Signer" itemLabel="Signers After Active Signer" />
+                <apex:selectOption itemValue="Custom List" itemLabel="Custom List" />
+                <apex:actionSupport event="onchange" reRender="notification-settings" oncomplete="" />
+              </apex:selectList>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label" rendered="{!renderCustomList}">
+              <apex:outputLabel value="Custom List: "/>
+              <apex:inputText value="{!sst.SSign__Custom_List_of_Parties_to_Notify__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Disable System Emails" />
+              <apex:inputField value="{!sst.SSign__Disable_System_Emails__c}" />
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+
+          <apex:pageBlockSection title="S-Sign Sign in Person Settings" id="sign-in-person-settings" columns="1">
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Disable Email For Sign In Person" />
+              <apex:inputField value="{!sst.SSign__Disable_Email_For_Sign_In_Person__c}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+              <apex:outputLabel value="Enable Send Email After First Signer" />
+              <apex:inputField value="{!sst.SSign__SIP_Email_Sign_Links_Subsequent_Signers__c}" />
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+
+          <apex:pageBlockSection title="S-Sign Input Field Groups" id="sign-input-field-groups" columns="1">
+            <apex:repeat value="{!inputFieldGroups}" var="ifg">
+              <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+                  <apex:outputLabel value="Input field group name" />
+                  <apex:inputText value="{!ifg.name}" styleClass="ifg-name-input">
+                    <apex:actionSupport event="onchange" reRender="" oncomplete="reRenderInputFieldPanels();" />
+                  </apex:inputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+                  <apex:outputLabel value="Minimum required for signing" />
+                  <apex:inputText value="{!ifg.minRequired}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+                  <apex:outputLabel value="Maximum required for signing" />
+                  <apex:inputText value="{!ifg.maxRequired}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem labelStyleClass="template-settings-label">
+                  <apex:commandButton onclick="showLoadingDiv();" action="{!doNothing}" value="Remove Input Field Group" oncomplete="removeInputFieldGroup();">
+                    <apex:param name="ifgIndexToRemove" value="{!ifg.index}" assignTo="{!ifgIndexToRemove}" />
+                  </apex:commandButton>
+                </apex:pageBlockSectionItem>
+              </apex:pageBlockSection>
+            </apex:repeat>
+            <apex:pageBlockSectionItem >
+              <apex:commandButton onclick="showLoadingDiv();" action="{!doNothing}" value="Add Input Field Group" oncomplete="addInputFieldGroup();" />
+            </apex:pageBlockSectionItem>
+          </apex:pageBlockSection>
+        </apex:outputPanel>
+      </apex:pageBlock>
+    </apex:outputPanel>
+    <apex:actionFunction action="{!addInputFieldGroup}" name="addInputFieldGroup" reRender="sign-input-field-groups" oncomplete="hideLoadingDiv();reRenderInputFieldPanels();" />
+    <apex:actionFunction action="{!removeInputFieldGroup}" name="removeInputFieldGroup" reRender="sign-input-field-groups" oncomplete="hideLoadingDiv();reRenderInputFieldPanels();" />
+    <apex:actionFunction action="{!doNothing}" name="reRenderSSTSettingsForSave" reRender="ssign_template_settings_panel" oncomplete="saveSSignTemplate();" />
+  </apex:form>
+</div>
+
+<div>
+  <apex:form >
+    <apex:actionFunction action="{!save}" name="saveSSignTemplate" oncomplete="saveSDocsTemplate();" />
+    <apex:actionFunction action="{!doNothing}" name="startSSignTemplateSaveProcess" oncomplete="reRenderInputFieldsForSave();" />
+  </apex:form>
+</div>
+
+<!-- ____________________________________________ -->
+<!-- END S-SIGN TEMPLATE SETTINGS TAB             -->
+<!-- ____________________________________________ -->
+
+<script type="text/javascript">
+  j$(window).on('load', function() {
+    addOnMessageHandler();
+    initializeTabs();
+    hideLoadingDiv();
+  });
+
+  function addOnMessageHandler() {
+    addSSignEvent(window, 'message', receiveMessage);
+  }
+
+  function addSSignEvent(element, event, fn) {
+    if (element.addEventListener) element.addEventListener(event, fn, false);
+    else if (element.attachEvent) element.attachEvent('on' + event, fn);
+  }
+
+  var messageEvent;
+  function receiveMessage(event) {
+    //alert('MESSAGE received: ' + event.data);
+    /* Since this page has a different domain than the SDTemplateEditor page (due to different
+    managed packages having different domains), we cannot run javascript within this iframe
+    from SDTemplateEditor.page as that triggers the browser's cross-domain scripting rules.
+    To get around this we use postMessage to communicate between the two pages. 
+    This allows SDTemplateEditor to tell S-Sign to save the S-Sign Template when
+    the SDTemplateEditor Save button is clicked, and allows S-Sign to tell SDTemplateEditor to
+    save the S-Docs Tempplate once the S-Sign Template has finished saving. */
+    if (event.data === 'save' || event.data === 'save_and_close' || event.data === 'save_and_preview'
+        || event.data === 'save_pdf_upload_sent' || event.data === 'save_pdf_upload_sent_and_close'
+        || event.data === 'save_pdf_upload_sent_and_preview') {
+      showLoadingDiv();
+      startSSignTemplateSaveProcess();
+      messageEvent = event;
+    } else if (event.data.includes('addDefinition{!PDF_UPLOAD_SSIGN_SPLITTER}')) {
+      showLoadingDiv();
+      addInputFieldByID(event.data.split('{!PDF_UPLOAD_SSIGN_SPLITTER}')[1]);
+    } else if (event.data.includes('removeDefinition{!PDF_UPLOAD_SSIGN_SPLITTER}')) {
+      showLoadingDiv();
+      removeInputFieldByID(event.data.split('{!PDF_UPLOAD_SSIGN_SPLITTER}')[1]);
+    }
+  }
+
+  function saveSDocsTemplate() {
+    messageEvent.source.postMessage(messageEvent.data, messageEvent.origin);
+  }
+
+  function dEVCheckboxClicked(dEVCheckboxElement) {
+      if (dEVCheckboxElement.checked) {
+          if (!confirm(
+            "WARNING: You have disabled email verification codes for this template, " +
+            "meaning anyone that has the link to an S-Sign Request for this template " +
+            "will be able to sign. By clicking \"OK\", you are confirming that you " +
+            "are aware of this when including others using CC and BCC."
+          )) {
+            return false;
+          }
+      }
+      return true;
+  }
+
+  function encryptAtRestClicked() {
+    if (document.getElementsByClassName('encryptAtRest')[0].checked) {
+      document.getElementsByClassName('disableEmailVerificationCheckbox')[0].checked = false;
+      document.getElementsByClassName('disableEmailVerificationCheckbox')[0].setAttribute('disabled', true);
+    } else {
+      document.getElementsByClassName('disableEmailVerificationCheckbox')[0].removeAttribute('disabled');
+    } 
+  }
+
+  function copyToClipboard(element, id) {
+    var parent = element.parentElement;
+    var text = parent.querySelector('*[id$="' + id + '"]');
+    text.select();
+    document.execCommand('copy');
+  }
+
+  function openDatePicker(element) {
+    j$(element).datepicker({
+      dateFormat: 'yy-mm-dd',
+      changeMonth: true,
+      changeYear: true
+    });
+    j$(element)[0].blur();
+    j$(element)[0].focus();
+  }
+</script>
+</apex:page>

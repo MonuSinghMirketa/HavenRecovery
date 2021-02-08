@@ -1,0 +1,27 @@
+<p style = "font-family:arial, helvetica, sans-serif;font-size:12">
+<B> Admission Alert for the following patient:<BR>
+<BR>
+
+<B> Client Name : {!Lead.FirstName} {!Lead.LastName} <BR>
+
+<B> Referral:   {!Lead.LeadSource} <BR>
+
+<B> Admission<B> Date :  {!Lead.Pending_Admit_Date__c} <BR>
+
+<B> Level of Care:  {!Lead.Level_of_Care__c}<BR>
+
+<B> Phone:{!Lead.Phone} <BR>
+
+<B> Payment Method:  {!Lead.Payment_Method__c} <BR>
+
+<B> Insurance Carrier:    {!Lead.Insurance_Company_Name__c} <BR>
+
+<B> Subscriber:  {!Lead.Subscriber_Name__c} <BR>
+
+<B> If private pay, amount paid and paid through date:  {!Lead.Amount_Paid__c}   {!Lead.Due_By__c} <BR>
+
+<BR>
+
+
+
+ETA: <pre><p style = "font-family:arial, helvetica, sans-serif;font-size:12"> {!Lead.Transport_Info__c}

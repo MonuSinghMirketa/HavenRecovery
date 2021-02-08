@@ -1,0 +1,29 @@
+{!Lead.Link}
+
+<p style = "font-family:arial, helvetica, sans-serif;font-size:12">
+Facility of Interest: {!Lead.Facility_Interest__c}
+<BR>
+Lead Source:  {!Lead.LeadSource}
+<BR>
+Created by: {!Lead.CreatedBy}
+<BR>
+First Name: {!Lead.FirstName} 
+<BR>
+Last Name: {!Lead.LastName}
+<BR>
+DOB: {!Lead.DOB__c}
+<BR>
+Secondary Insurance Company:  {!Lead.Secondary_Insurance_Company__c}
+<BR>
+Secondary Insurance Phone: {!Lead.Secondary_Insurance_Phone_Number__c}
+<BR>
+Member ID:  {!Lead.Secondary_Ins_Member_ID__c}
+<BR>
+Group Number:  {!Lead.Secondary_Ins_Group_No__c}
+<BR>
+Subscriber Name:  {!Lead.Secondary_Ins_Subscriber__c}  {!Lead.Secondary_Ins_Sub_Last_Name__c}
+<BR>
+Subscriber DOB:  {!Lead.Secondary_Ins_Sub_DOB__c}
+<BR>
+Subscriber Relationship:   {!Lead.Secondary_Ins_Subscriber_Relationship__c}
+<BR>

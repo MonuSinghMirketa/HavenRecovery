@@ -1,0 +1,39 @@
+<apex:page controller="VerifyTx.AuthorizeUserClass" sidebar="false">
+    <apex:slds />
+    <apex:pageMessages ></apex:pageMessages>
+    <head> 
+        <style>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        </style>
+        <style>
+            .info {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            margin-bottom: 15px;
+            padding: 4px 12px;
+            font-size: 18px;
+            }
+            
+            .header {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            padding: 30px 10px;
+            font-size: 23px;
+            }
+        
+        </style>
+    </head>
+    <div class="header" style="padding-left:20px">
+        <h1>Authorize User's Verify Tx Credentials</h1>
+    </div>
+    
+    <apex:form style="padding-top: 10px;padding-bottom: 120px;">
+        <div class="Auth" style="margin-left:35%;margin-top:5%;margin-bottom:5%;">
+            <apex:commandButton value="Authorize User" action="{!authorize}" styleClass="" style="font-weight: bolder;padding-left: 20px;padding-right: 20px;padding-top: 10px;padding-bottom: 10px;font-size: 20px;background-color: #5a451f;color: darkorange;"/>       
+           <!--<apex:commandButton value="Cancel" action="{!cancel}" styleClass="" style="font-weight: bolder;padding-left: 20px;padding-right: 20px;padding-top: 10px;padding-bottom: 10px;font-size: 15px;background-color: #5a451f;color: darkorange;margin-left:5%;"/> -->   
+            
+        </div>
+        <b style="font-size:40px;"></b>
+    </apex:form> 
+    
+</apex:page>

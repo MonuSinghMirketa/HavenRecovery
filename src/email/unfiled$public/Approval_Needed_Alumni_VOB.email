@@ -1,0 +1,25 @@
+Please review the following potential admission: {!Opportunity.Link}
+
+Name: {!Insurance_Verification__c.Opportunity__c}
+
+Insurance Company: {!Opportunity.Insurance_Company_Name__c}
+Member ID: {!Opportunity.Member_ID_Number__c}
+OON Deductible:{!Insurance_Verification__c.Deductible__c}
+OON Deductible met: {!Insurance_Verification__c.Deductible_Met__c}
+OOP Max: {!Insurance_Verification__c.OOP__c}
+OOP Met: {!Insurance_Verification__c.OOP_Met__c}
+OON Inpatient Co-insurance: {!Insurance_Verification__c.Inpatient_Co_insurance__c}
+
+INN Deductible: {!Insurance_Verification__c.INN_Ded__c}
+INN Deductible met: {!Insurance_Verification__c.INN_Ded_Met__c}
+INN Max: {!Insurance_Verification__c.INN_OOP__c}
+INN Met: {!Insurance_Verification__c.INN_OOP_Met__c}
+INN Inpatient Co-insurance: {!Insurance_Verification__c.INN_Inpt__c}
+
+Prior Admission Days Authorized:
+Detox: {!Insurance_Verification__c.Detox_Days_Auth_d__c}
+Res: {!Insurance_Verification__c.Res_Days_Auth_d__c}
+PHP: {!Insurance_Verification__c.PHP_Days_Auth_d__c}
+IOP: {!Insurance_Verification__c.IOP_Days_Auth_d__c}
+Auth Notes: {!Insurance_Verification__c.Auth_Notes__c}
+Total Length of Stays: {!Insurance_Verification__c.Total_LOS__c}

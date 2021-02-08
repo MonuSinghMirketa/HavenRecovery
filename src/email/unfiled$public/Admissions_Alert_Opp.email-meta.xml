@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Admissions Alert Opp</name>
+    <style>none</style>
+    <subject>{!Opportunity.Admission_Alert_Fx__c} Admission Alert {!Opportunity.Compliant_Name__c} {!Opportunity.Admission_Alert_Date__c} {!Opportunity.Level_of_Care__c}</subject>
+    <textOnly>CT Name: {!Opportunity.Name}
+Referral Source / CTM Source: {!Opportunity.Admission_Alert_Ref_or_CTM_Source__c} 
+Admission Date: {!Opportunity.Admission_Alert_Date__c} 
+LOC: {{!Opportunity.Admission_Alert_LOC__c} 
+Phone: {!Opportunity.Patient_Phone__c} 
+Payment: {!Opportunity.Admission_Alert_Payment__c} {!IF(NOT(ISBLANK(Opportunity.AdAlertSecondaryIns__c)), &apos;Secondary Insurance:&apos; +Opportunity.AdAlertSecondaryIns__c,&apos; &apos;)} 
+{!IF(NOT(ISBLANK(Opportunity.Subscriber_First_Name__c, Opportunity.Subscriber_Last_Name__c)), &apos; Subscriber: &apos; +Opportunity.Subscriber_First_Name__c +Opportunity.Subscriber_Last_Name__c,&apos; &apos;)} ETA: {!Opportunity.Transport_Info__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

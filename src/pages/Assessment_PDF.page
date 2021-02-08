@@ -1,0 +1,399 @@
+<apex:page standardController="Pre_Admission_Assessment__c" renderAs="pdf">
+<HTML>
+<body>
+
+
+<p style="text-align:left;font-family:arial,helvetica,sans-serif;font-size:12px;">
+<strong>Preadmission Assessment for {!Pre_Admission_Assessment__c.Name}</strong><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;">Pre-Assessment Assessment </span><br></br>
+<pre><span style="font-family:arial,helvetica,sans-serif;font-size:12px;">{!Pre_Admission_Assessment__c.Name}      <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Patient_DOB__c}" /> </apex:outputtext>         {!Pre_Admission_Assessment__c.Patient_Insurance__c}         {!Pre_Admission_Assessment__c.Insurance_ID__c}</span></pre><br></br><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;">Employment/Education </span><br></br> 
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Current Job Status </strong>   
+{!Pre_Admission_Assessment__c.Current_Job_Status__c}<br></BR><br></BR>
+<strong>Current Financial Status</strong><br></br>{!Pre_admission_assessment__c.Current_Financial_Status__c}<br></br><br></BR>
+<strong>Occupation</strong><br></br>{!Pre_admission_assessment__c.Occupation__c}<br></br><br></BR>
+<strong>If unemployed, last date of employment </strong><br></br> 
+<apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.If_Unemployed_last_date_of_employment__c}" /> </apex:outputtext><br></BR><br></BR>
+<strong>Employer</strong><br></br>{!Pre_Admission_Assessment__c.Employer__c}<br></BR><br></BR>
+<strong>Problems caused by addiction</strong><br></br>
+{!Pre_Admission_Assessment__c.Problems_Caused_by_Addiction__c}<br></br><br></br>
+<strong>Highest Level of Education completed</strong><BR></BR>
+{!Pre_Admission_Assessment__c.Highest_level_of_Education_Completed__c}<br></br><br></br>
+<strong>Are you expected back at work following treatment?  If yes describe:</strong><br></br>
+{!Pre_Admission_Assessment__c.Are_you_expected_back_at_work_post_tx__c}     {!Pre_Admission_Assessment__c.If_yes_describe_work__c}<br></br><br></br>
+<strong>Do you have FMLA or work leave documentation that you will need help with?  If yes describe: </strong><br></br>
+{!Pre_Admission_Assessment__c.Do_you_have_FMLA_or_work_leave_documents__c}      {!Pre_Admission_Assessment__c.If_documentation_is_needed_describe__c}</span><br></br><br></br><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;">Current Living Environment</span><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Patient Lives With</strong><br></br>
+{!Pre_Admission_Assessment__c.Patient_Lives_with__c}</span><br></br>
+<pre><span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Number of Children                                    Children Ages</strong></span></pre>
+<pre><span style="font-family:arial,helvetica,sans-serif;font-size:12px;">{!Pre_Admission_Assessment__c.Number_of_Children__c}                                                                 {!Pre_Admission_Assessment__c.Ages_of_Children__c}</span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><STRONG>Household drug use (if yes who):</strong></span><br></br>
+<pre><span style="font-family:arial,helvetica,sans-serif;font-size:12px;">{!Pre_admission_assessment__c.Household_drug_use__c}    {!Pre_admission_assessment__c.If_yes_who_household_drug__c}</span></pre><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Describe further on answers above (Patient lives with, number of children, ages, and household drug use)</strong><br></br>
+{!Pre_admission_assessment__c.Describe_further_on_answers_above_lives__c}</SPAN><br></br><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;">Presenting Problem</SPAN><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Why is the patient coming to treatment now?  Give a timeline of why now?  Please describe in patient's own words</strong><br></br>
+{!Pre_admission_assessment__c.Why_is_patient_coming_to_treatment_now__c}<br></br><br></br>
+<strong>Contributing factors</strong><br></br>
+{!Pre_admission_assessment__c.Contributing_factors__c}<br></br><br></br>
+<strong>Describe the above</strong><br></br>
+{!Pre_admission_assessment__c.Describe_the_above_contributing__c}<br></br><br></br>
+<strong>Does patient have sober supports willing to be involved in the treatment process?  If yes:</strong></span><br></br>
+<pre><span style="font-family:arial,helvetica,sans-serif;font-size:12px;">{!Pre_admission_assessment__c.Does_patient_have_sober_supports__c}         {!Pre_admission_assessment__c.If_yes_who2_sober_supports__c}</span></pre><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong> Have you been in recovery in the past?  If so, for how long and give details:</strong></span><br></br>
+<pre><span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Have_you_been_in_recovery_in_the_past__c}                   {!Pre_admission_assessment__c.If_yes_for_how_long_and_give_details_rec__c}</span></pre><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong> What do you expect to get out of treatment? </strong><br></br>
+{!Pre_admission_assessment__c.What_do_you_expect_to_get_from_treatment__c}<br></br><br></br>
+<strong>Is there a history of substance abuse or mental illness in your family?  If yes describe: </strong></span>
+<pre><span style="font-family:arial,helvetica,sans-serif;font-size:12px;">{!Pre_admission_assessment__c.Is_there_family_history_of_SA_or_MH__c}        {!Pre_admission_assessment__c.If_yes_describe3_history_sa__c}</span></pre><br></br><br></br><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;"> Treatment/Healthcare History</SPAN> <br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Name of last seen PCP/General Practioner </strong><br></br>
+{!Pre_admission_assessment__c.Name_of_last_seen_PCP__c}<br></br><br></br>
+<strong>Date of Last visit </strong><br></br>
+<apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Date_of_last_visit_with_PCP__c}" /> </apex:outputtext><br></BR><br></BR>
+<strong>Reason for Last PCP visit</strong></span><br></br><br></br><br></br>
+<span style="text-align:center;font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Treatment History</strong></span>
+<DIV>
+<table align="center" border=".5" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr style="text-align: center;font-size:12px;">
+        <th STYLE="text-align:center;font-size:12px;"> Treatment Type </th>
+       <th STYLE="text-align:center;font-size:12px;"> Level of Care </th>
+        <th STYLE="text-align:center;font-size:12px;"> Facility Name </th>
+         <th STYLE="text-align:center;font-size:12px;"> Condition Treated </th>
+         <th STYLE="text-align:center;font-size:12px;"> Date of Admission </th> 
+         <th STYLE="text-align:center;font-size:12px;"> Date of Discharge </th>
+         <th STYLE="text-align:center;font-size:12px;"> Response to Treatment </th>  
+         <th STYLE="text-align:center;font-size:12px;"> Discharge Type </th>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td>{!Pre_admission_assessment__c.Treatment_1_treatment_type__c} </td>
+        <td> {!Pre_admission_assessment__c.Treatment_1_Level_of_Care__c} </td>
+        <td> {!Pre_admission_assessment__c.Treatment_1_Facility_Name__c} </td>
+        <td> {!Pre_admission_assessment__c.Treatment_1_Condition_Treatment__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_1_Date_of_Admission__c}"/>  </apex:outputtext></td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_1_Date_of_Discharge__c}"/ > </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_1_Response_to_Treatment__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_1_Discharge_Type__c} </td>
+        </tr>
+           <tr style="text-align: center;font-size:12px;">
+        <td> {!Pre_Admission_Assessment__c.Treatment_2_treatment_type__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_2_Level_of_Care__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_2_Facility_Name__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_2_Condition_Treated__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_2_Date_of_Admission__c}"/>  </apex:outputtext></td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_2_Date_of_Discharge__c}"/ > </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_2_Response_to_Treatment__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_2_Discharge_Type__c} </td>
+        </tr>
+        
+           <tr style="text-align: center;font-size:12px;">
+        <td> {!Pre_Admission_Assessment__c.Treatment_3_Treatment_Type__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_3_Level_of_Care__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_3_Facility_Name__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_3_Condition_Treated__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_2_Date_of_Admission__c}"/>  </apex:outputtext></td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_3_Date_of_Discharge__c}"/ > </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_3_Response_to_Treatment__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_3_Discharge_Type__c} </td>
+        </tr> 
+           <tr style="text-align: center;font-size:12px;">
+        <td> {!Pre_Admission_Assessment__c.Treatment_4_treatment_type__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_4_Level_of_Care__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_4_Facility_Name__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_4_Condition_Treated__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_4_Date_of_Admission__c}"/>  </apex:outputtext></td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_4_Date_of_Discharge__c}"/ > </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_4_Response_to_Treatment__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_4_Discharge_Type__c} </td>
+        </tr> 
+           <tr style="text-align: center;font-size:12px;">
+        <td> {!Pre_Admission_Assessment__c.Treatment_5_treatment_type__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_5_Level_of_Care__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_5_Facility_Name__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_5_Condition_Treated__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_5_Date_of_Admission__c}"/>  </apex:outputtext></td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_5_Date_of_Discharge__c}"/ > </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_5_Response_to_Treatment__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_5_Discharge_Type__c} </td>
+        </tr> 
+           <tr style="text-align: center;font-size:12px;">
+        <td> {!Pre_Admission_Assessment__c.Treatment_6_treatment_type__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_6_Level_of_Care__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_6_Facility_Name__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_6_Condition_Treated__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_6_Date_of_Admission__c}"/>  </apex:outputtext></td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Treatment_6_Date_of_Discharge__c}"/ > </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_6_Response_to_Treatment__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Treatment_6_Discharge_Type__c} </td><br></br>
+        </tr>
+        
+        
+        
+        
+    </tbody>
+</table><br></br>
+<br></br>
+</DIV>
+<DIV>
+<br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;">
+<br></br><br></br><br></br>Height and Weight (Please remember to enter this into the patient chart upon admission)</span><br></br><br></br>
+
+<table align= "LEFT" border="0" cellpadding="1" cellspacing="1">
+<tbody>
+<tr style="text-align: left;font-size:12px;">
+<th> <strong> Height </strong> </th>
+<th> <strong> Weight </strong> </th>
+</tr>
+<tr style="text-align: left;font-size:12px;">
+<td> {!Pre_admission_assessment__c.patient_Height__c} </td>
+<td> {!Pre_admission_assessment__c.patient_weight__c} </td>
+</tr>
+</tbody>
+</table>
+</DIV>
+<br></br>
+<br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;">Current/Past Health History</span><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Current/Past Medical </strong><br></br>
+{!Pre_admission_assessment__c.Current_Past_Medical_Conditions__c} <br></br>
+ <strong> Describe the above current/past medical history (if applicable) </strong><br></br>
+ {!Pre_admission_assessment__c.Describe_above_current_past_medical_hx__c} <br></br>
+ <strong>  Do you require any assistance in mobility?  If yes describe: </strong></span><br></br>
+ <pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Do_you_require_any_mobility_assistance__c}       {!Pre_admission_assessment__c.If_yes_describe4_mobility__c} </span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Do you require assistance with any of your daily routines?  If yes describe: </strong></span><br></br>
+<pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Do_you_require_assist_with_daily_routine__c}     {!Pre_admission_assessment__c.If_yes_describe5_routines__c}</span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Are you taking any prescribed medication?  If yes describe: </strong></span><br></br>
+<pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Are_you_taking_prescribed_medication__c}     {!Pre_admission_assessment__c.If_yes_describe6_rx__c}</span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Are there medications you are supposed to be taking but are not. If yes please list describe: </strong></span><br></br>
+<pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Are_there_meds_you_are_non_compliant__c}     {!Pre_admission_assessment__c.If_yes_list_noncompliant__c}</span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong>  Do you use any medical devices? If yes describe: </strong></span><br></br>
+<pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Do_you_use_any_medical_devices__c}     {!Pre_admission_assessment__c.If_yes_describe7_device__c}</span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Have you been hospitalized in the last 30 days? If yes describe: </strong></span><br></br>
+<pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Have_you_been_hospitalized_last_30_dayes__c}     {!Pre_admission_assessment__c.If_yes_describe8_hospital__c}</span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Do you have any open wounds?  If yes describe: </strong></span><br></br>
+<pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> {!Pre_admission_assessment__c.Do_you_have_any_open_wounds__c}     {!Pre_admission_assessment__c.If_yes_describe2_wound__c}</span></pre><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Have you been diagnosed with any of the following? (anxiety, PTSD, Depression, ADD/ADHD, Bipolar, or Other) </strong><br></br>
+{!Pre_admission_assessment__c.Have_you_been_diagnosed_with_following__c}  <br></br>
+ <strong> If yes, please describe medications or treatment for previous diagnosis. </strong><br></br>
+    {!Pre_admission_assessment__c.If_yes_describe_meds_or_treament_MH__c}</span><br></br>
+<br></br><br></br><br></br><br></br><br></br><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"> <strong> Substance Abuse History </strong></span><br></br>
+<DIV>
+<table align="center" border=".5" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr style="text-align: center;font-size:12px;">
+        <th STYLE="text-align:center;font-size:12px;"> Substance </th>
+       <th STYLE="text-align:center;font-size:12px;"> Details </th>
+        <th STYLE="text-align:center;font-size:12px;"> Last Used </th>
+         <th STYLE="text-align:center;font-size:12px;"> Route </th>
+         <th STYLE="text-align:center;font-size:12px;"> Amount Commonly Used </th> 
+         <th STYLE="text-align:center;font-size:12px;"> Duration </th>
+         <th STYLE="text-align:center;font-size:12px;"> How Often </th>  
+         <th STYLE="text-align:center;font-size:12px;"> Age of First Use </th>
+         <th STYLE="text-align:center;font-size:12px;"> Comment/Details </th>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td>Wine </td>
+        <td> {!Pre_admission_assessment__c.Wine_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Wine_Last_Used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Wine_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Wine_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Wine_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Wine_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Wine_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Comments_on_Wine_Usage__c} </td>
+        </tr>
+           <tr style="text-align: center;font-size:12px;">
+        <td>Hard Liquor </td>
+        <td> {!Pre_Admission_Assessment__c.Hard_Liquor_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Hard_Liquor_last_used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Hard_Liquor_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Hard_Liquor_amount_commonly_used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Hard_Liquor_Duration__c  } </td>
+        <td> {!Pre_Admission_Assessment__c.Hard_Liquor_how_often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Hard_Liquor_age_of_first_use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Hard_Liquor_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td>Beer </td>
+        <td> {!Pre_Admission_Assessment__c.Beer_Details__c  } </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Beer_last_used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Beer_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Beer_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Beer_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Beer_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Beer_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Beer_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td>Benzodiazepines </td>
+        <td> {!Pre_Admission_Assessment__c.Benzodiazepines_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Benzodiazepines_Last_Used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Benzodiazepines_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Benzodiazepines_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Benzodiazepines_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Benzodiazepines_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Benzodiazepines_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Benzodiazepines_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td>Heroin </td>
+        <td> {!Pre_Admission_Assessment__c.Heroin_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Heroin_Last_Used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Heroin_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Heroin_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Heroin_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Heroin_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Heroin_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Heroin_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Other Opiates/Analgesics </td>
+        <td> {!Pre_Admission_Assessment__c.Other_Opiates_Analgesics_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Other_Opiates_Analgesics_Date_last_used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Other_Opiates_Analgesics_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Opiates_Analgesics_Amt_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Other_Opiates_Analgesics_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Other_Opiates_Analgesics_how_often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Other_Opiates_Analgesics_Age_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Other_Opiates_Analgesics_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Methadone </td>
+        <td> {!Pre_Admission_Assessment__c.Methadone_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Methadone_Last_Used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Methadone_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Methadone_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Methadone_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Methadone_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Methadone_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Methadone_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Barbituates </td>
+        <td> {!Pre_Admission_Assessment__c.Barbiturates_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Barbiturates_Last_Used__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Barbiturates_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Barbiturates_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Barbiturates_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Barbiturates_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Barbiturates_Age_of_First_Use__c}</td>
+        <td> {!Pre_Admission_Assessment__c.Barbiturates_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td>Sedatives/Hypnotics/Tranquilizers </td>
+        <td> {!Pre_Admission_Assessment__c.Sedatives_Hypnotics_Tranquilizers_Detail__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Sed_Hyp_Tranq_Date_of_Last_Use__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Sed_Hyp_Tranq_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.SEd_Hyp_Tranq_Amt_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Sed_Hyp_Tranq_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Sed_Hyp_Tranq_how_often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Sed_Hyp_Tranq_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Sed_Hyp_Tranq_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Amphetamines </td>
+        <td> {!Pre_Admission_Assessment__c.Amphetamines_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Amphetamines_Date_of_Last_Use__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Amphetamines_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Amphetamines_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Amphetamines_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Amphetamines_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Amphetamines_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Amphetamines_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Cocaine/Crack </td>
+        <td> {!Pre_Admission_Assessment__c.Cocaine_Crack_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Cocaine_Crack_Date_of_Last_Use__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Cocaine_Crack_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cocaine_Crack_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cocaine_Crack_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cocaine_Crack_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cocaine_Crack_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cocaine_Crack_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Cannabis </td>
+        <td> {!Pre_Admission_Assessment__c.Cannabis_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Cannabis_Date_of_Last_Use__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Cannabis_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cannabis_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cannabis_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cannabis_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cannabis_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Cannabis_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Hallucinogens and Synthetics </td>
+        <td> {!Pre_Admission_Assessment__c.Hallucinogens_Synthetics_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Halluc_Synth_Date_of_Last_Use__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Halluc_Synth_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Halluc_Synth_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Halluc_Synth_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Halluc_Synth_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Halluc_Synth_Age_of_first_use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Halluc_Synth_Comment_Details__c} </td>
+        </tr>
+        <tr style="text-align: center;font-size:12px;">
+        <td> Inhalants </td>
+        <td> {!Pre_Admission_Assessment__c.Inhalants_Details__c} </td>
+        <td> <apex:outputText value="{0, date, MM/dd/yyyy}"><apex:param value="{!Pre_Admission_Assessment__c.Inhalants_Date_of_Last_Use__c}"/>  </apex:outputtext></td>
+        <td> {!Pre_Admission_Assessment__c.Inhalants_Route__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Inhalants_Amount_Commonly_Used__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Inhalants_Duration__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Inhalants_How_Often__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Inhalants_Age_of_First_Use__c} </td>
+        <td> {!Pre_Admission_Assessment__c.Inhalants_Comment_Details__c} </td>
+        </tr>
+    </tbody>
+</table><br></br>
+<br></br>
+</DIV>
+ <br></br>
+<br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Current Withdrawal or Post-Acute Withdrawal Symptoms </strong><br></br>
+{!Pre_Admission_Assessment__c.Current_or_Post_Acute_Withdrawal_Symptom__c}<br></br>
+<strong> Cravings (when not using) </strong><br></br>
+{!Pre_Admission_Assessment__c.Craving_when_not_using__c}<br></br>
+<strong> History of Detox Complications </strong><br></br>
+{!Pre_Admission_Assessment__c.History_of_Detox_Complications__c}<br></br>
+<strong> Has the patient experienced seizures in their lifetime?  If yes, date of last one and due to what: </strong></span><br></br>
+<pre> <span style="font-family:arial,helvetica,sans-serif;font-size:12px;">{!Pre_Admission_Assessment__c.If_yes_date_of_last_one_and_cause__c}</span></pre><br></br>
+<br></br>
+ <span style="font-family:arial,helvetica,sans-serif;font-size:12px;">
+<strong> Have you experienced any of the following in the past 30 days?  (suicidal thoughts/attempts, homicidal thoughts, history of violent behavor, self harm (self mutilation/disfigurement) or any overdoses) </strong> <br></br>
+{!Pre_Admission_Assessment__c.Have_you_experienced_in_the_past_30_days__c}<br></br>
+  <strong> Have you experienced any of the following in your life?  (suicidal thoughts/attempts, homicidal thoughts, history of violent behavor, self harm (self mutilation/disfigurement) or any overdoses) </strong>   <br></br>    
+{!Pre_Admission_Assessment__c.Have_you_experienced_in_your_life__c}<br></br><BR></BR>
+<strong> If patient had any overdoses, date of last one and include pertinent details</strong> <br></br>
+{!Pre_Admission_Assessment__c.If_previous_ODs_date_of_last_and_detail__c} <br></br>
+<br></br>
+<strong> Are you currently experiencing pain?  If yes please describe when it started, treatment, how, and current pain level:  </strong><br></br>
+{!Pre_Admission_Assessment__c.Are_you_currently_experiencing_pain__c} <br></br>
+{!Pre_Admission_Assessment__c.If_yes_describe_length_treatment_etc__c}</span><br></br>
+<br></br>
+<br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:14px;">Treatment Expectations </span><br></br>
+<span style="font-family:arial,helvetica,sans-serif;font-size:12px;"><strong>Will you have any problems providing an observed urine drug daily? If yes explain: </strong><br></br>
+{!Pre_Admission_Assessment__c.Problems_providing_observed_urine_daily__c} <br></br>
+{!Pre_Admission_Assessment__c.If_yes_explain__c} <br></br>
+<strong> Will you have any problems with having your blood drawn?  If yes explain: </strong><br></br>
+{!Pre_Admission_Assessment__c.Will_you_have_problems_with_blood_draw__c}<br></br>
+{!Pre_Admission_Assessment__c.If_yes_explain_blood__c}<br></br>
+<strong> Participation in groups are mandatory, you understand that if you do not participate in groups you will be asked to leave treatment.  Will you have any problems with group participation?  If yes, explain: </strong><br></br>
+{!Pre_Admission_Assessment__c.Any_problems_with_group_participation__c}<br></br>
+{!Pre_Admission_Assessment__c.If_yes_explain_groups__c}<br></br>
+<strong> Is patient approved for treatment?  If yes explain rationale: </strong><br></br>
+{!Pre_Admission_Assessment__c.Is_patient_approved_for_treatment__c}<br></br>
+{!Pre_Admission_Assessment__c.If_yes_explain_rationale__c}<br></br>
+</span>
+</p>
+
+</body>
+</HTML>
+
+</apex:page>

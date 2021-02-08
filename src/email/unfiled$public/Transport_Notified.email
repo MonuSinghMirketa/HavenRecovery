@@ -1,0 +1,15 @@
+<table>
+<tr>
+Transport notification for the following patient: 
+</tr>
+<tr>
+{!Lead.FirstName} {!Lead.LastName} 
+</tr>
+<tr>
+DOB: {!Lead.DOB__c}
+</tr>
+<tr>
+Transport Information:
+{!Lead.Transport_Info__c}
+</tr>
+</table>

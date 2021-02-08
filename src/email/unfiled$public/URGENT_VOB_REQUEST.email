@@ -1,0 +1,21 @@
+URGENT!!
+{!Lead.Link} 
+
+Facility of Interest: {!Lead.Facility_Interest__c} 
+Created by: {!Lead.CreatedBy} 
+Lead Source: {!Lead.LeadSource} 
+
+
+First Name: {!Lead.FirstName} 
+Last Name: {!Lead.LastName} 
+DOB: {!Lead.DOB__c} 
+
+Insurance Company: {!Lead.Insurance_Company_Name__c} 
+Insurance Phone: {!Lead.Insurance_Phone__c} 
+Member ID: {!Lead.Member_ID_Number__c} 
+Group Number: {!Lead.Group_Number__c} 
+
+
+Subscriber Name: {!Lead.Subscriber_Name__c} 
+Subscriber DOB: {!Lead.Subscriber_DOB__c} 
+Subscriber Relationship: {!Lead.Subscriber_Relationship__c}

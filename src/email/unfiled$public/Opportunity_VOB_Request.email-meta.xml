@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>VOB Request</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Opportunity VOB Request</name>
+    <style>none</style>
+    <subject>Please verify the following for: {!Opportunity.Patient_First_Name__c} {!Opportunity.Patient_Last_Name__c}</subject>
+    <textOnly>{!Opportunity.Link}
+
+Facility of Interest: {!Opportunity.Facility_Interest__c}
+Opportunity Owner:  {!Opportunity.OwnerFullName}
+Created by: {!Opportunity.CreatedBy}
+First Name: {!Opportunity.Patient_First_Name__c}
+Last Name: {!Opportunity.Patient_Last_Name__c}
+DOB: {!Opportunity.Date_of_Birth__c}
+Insurance Company: {!Opportunity.Insurance_Company_Name__c}
+Insurance Phone: {!Opportunity.00N1U00000UeuCG}
+Member ID: {!Opportunity.Member_ID_Number__c}
+Group Number: {!Opportunity.00N1U00000UeuC1}
+Subscriber Name: {!Opportunity.00N1U00000UeuJH}
+Subscriber DOB: {!Opportunity.00N1U00000UeuIi}
+Subscriber Relationship: {!Opportunity.00N1U00000UeuJR}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

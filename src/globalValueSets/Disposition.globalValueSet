@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Good Lead</fullName>
+        <default>false</default>
+        <label>Good Lead</label>
+    </customValue>
+    <customValue>
+        <fullName>Internal Transfer</fullName>
+        <default>false</default>
+        <label>Internal Transfer</label>
+    </customValue>
+    <customValue>
+        <fullName>Medicare / Medicaid</fullName>
+        <default>false</default>
+        <label>Medicare / Medicaid</label>
+    </customValue>
+    <customValue>
+        <fullName>No insurance</fullName>
+        <default>false</default>
+        <label>No insurance</label>
+    </customValue>
+    <customValue>
+        <fullName>No Person</fullName>
+        <default>false</default>
+        <label>No Person</label>
+    </customValue>
+    <customValue>
+        <fullName>Person Calling Back</fullName>
+        <default>false</default>
+        <label>Person Calling Back</label>
+    </customValue>
+    <customValue>
+        <fullName>Referred Out</fullName>
+        <default>false</default>
+        <label>Referred Out</label>
+    </customValue>
+    <customValue>
+        <fullName>Testing</fullName>
+        <default>false</default>
+        <label>Testing</label>
+    </customValue>
+    <customValue>
+        <fullName>Wrong Number</fullName>
+        <default>false</default>
+        <label>Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>No Answer</fullName>
+        <default>false</default>
+        <label>No Answer</label>
+    </customValue>
+    <masterLabel>Disposition</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

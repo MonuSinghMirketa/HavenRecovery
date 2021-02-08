@@ -1,0 +1,17 @@
+<apex:page controller="SSign.SSManageBouncesController" lightningStylesheets="true">
+    <apex:form >
+        <apex:actionPoller action="{!refreshEnvDocWrappers}" interval="5" />
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!envDocWrappers}" var="edw">
+                <apex:column headerValue="Created Date" value="{!edw.ssed.CreatedDate}" style="width:150px;" />
+                <apex:column style="width:250px;">
+                    <a target="_blank" href="{!URLFOR('/apex/SSCreateEnvelope?action=editProfiles&SDId=' + edw.ssed.SSEnvelope__r.Request_Email_Template_ID__c + '&signInPerson=false&SSEDId=' + edw.ssed.Id + '&activeOnly=true', null)}">
+                        Set new email address and resend
+                    </a>
+                </apex:column>
+                <apex:column headerValue="Document Name" value="{!edw.ssed.SSign__Document_Name__c}" style="width:250px;" />
+                <apex:column headerValue="Bounced Email(s)" value="{!edw.bouncedEmails}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

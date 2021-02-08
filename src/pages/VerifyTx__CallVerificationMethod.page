@@ -1,0 +1,17 @@
+<apex:page standardController="VerifyTx__Practice_Group__c" extensions="VerifyTx.CallVerificationMethod" action="{!PassVerificationId}">
+    <script>
+    
+    function func()
+    {
+        window.setTimeout(function(){ CallApexMethod() ; }, 20000);
+    }
+    </script> 
+    <apex:form >
+        <apex:actionFunction name="CallApexMethod" action="{!myActionInController}" />
+        <apex:outputText value="{!scriptvar}" escape="false">
+        </apex:outputText>
+        <img src="/img/loading32.gif" />  
+        <div style="font-size:150%;padding:5px"><b>We have sent your request to the insurance company.  Please wait while your request is processed.</b></div>  
+    
+    </apex:form>
+</apex:page>

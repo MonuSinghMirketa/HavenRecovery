@@ -1,0 +1,416 @@
+<apex:page controller="SSign.SSLicensesController" action="{!checkLicenseKeyOnPageLoad}">
+  <apex:form >
+    <apex:pageMessages id="pageMessages" />
+    <apex:pageBlock title="License Key">
+      <apex:pageBlockSection columns="1">
+        <apex:inputText value="{!licenseIn}"/>
+        <apex:commandButton value="Update License Key" action="{!checkLicense}" reRender="licenseInMsg,licenseManager,pageMessages" />
+        <apex:outputText value="{!licenseInMsg}" id="licenseInMsg" />
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:outputPanel id="licenseManager">
+      <apex:outputPanel rendered="{!licensed && NOT(trialVersion)}">
+        <apex:pageBlock title="Licensing Info">
+          <apex:pageBlockSection columns="2">
+            <apex:outputLabel value="Package Name: ">{!packageName}</apex:outputLabel>
+            <apex:outputLabel value="Publisher: ">{!publisher}</apex:outputLabel>
+            <apex:outputLabel value="Status: ">{!status}</apex:outputLabel>
+            <apex:outputLabel value="Allowed Licenses: ">{!allowedLicenses}</apex:outputLabel>
+            <apex:outputLabel value="Expiration Date: ">{!expirationDate}</apex:outputLabel>
+            <apex:outputLabel value="Used Licenses: ">{!userLicenses}</apex:outputLabel>
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:outputPanel id="currRoloValid" style="float: right;">
+          <apex:outputPanel rendered="{!rolodexValidSet}">Current Filter: {!rolodexFilterValid}</apex:outputPanel>
+        </apex:outputPanel>
+        <br />
+        <apex:outputPanel >
+          <apex:outputLabel for="filterValid"> Filter Licensed Users on &nbsp;</apex:outputLabel>
+          <apex:selectList value="{!filterCatagoryValid}" size="1">
+            <apex:selectOptions value="{!filterOptions}"/>
+            <apex:actionSupport event="onchange" rerender="inputPanelsValid"/>
+          </apex:selectList>
+          :
+          &nbsp;
+          <apex:outputPanel id="inputPanelsValid">
+            <apex:outputPanel id="filterValidPanel" rendered="{!filterCatagoryValid != 'IsActive'}">
+              <apex:inputText id="filterValid" value="{!filterInputValid}">
+                <apex:actionSupport event="onkeyup"  action="{!applyFilterValid}" 
+                  rerender="licensedUsersPB,userTableValid,currRoloValid"/>
+              </apex:inputText>
+            </apex:outputPanel>
+            <apex:outputPanel id="filterValidBoolPanel" rendered="{!filterCatagoryValid == 'IsActive'}">
+              <apex:selectList id="filterValidBool" value="{!filterInputValid}" size="1">
+                <apex:selectOptions value="{!booleanOptions}"/>
+                <apex:actionSupport event="onchange" action="{!applyFilterValid}"
+                  rerender="licensedUsersPB,userTableValid,currRoloValid"/>
+              </apex:selectList>
+            </apex:outputPanel>
+          </apex:outputPanel>
+          <apex:outputLabel for="licensedUsersPB" style="float:right;">
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration:none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="A" />
+              A
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="B" />
+              B
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="C" />
+              C
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="D" />
+              D
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="E" />
+              E
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="F" />
+              F
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="G" />
+              G
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="H" />
+              H
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="I" />
+              I
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="J" />
+              J
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="K" />
+              K
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="L" />
+              L
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="M" />
+              M
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="N" />
+              N
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="O" />
+              O
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="P" />
+              P
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="Q" />
+              Q
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="R" />
+              R
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="S" />
+              S
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="T" />
+              T
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="U" />
+              U
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="V" />
+              V
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="W" />
+              W
+            </apex:commandLink>
+            | 
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="X" />
+              X
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="Y" />
+              Y
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="Z" />
+              Z
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterValid}" style="text-decoration: none;" rerender="licensedUsersPB,userTableValid,currRoloValid">
+              <apex:param name="LetterPickedValid" value="ALL" />
+              ALL
+            </apex:commandLink>
+          </apex:outputLabel>
+        </apex:outputPanel>
+        <apex:pageBlock id="licensedUsersPB" title="Licensed Users">
+          <apex:pageBlockButtons location="bottom">
+            <apex:commandButton value="Remove Selected Users" action="{!removeSelectedUsers}"/>
+            <apex:commandButton value="Previous Page" action="{!prevPageValid}" reRender="licensedUsersPB" disabled="{!noPrevValid}"/>
+            <apex:commandButton value="Next Page" action="{!nextPageValid}" reRender="licensedUsersPB" disabled="{!noNextValid}"/>
+          </apex:pageBlockButtons>
+          <apex:pageBlockButtons location="top">
+            <div style="float: right;">
+              <apex:outputLabel for="numAllShown" value="Show:"/>
+              &nbsp;
+              <apex:selectList id="numAllShown" value="{!validUsersLimitString}" size="1">
+                <apex:selectOptions value="{!limitOptions}"/>
+                <apex:actionSupport event="onchange" action="{!showMoreAll}" rerender="validUsersPB"/>
+              </apex:selectList>
+            </div>
+          </apex:pageBlockButtons>
+          <apex:pageBlockTable id="userTableValid" value="{!validUsers}" var="user">
+            <apex:column width="40px;">
+              <apex:inputCheckbox value="{!user.selected}">
+                <apex:actionSupport reRender="licensedUsersPB"/>
+              </apex:inputCheckbox>
+            </apex:column>
+            <apex:column headerValue="Name" value="{!user.data.name}"/>
+            <apex:column headerValue="Username">
+              <a href="/{!user.data.Id}">{!user.data.username}</a>
+            </apex:column>
+            <apex:column headerValue="Role" value="{!user.data.UserRole.name}"/>
+            <apex:column headerValue="Active" value="{!user.data.IsActive}" width="40px;"/>
+            <apex:column headerValue="Profile" value="{!user.data.ProfileId}"/>
+          </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:outputPanel id="currRoloAll" style="float: right;">
+          <apex:outputPanel rendered="{!rolodexAllSet}">Current Filter: {!rolodexFilterAll}</apex:outputPanel>
+        </apex:outputPanel>
+        <br />
+        <apex:outputPanel >
+          <apex:outputLabel for="filterAll,filterAllBool"> Filter All Users on &nbsp;</apex:outputLabel>
+          <apex:selectList value="{!filterCatagoryAll}" size="1">
+            <apex:selectOptions value="{!filterOptions}"/>
+            <apex:actionSupport event="onchange" rerender="inputPanelsAll"/>
+          </apex:selectList>
+          :
+          &nbsp;
+          <apex:outputPanel id="inputPanelsAll">
+            <apex:outputPanel id="filterAllPanel" rendered="{!filterCatagoryAll != 'IsActive'}">
+              <apex:inputText id="filterAll" value="{!filterInputAll}">
+                <apex:actionSupport event="onkeyup"  action="{!applyFilterAll}" 
+                  rerender="allUsersPB,userTableAll,currRoloAll"/>
+              </apex:inputText>
+            </apex:outputPanel>
+            <apex:outputPanel id="filterAllBoolPanel" rendered="{!filterCatagoryAll == 'IsActive'}">
+              <apex:selectList id="filterAllBool" value="{!filterInputAll}" size="1">
+                <apex:selectOptions value="{!booleanOptions}"/>
+                <apex:actionSupport event="onchange" action="{!applyFilterAll}"
+                  rerender="allUsersPB,userTableAll,currRoloAll"/>
+              </apex:selectList>
+            </apex:outputPanel>
+          </apex:outputPanel>
+          <apex:outputLabel for="allUsersPB" style="float:right;">
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration:none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="A" />
+              A
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="B" />
+              B
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="C" />
+              C
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="D" />
+              D
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="E" />
+              E
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="F" />
+              F
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="G" />
+              G
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="H" />
+              H
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="I" />
+              I
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="J" />
+              J
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="K" />
+              K
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="L" />
+              L
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="M" />
+              M
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="N" />
+              N
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="O" />
+              O
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="P" />
+              P
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="Q" />
+              Q
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="R" />
+              R
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="S" />
+              S
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="T" />
+              T
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="U" />
+              U
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="V" />
+              V
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="W" />
+              W
+            </apex:commandLink>
+            | 
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="X" />
+              X
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="Y" />
+              Y
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="Z" />
+              Z
+            </apex:commandLink>
+            |
+            <apex:commandLink action="{!applyRolodexFilterAll}" style="text-decoration: none;" rerender="allUsersPB,userTableAll,currRoloAll">
+              <apex:param name="LetterPickedAll" value="ALL" />
+              ALL
+            </apex:commandLink>
+          </apex:outputLabel>
+        </apex:outputPanel>
+        <apex:pageBlock id="allUsersPB" title="All Users">
+          <apex:pageBlockButtons location="bottom">
+            <apex:commandButton value="Add Selected Users" action="{!addSelectedUsers}" disabled="{!userLicenses >= allowedLicenses}"/>
+            <apex:commandButton value="Previous Page" action="{!prevPageAll}" reRender="allUsersPB" disabled="{!noPrevAll}"/>
+            <apex:commandButton value="Next Page" action="{!nextPageAll}" reRender="allUsersPB" disabled="{!noNextAll}"/>
+          </apex:pageBlockButtons>
+          <apex:pageBlockButtons location="top">
+            <div style="float: right;">
+              <apex:outputLabel for="numAllShown" value="Show:"/>
+              &nbsp;
+              <apex:selectList id="numAllShown" value="{!allUsersLimitString}" size="1">
+                <apex:selectOptions value="{!limitOptions}"/>
+                <apex:actionSupport event="onchange" action="{!showMoreAll}" rerender="allUsersPB"/>
+              </apex:selectList>
+            </div>
+          </apex:pageBlockButtons>
+          <apex:pageBlockTable id="userTableAll" value="{!users}" var="user">
+            <apex:column width="40px;">
+              <apex:inputCheckbox value="{!user.selected}" disabled="{!userLicenses >= allowedLicenses}">
+                <apex:actionSupport reRender="allUsersPB"/>
+              </apex:inputCheckbox>
+            </apex:column>
+            <apex:column headerValue="Name" value="{!user.data.name}"/>
+            <apex:column headerValue="Username">
+              <a href="/{!user.data.Id}">{!user.data.username}</a>
+            </apex:column>
+            <apex:column headerValue="Role" value="{!user.data.UserRole.name}"/>
+            <apex:column headerValue="Active" value="{!user.data.IsActive}" width="40px;"/>
+            <apex:column headerValue="Profile" value="{!user.data.ProfileId}"/>
+          </apex:pageBlockTable>
+        </apex:pageBlock>
+      </apex:outputPanel>
+    </apex:outputPanel>
+  </apex:form>
+</apex:page>

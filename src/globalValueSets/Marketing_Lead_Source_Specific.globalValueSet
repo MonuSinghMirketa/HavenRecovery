@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Alumni Referral</fullName>
+        <default>false</default>
+        <label>Alumni Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Bing Ads</fullName>
+        <default>false</default>
+        <label>Bing Ads</label>
+    </customValue>
+    <customValue>
+        <fullName>Call Campaigns</fullName>
+        <default>false</default>
+        <label>Call Campaigns</label>
+    </customValue>
+    <customValue>
+        <fullName>Directory Site Listing</fullName>
+        <default>false</default>
+        <label>Directory Site Listing</label>
+    </customValue>
+    <customValue>
+        <fullName>Employee Referral</fullName>
+        <default>false</default>
+        <label>Employee Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Facebook Ads</fullName>
+        <default>false</default>
+        <label>Facebook Ads</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Ads</fullName>
+        <default>false</default>
+        <label>Google Ads</label>
+    </customValue>
+    <customValue>
+        <fullName>Instagram Ads</fullName>
+        <default>false</default>
+        <label>Instagram Ads</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketer Referral</fullName>
+        <default>false</default>
+        <label>Marketer Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Organic Search</fullName>
+        <default>false</default>
+        <label>Organic Search</label>
+    </customValue>
+    <masterLabel>Marketing Lead Source Specific</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

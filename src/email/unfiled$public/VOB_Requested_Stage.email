@@ -1,0 +1,19 @@
+<p>Hi Team , </p>
+
+VOB for <a href="{!Opportunity.Link}" >{!Opportunity.Name} </a> is added to the queue on Salesforce and should be done as soon as possible.
+
+<p> <br> Please see the details below: <br/> </p>  
+
+<p> Facility of Interest: {!Opportunity.Facility_Interest__c} </p>
+<p> Lead Source: {!Opportunity.LeadSource} </p>
+<p> Created by: {!Opportunity.CreatedBy} </p>
+<p> First Name: {!Opportunity.Patient_First_Name__c} </p>
+<p> Last Name: {!Opportunity.Patient_Last_Name__c} </p>
+<p> DOB: {!Opportunity.DOB__c} </p> 
+<p> Insurance Company: {!Opportunity.Insurance_Company_Name__c} </p>
+<p> Insurance Phone: {!Opportunity.Insurance_Phone__c} </p>
+<p> Member ID: {!Opportunity.Member_ID_Number__c} </p>
+<p> Group Number: {!Opportunity.Group_Number__c} </p>
+<p> Subscriber Name: {!Opportunity.Subscriber_First_Name__c} {!Opportunity.Subscriber_Last_Name__c} </p>
+<p> Subscriber DOB: {!Opportunity.Subscriber_DOB__c} </p>
+<p> Subscriber Relationship: {!Opportunity.Subscriber_Relationship__c} </p>
